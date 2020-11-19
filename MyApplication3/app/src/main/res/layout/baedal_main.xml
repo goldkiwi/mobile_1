@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,38 +9,36 @@
         android:id="@+id/button_오늘_뭐먹지"
         android:layout_width="344dp"
         android:layout_height="74dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="32dp"
         android:background="#8200FF"
         android:text="오늘 뭐 먹지?"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrolView_ad"
         tools:fontFamily="sans-serif"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="415dp"
         tools:textColor="@color/white"
         tools:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button_ad"
-        android:layout_width="410dp"
-        android:layout_height="193dp"
-        android:background="@drawable/add_main"
-
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
         android:text="소고기"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="232dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_오늘_뭐먹지" />
 
     <HorizontalScrollView
         android:id="@+id/scrolView_ad"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="191dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
@@ -50,15 +47,17 @@
 
             android:layout_height="match_parent"
 
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <Button
 
                 android:id="@+id/button_scroll_1"
 
-                android:layout_width="match_parent"
+                android:layout_width="409dp"
 
                 android:layout_height="match_parent"
+
+                android:background="@drawable/add_main"
 
                 android:text="Button 1" />
 
@@ -66,26 +65,27 @@
 
                 android:id="@+id/button_scroll_2"
 
-                android:layout_width="match_parent"
+                android:layout_width="409dp"
 
                 android:layout_height="match_parent"
 
-                android:text="Button 2"
-                />
+                android:background="@drawable/add_main_2"
+
+                android:text="Button 2" />
 
 
             <Button
 
                 android:id="@+id/button_scroll_3"
 
-                android:layout_width="match_parent"
+                android:layout_width="409dp"
 
                 android:layout_height="match_parent"
+                android:background="@drawable/add_main_3"
 
                 android:text="Button 6" />
 
         </LinearLayout>
-
 
 
     </HorizontalScrollView>
@@ -94,8 +94,11 @@
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:text="1.고기"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="510dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
