@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_오늘_뭐먹지"
+        android:layout_width="344dp"
+        android:layout_height="74dp"
+        android:background="#8200FF"
+        android:text="오늘 뭐 먹지?"
+        android:textSize="24sp"
+        tools:fontFamily="sans-serif"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="415dp"
+        tools:textColor="@color/white"
+        tools:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_ad"
+        android:layout_width="410dp"
+        android:layout_height="193dp"
+        android:background="@drawable/add_main"
+
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="소고기"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="232dp" />
+
+    <HorizontalScrollView
+        android:id="@+id/scrolView_ad"
+        android:layout_width="409dp"
+        android:layout_height="191dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+
+            android:orientation="horizontal" >
+
+            <Button
+
+                android:id="@+id/button_scroll_1"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:text="Button 1" />
+
+            <Button
+
+                android:id="@+id/button_scroll_2"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:text="Button 2"
+                />
+
+
+            <Button
+
+                android:id="@+id/button_scroll_3"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:text="Button 6" />
+
+        </LinearLayout>
+
+
+
+    </HorizontalScrollView>
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.고기"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="510dp" />
+
+</android.support.constraint.ConstraintLayout>
