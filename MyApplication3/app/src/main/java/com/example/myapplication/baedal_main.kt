@@ -1,13 +1,20 @@
 package com.example.myapplication
 
+import android.R.attr.data
+import android.content.ClipData
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.RecyclerView
+import android.widget.BaseAdapter
 import android.widget.Button
-import androidx.navigation.fragment.findNavController
+import android.widget.ExpandableListAdapter
+import android.widget.LinearLayout
+import android.widget.AdapterView
+
+
+
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -16,7 +23,35 @@ class baedal_main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.baedal_main)
+
+        /// 메인 배너
+        if (true) {
+            var mainBanner: LinearLayout = findViewById(R.id.banner_ad);
+            var bannerNum = 3;
+
+            var i = 0;
+            var bannerButtonParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT
+            )
+            while (i < bannerNum) {
+                var addBanner = Button(this);
+                addBanner.layoutParams = bannerButtonParams;
+                addBanner.setBackgroundResource(R.drawable.add_main);
+                mainBanner.addView(addBanner);
+
+                i++;
+            }
+        }
+
+
+
+
+
     }
+
+
+
 
 /*
     override fun onCreateView(
@@ -36,3 +71,6 @@ class baedal_main : AppCompatActivity() {
         }
     }*/
 }
+
+
+
