@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,12 +10,11 @@
 
 
 
-
     <Button
-        android:id="@+id/button_오늘_뭐먹지"
+        android:id="@+id/button_whatEatToday"
         android:layout_width="344dp"
         android:layout_height="74dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="240dp"
         android:layout_marginEnd="32dp"
         android:background="#8200FF"
         android:text="오늘 뭐 먹지?"
@@ -25,12 +26,16 @@
         tools:textStyle="bold" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_cat_beef"
+        android:layout_width="73dp"
+        android:layout_height="45dp"
         android:text="소고기"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="223dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button_whatEatToday"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.27" />
 
     <HorizontalScrollView
         android:id="@+id/scrolView_ad"
@@ -94,15 +99,27 @@
 
     </HorizontalScrollView>
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="410dp"
+        android:layout_height="58dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrolView_ad"
+        app:layout_constraintVertical_bias="0.0"/>
+
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:text="소고기"
         android:textOff="소고기"
         android:textOn="소고기"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.755" />
@@ -111,11 +128,11 @@
         android:id="@+id/toggleButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
         android:text="소고기"
         android:textOff="소고기"
         android:textOn="소고기"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.755" />
@@ -124,11 +141,12 @@
         android:id="@+id/toggleButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="304dp"
         android:text="소고기"
         android:textOff="소고기"
         android:textOn="소고기"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.755" />
@@ -137,11 +155,12 @@
         android:id="@+id/toggleButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:text="소고기"
         android:textOff="소고기"
         android:textOn="소고기"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.866" />
@@ -155,6 +174,8 @@
         android:textOff="소고기"
         android:textOn="소고기"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/toggleButton4"
         app:layout_constraintTop_toBottomOf="@+id/toggleButton2"
         app:layout_constraintVertical_bias="0.235" />
@@ -168,8 +189,438 @@
         android:textOff="소고기"
         android:textOn="소고기"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/toggleButton4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toggleButton3"
         app:layout_constraintVertical_bias="0.235" />
 
+
+
 </android.support.constraint.ConstraintLayout>
+
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:id="@+id/scrolView_ad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="0dp"
+
+                    android:orientation="horizontal">
+
+                    <Button
+
+                        android:id="@+id/button_scroll_1"
+
+                        android:layout_width="409dp"
+
+                        android:layout_height="wrap_content"
+
+                        android:background="@drawable/add_main"
+
+                        android:text="Button 1" />
+
+                    <Button
+
+                        android:id="@+id/button_scroll_2"
+
+                        android:layout_width="409dp"
+
+                        android:layout_height="wrap_content"
+
+                        android:background="@drawable/add_main_2"
+
+                        android:text="Button 2" />
+
+
+                    <Button
+
+                        android:id="@+id/button_scroll_3"
+
+                        android:layout_width="409dp"
+
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/add_main_3"
+
+                        android:text="Button 6" />
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+                <TextView
+                    android:id="@+id/now_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="현재위치표시"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.196" />
+
+                <TextView
+                    android:id="@+id/bankyeong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="반경"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName2"
+                    app:layout_constraintHorizontal_bias="0.644"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.77" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName2"
+                    android:layout_width="151dp"
+                    android:layout_height="20dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Name"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/now_loc" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="km 이내"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.444"
+                    app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.737" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="114dp"
+                    android:orientation="horizontal">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="114dp">
+
+                        <Button
+                            android:id="@+id/button_cat_wes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="양식"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/button_cat_beef"
+                            app:layout_constraintVertical_bias="0.642" />
+
+                        <Button
+                            android:id="@+id/button_cat_beef"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="소고기"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.06" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="114dp">
+
+                        <Button
+                            android:id="@+id/button_cat_noodle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="면"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/button_cat_fork"
+                            app:layout_constraintVertical_bias="0.642" />
+
+                        <Button
+                            android:id="@+id/button_cat_fork"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="돼지고기"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.06" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="115dp"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/button_cat_bunsik"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="분식"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/button_cat_chicken"
+                            app:layout_constraintVertical_bias="0.642" />
+
+                        <Button
+                            android:id="@+id/button_cat_chicken"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="닭고기"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.06" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/button_cat_pocha"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="포차"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/button_cat_kor"
+                            app:layout_constraintVertical_bias="0.642" />
+
+                        <Button
+                            android:id="@+id/button_cat_kor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="한식"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.06" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/button_cat_dessert"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="디저트"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/button_cat_chi"
+                            app:layout_constraintVertical_bias="0.642" />
+
+                        <Button
+                            android:id="@+id/button_cat_chi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="중식"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.06" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/button_cat_frsnchise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="프랜차이즈"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/button_cat_beef"
+                            app:layout_constraintVertical_bias="0.642" />
+
+                        <Button
+                            android:id="@+id/button_cat_jap"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="일식"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.06" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button_whatEatToday"
+
+                    android:layout_width="344dp"
+                    android:layout_height="74dp"
+                    android:background="#8200FF"
+                    android:text="오늘 뭐 먹지?"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ToggleButton
+                    android:id="@+id/toggleButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소고기"
+                    android:textOff="소고기"
+                    android:textOn="소고기"
+                    tools:layout_editor_absoluteX="32dp"
+                    tools:layout_editor_absoluteY="144dp" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton5"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="소고기"
+                    android:textOff="소고기"
+                    android:textOn="소고기"
+                    tools:layout_editor_absoluteX="40dp"
+                    tools:layout_editor_absoluteY="192dp" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소고기"
+                    android:textOff="소고기"
+                    android:textOn="소고기"
+                    tools:layout_editor_absoluteX="160dp"
+                    tools:layout_editor_absoluteY="48dp" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소고기"
+                    android:textOff="소고기"
+                    android:textOn="소고기"
+                    tools:layout_editor_absoluteX="304dp"
+                    tools:layout_editor_absoluteY="96dp" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소고기"
+                    android:textOff="소고기"
+                    android:textOn="소고기"
+                    tools:layout_editor_absoluteX="184dp"
+                    tools:layout_editor_absoluteY="240dp" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소고기"
+                    android:textOff="소고기"
+                    android:textOn="소고기"
+                    tools:layout_editor_absoluteX="32dp" />
+            </android.support.constraint.ConstraintLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
