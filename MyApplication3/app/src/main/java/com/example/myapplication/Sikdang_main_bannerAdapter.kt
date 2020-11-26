@@ -1,4 +1,4 @@
 package com.example.myapplication
 
-class baedal_main_bannerAdapter {
+class Sikdang_main_bannerAdapter {
 }

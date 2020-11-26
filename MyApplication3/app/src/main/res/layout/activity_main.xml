@@ -39,7 +39,7 @@
         android:src="@android:drawable/ic_input_add" />
 
     <Button
-        android:id="@+id/button_call_baedal"
+        android:id="@+id/button_call_sikdang"
         android:layout_width="173dp"
         android:layout_height="163dp"
         android:text="Button"

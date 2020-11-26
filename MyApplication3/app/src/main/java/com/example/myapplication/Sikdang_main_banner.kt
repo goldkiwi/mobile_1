@@ -10,7 +10,7 @@ import android.widget.ExpandableListAdapter
 import android.widget.LinearLayout
 import java.util.EnumSet.range
 
-class baedal_main_banner: AppCompatActivity() {
+class Sikdang_main_banner: AppCompatActivity() {
 
 /*
     private var mainBanner: LinearLayout=findViewById(R.id.banner_ad_item);
