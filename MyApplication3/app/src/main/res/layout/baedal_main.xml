@@ -323,10 +323,10 @@
                 android:id="@+id/main_tagList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/baedal_main_taglist"
+
 
                 />
-
+<!--
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="140dp">
@@ -420,7 +420,7 @@
 
             </android.support.constraint.ConstraintLayout>
 
-
+-->
         </LinearLayout>
     </ScrollView>
 

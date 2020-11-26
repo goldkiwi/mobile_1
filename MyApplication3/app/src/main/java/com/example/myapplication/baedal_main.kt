@@ -5,21 +5,19 @@ import android.content.ClipData
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.ExpandableListAdapter
-import android.widget.LinearLayout
-import android.widget.AdapterView
-
-
-
+import android.widget.*
 
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class baedal_main : AppCompatActivity() {
+    var tagList_bm = arrayListOf<TagLine>();
+    //var main_tagList= findViewById<RecyclerView>(R.id.main_tagList);
+    //var main_tagList: RecyclerView = findViewById(R.id.main_tagList);
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.baedal_main)
@@ -44,7 +42,20 @@ class baedal_main : AppCompatActivity() {
             }
         }
 
+        //음식 추천 태그
+        if(true){
+            var tagLineList : TagLineList= TagLineList();
+            tagList_bm=tagLineList.getTagLineList()
+            var tag_Adapter=Baedal_main_tagAdapter(this, tagList_bm)
+            var main_tagList: RecyclerView = findViewById(R.id.main_tagList);
 
+            main_tagList.adapter=tag_Adapter;
+
+            var tag_lm=LinearLayoutManager(this)
+            main_tagList.layoutManager=tag_lm;
+            main_tagList.setHasFixedSize(true)
+
+        }
 
 
 
@@ -53,23 +64,8 @@ class baedal_main : AppCompatActivity() {
 
 
 
-/*
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
 
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.baedal_main, container, false)
-    }*/
-/*
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
-    }*/
 }
 
 
