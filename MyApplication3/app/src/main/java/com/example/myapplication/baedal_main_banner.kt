@@ -3,9 +3,7 @@ package com.example.myapplication
 import android.R.attr.data
 import android.content.ClipData
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ExpandableListAdapter

@@ -3,11 +3,10 @@ package com.example.myapplication
 import android.R.attr.data
 import android.content.ClipData
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 /**
@@ -51,7 +50,7 @@ class baedal_main : AppCompatActivity() {
 
             main_tagList.adapter=tag_Adapter;
 
-            var tag_lm=LinearLayoutManager(this)
+            var tag_lm= LinearLayoutManager(this)
             main_tagList.layoutManager=tag_lm;
             main_tagList.setHasFixedSize(true)
 
