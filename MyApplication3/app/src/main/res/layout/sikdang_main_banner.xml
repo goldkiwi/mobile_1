@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView4"
+    <Button
+        android:id="@+id/banner_button"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/add_main_2" />
+        app:srcCompat="@drawable/add_main_2"
+        android:background="@drawable/add_main"/>
+
 </LinearLayout>

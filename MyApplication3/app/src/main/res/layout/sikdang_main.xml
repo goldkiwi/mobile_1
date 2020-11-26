@@ -298,19 +298,30 @@
             </HorizontalScrollView>
 
 
+            <!-- ViewPager 구현 시도-->
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/banner_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal" />
+
+
             <ScrollView
                 android:id="@+id/banner_scroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:padding="16dp"
+                    android:padding="50dp"
                     android:lineSpacingMultiplier="1.2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:text="a"
                     />
             </ScrollView>
+
 
 
             <!--오늘 뭐먹지 버튼-->
