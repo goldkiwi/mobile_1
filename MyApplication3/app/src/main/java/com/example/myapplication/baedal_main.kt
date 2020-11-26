@@ -25,6 +25,7 @@ class baedal_main : AppCompatActivity() {
         if (true) {
             var mainBanner: LinearLayout = findViewById(R.id.banner_ad);
             var bannerNum = 3;
+            
 
             var i = 0;
             var bannerButtonParams = LinearLayout.LayoutParams(
