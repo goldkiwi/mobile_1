@@ -1,12 +1,14 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ToggleButton
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 
@@ -30,6 +32,21 @@ class Sikdang_main_bannerAdapter(var context: Context, var bannerList: ArrayList
         holder.bind(bannerList[position], context)
     }
 
+    interface ItemClick{
+        fun onClick(view: View, position: Int)
+    }
+
+    var itemClick: ItemClick? = null
+    override fun onBindViewHolder(holder: Holder, position: Int, payloads: MutableList<Any>) {
+        super.onBindViewHolder(holder, position, payloads)
+
+        if (itemClick != null){
+            holder?.itemView?.setOnClickListener{ v ->
+                itemClick?.onClick(v, position)
+            }
+        }
+    }
+
 
 
 
@@ -50,6 +67,18 @@ class Sikdang_main_bannerAdapter(var context: Context, var bannerList: ArrayList
             banner_insert?.setBackgroundResource(item.banner1)
 
 
+
+
         }
+        /*
+        fun banner_clicked(){
+
+            val whatEatToday_page=Intent(Sikdang_main, What_eat_today::class.java)
+            startActivity(whatEatToday_page)
+
+        }*/
+
     }
+
+
 }
