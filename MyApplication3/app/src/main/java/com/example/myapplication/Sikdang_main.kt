@@ -130,12 +130,7 @@ class Sikdang_main : AppCompatActivity() {
             viewPager2.adapter = adapter*/
 
 
-
-
         }
-
-
-
 
 
 
@@ -146,9 +141,7 @@ class Sikdang_main : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-
+        
 
 
 
