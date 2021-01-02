@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.util.Log
+
 class Sikdang_main_banner_list {
     var bannerList:ArrayList<Sikdang_main_banner> = arrayListOf(
         Sikdang_main_banner(R.drawable.add_main),
@@ -12,6 +14,7 @@ class Sikdang_main_banner_list {
     )
 
     fun getMainBannerList(): ArrayList<Sikdang_main_banner>{
+        Log.d("종료지점확인 Sikdang_main_banner_list", "17")
         return bannerList;
     }
 }

@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,15 +21,18 @@ class Sikdang_main_bannerAdapter(var context: Context, var bannerList: ArrayList
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Sikdang_main_bannerAdapter.Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.sikdang_main_banner, parent, false)
         //val view: View = inflater.inflate(R.layout.sikdang_main_banner, parent, false)
+        Log.d("종료지점확인 Sikdang_main_bannerAdapter", "24")
 
         return Holder(view)
     }
 
     override fun getItemCount(): Int {
+        Log.d("종료지점확인 Sikdang_main_bannerAdapter", "30")
         return bannerList.size
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        Log.d("종료지점확인 Sikdang_main_bannerAdapter", "35")
         holder.bind(bannerList[position], context)
     }
 
@@ -39,12 +43,16 @@ class Sikdang_main_bannerAdapter(var context: Context, var bannerList: ArrayList
     var itemClick: ItemClick? = null
     override fun onBindViewHolder(holder: Holder, position: Int, payloads: MutableList<Any>) {
         super.onBindViewHolder(holder, position, payloads)
+        Log.d("종료지점확인 Sikdang_main_bannerAdapter", "46")
 
         if (itemClick != null){
+            Log.d("종료지점확인 Sikdang_main_bannerAdapter", "49")
             holder?.itemView?.setOnClickListener{ v ->
                 itemClick?.onClick(v, position)
             }
+            Log.d("종료지점확인 Sikdang_main_bannerAdapter", "53")
         }
+        Log.d("종료지점확인 Sikdang_main_bannerAdapter", "55")
     }
 
 
@@ -64,7 +72,9 @@ class Sikdang_main_bannerAdapter(var context: Context, var bannerList: ArrayList
             }*/
 
 
+            Log.d("종료지점확인 Sikdang_main_bannerAdapter", "72")
             banner_insert?.setBackgroundResource(item.banner1)
+            Log.d("종료지점확인 Sikdang_main_bannerAdapter", "74")
 
 
 

@@ -2,10 +2,12 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -25,6 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         button_call_sikdang.setOnClickListener{
             val intent=Intent(this, Sikdang_main::class.java)
+            Toast.makeText(this.getApplicationContext(),
+                    "MainActivity -> Sikdang_main", Toast.LENGTH_SHORT).show()
+            Log.d("종료지점확인", "button_call_sikdang.setOnClickListener")
+
+
             startActivity(intent)
         }
 

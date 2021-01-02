@@ -11,7 +11,7 @@ class BannerFragment(val image : Int) : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var fragment_banner : ImageView = view.findViewById(R.id.fragment_banner);
-        fragment_banner.setImageResource(image)
+        var fragmentBanner : ImageView = view.findViewById(R.id.fragment_banner);
+        fragmentBanner.setImageResource(image)
     }
 }

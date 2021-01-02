@@ -311,19 +311,27 @@
             <!-- ViewPager 구현 시도-->
 
 
-            <!--
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/banner_view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:orientation="horizontal" />
-                -->
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/banner_view_pager_2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                />
+
 
 
 
 
 
             <!--오늘 뭐먹지 버튼-->
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
