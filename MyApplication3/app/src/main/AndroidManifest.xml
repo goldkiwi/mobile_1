@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Sikdang_main"/>
+        <activity android:name="mainPage.Sikdang_main"/>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import mainPage.Sikdang_main
 
 class MainActivity : AppCompatActivity() {
 

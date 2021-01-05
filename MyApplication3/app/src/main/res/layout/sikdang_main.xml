@@ -20,6 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <!--배너 스크롤뷰-->
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/banner_view_pager_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <HorizontalScrollView
                 android:id="@+id/scrolView_ad"
@@ -46,15 +52,6 @@
             </HorizontalScrollView>
 
             <!--배너 리사이클러 뷰-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/main_banner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-
-                />
-
-
 
 
             <!--위치와 거리 표시-->
@@ -309,24 +306,6 @@
 
 
             <!-- ViewPager 구현 시도-->
-
-
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/banner_view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:orientation="horizontal" />
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/banner_view_pager_2"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                />
-
-
-
-
 
 
             <!--오늘 뭐먹지 버튼-->

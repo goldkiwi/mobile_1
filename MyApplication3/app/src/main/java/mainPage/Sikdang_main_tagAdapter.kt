@@ -1,4 +1,4 @@
-package com.example.myapplication
+package mainPage
 
 import android.content.Context
 import android.view.View
@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 
 
 class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>) : RecyclerView.Adapter<Sikdang_main_tagAdapter.Holder>() {

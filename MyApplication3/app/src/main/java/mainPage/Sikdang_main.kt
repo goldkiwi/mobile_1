@@ -1,18 +1,17 @@
-package com.example.myapplication
+package mainPage
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.myapplication.*
 
 private const val NUM_PAGE = 4
 /**
@@ -39,9 +38,9 @@ class Sikdang_main : AppCompatActivity() {
 
         //음식 추천 태그
         if(true){
-            var tagLineList : TagLineList= TagLineList();
+            var tagLineList : TagLineList = TagLineList();
             tagList_sm=tagLineList.getTagLineList()
-            var tag_Adapter=Sikdang_main_tagAdapter(this, tagList_sm)
+            var tag_Adapter= Sikdang_main_tagAdapter(this, tagList_sm)
             var main_tagList: RecyclerView = findViewById(R.id.main_tagList);
 
             main_tagList.adapter=tag_Adapter;

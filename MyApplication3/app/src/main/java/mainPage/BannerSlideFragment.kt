@@ -1,16 +1,12 @@
-package com.example.myapplication
+package mainPage
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import android.widget.LinearLayout
-import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 
 class BannerSlideFragment(var bannerImage : Int) : Fragment() {
     /*

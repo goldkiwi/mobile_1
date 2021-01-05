@@ -7,12 +7,12 @@
     android:id="@+id/bannerFragment"
     >
 
-    <ImageView
+    <Button
         android:id="@+id/fragment_banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/add_main"
+        android:scaleType="fitXY"
+        android:background="@drawable/add_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,9 +1,8 @@
-package com.example.myapplication
+package mainPage
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
-import android.content.Intent
+import com.example.myapplication.R
 
 class What_eat_today: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

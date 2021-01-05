@@ -1,4 +1,4 @@
-package com.example.myapplication
+package mainPage
 
 class temp_class {
 }
