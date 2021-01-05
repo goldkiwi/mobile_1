@@ -1,7 +1,6 @@
-package com.example.myapplication
+package mainPage
 
-import android.app.Activity
-import android.os.Bundle
+import mainPage.TagLine
 
 class TagLineList(){
 

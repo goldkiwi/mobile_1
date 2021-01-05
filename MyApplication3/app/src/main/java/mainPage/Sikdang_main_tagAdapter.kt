@@ -1,28 +1,18 @@
-package com.example.myapplication
+package mainPage
 
 import android.content.Context
 import android.view.View
 import android.widget.ToggleButton
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.os.Bundle
-import android.widget.BaseAdapter
-import android.R.attr.data
-import android.content.ClipData
 
-import androidx.appcompat.app.AppCompatActivity
-
-import android.widget.Button
-import android.widget.ExpandableListAdapter
-import android.widget.LinearLayout
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 
 
-class Baedal_main_tagAdapter(var context: Context, var tagList: List<TagLine>) : RecyclerView.Adapter<Baedal_main_tagAdapter.Holder>() {
+class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>) : RecyclerView.Adapter<Sikdang_main_tagAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(context).inflate(R.layout.baedal_main_tagline, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.sikdang_main_tagline, parent, false)
         return Holder(view)
     }
 

@@ -1,16 +1,16 @@
 package com.example.myapplication
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import mainPage.Sikdang_main
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,18 +23,16 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
-/*
-        var button_call_baedal: Button = findViewById(R.id.button_call_baedal).also {
-            it.setOnClickListener(View.onClickListener(){
-                onClick(View v){
 
-                }
-            })
-        }*/
-        var button_call_baedal: Button = findViewById(R.id.button_call_baedal)
+        var button_call_sikdang: Button = findViewById(R.id.button_call_sikdang)
 
-        button_call_baedal.setOnClickListener{
-            val intent=Intent(this, baedal_main::class.java)
+        button_call_sikdang.setOnClickListener{
+            val intent=Intent(this, Sikdang_main::class.java)
+            Toast.makeText(this.getApplicationContext(),
+                    "MainActivity -> Sikdang_main", Toast.LENGTH_SHORT).show()
+            Log.d("종료지점확인", "button_call_sikdang.setOnClickListener")
+
+
             startActivity(intent)
         }
 
@@ -56,20 +54,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
 
-
-        if(requestCode==REQUEST_CODE_MENU){
-            Toast.makeText(getApplicationContext(), "aaa"+requestCode+", 결과코드:"+resultCode, Toast.LENGTH_LONG ).show()
-
-            if (resultCode == RESULT_OK){
-                var name:String = data?.getExtras()?.getString("name").toString()
-                Toast.makeText(getApplicationContext(), "응답으로 전달된 name : "+name, Toast.LENGTH_LONG).show
-
-
-            }
-        }
-    }*/
 }
