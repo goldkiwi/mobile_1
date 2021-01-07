@@ -26,10 +26,12 @@ class Sikdang_main : AppCompatActivity() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sikdang_main)
         Log.d("종료지점확인", "onCreate_30")
+        Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show()
 
 
 
@@ -57,6 +59,7 @@ class Sikdang_main : AppCompatActivity() {
             viewPager2=findViewById(R.id.banner_view_pager_2)
             var pagerAdapter2 = ScreenSlidePagerAdapter2(this)
             viewPager2.adapter=pagerAdapter2
+
 
 
         }
@@ -114,6 +117,8 @@ class Sikdang_main : AppCompatActivity() {
             }
 
         }
+
+
     }
 
 
