@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.*
+import mainPage.What_eat_today
 
-private const val NUM_PAGE = 4
+private const val NUM_PAGE = 5
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
@@ -31,9 +32,6 @@ class Sikdang_main : AppCompatActivity() {
         Log.d("종료지점확인", "onCreate_30")
 
 
-
-
-        /// 메인 배너
 
 
         //음식 추천 태그
@@ -66,11 +64,15 @@ class Sikdang_main : AppCompatActivity() {
 
 
 
+        //오늘 뭐먹지? 누르면 페이지 호출
+        //여기에 눌러진 버튼도 매개변수로 줘야함
         var button_call_what_eat_today: Button = findViewById(R.id.button_whatEatToday)
 
         button_call_what_eat_today.setOnClickListener{
             val intent=Intent(this, What_eat_today::class.java)
+            Log.d("종료지점확인", "call What_eat_today")
             startActivity(intent)
+            Log.d("종료지점확인", "End What_eat_today")
         }
 
         Log.d("종료지점확인", "167")
@@ -89,19 +91,17 @@ class Sikdang_main : AppCompatActivity() {
         }
     }
 
+    //배너 어댑터
+    //최대 6페이지까지
     private inner class ScreenSlidePagerAdapter2(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = num_page
 
         override fun createFragment(position: Int): Fragment {
-            Log.d("종료지점확인 ScreenSlidePagerAdapter2", "190")
             if (position == 0){
-                Log.d("종료지점확인 ScreenSlidePagerAdapter2", "position == 0")
                 return BannerSlideFragment(R.drawable.add_main)
             }else if(position == 1){
-                Log.d("종료지점확인 ScreenSlidePagerAdapter2", "position == 1")
                 return BannerSlideFragment(R.drawable.add_main_2)
             }else if(num_page >=3 && position == 2){
-                Log.d("종료지점확인 ScreenSlidePagerAdapter2", "else 에서")
                 return BannerSlideFragment(R.drawable.add_main_3)
             }else if(num_page >=4 && position == 3){
                 return BannerSlideFragment(R.drawable.add_main_4)

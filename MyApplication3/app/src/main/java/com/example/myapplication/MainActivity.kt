@@ -28,9 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         button_call_sikdang.setOnClickListener{
             val intent=Intent(this, Sikdang_main::class.java)
-            Toast.makeText(this.getApplicationContext(),
-                    "MainActivity -> Sikdang_main", Toast.LENGTH_SHORT).show()
-            Log.d("종료지점확인", "button_call_sikdang.setOnClickListener")
 
 
             startActivity(intent)
