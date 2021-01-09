@@ -1,4 +1,4 @@
-package tempClass
+package com.example.myapplication.tempClass
 
 import android.os.Bundle
 

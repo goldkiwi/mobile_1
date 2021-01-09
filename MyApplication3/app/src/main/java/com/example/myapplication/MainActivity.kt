@@ -2,15 +2,13 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import mainPage.Sikdang_main
+import com.example.myapplication.mainPage.Sikdang_main
 
 class MainActivity : AppCompatActivity() {
 

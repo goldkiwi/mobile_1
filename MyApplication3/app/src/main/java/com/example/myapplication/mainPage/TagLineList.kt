@@ -1,6 +1,4 @@
-package mainPage
-
-import mainPage.TagLine
+package com.example.myapplication.mainPage
 
 class TagLineList(){
 

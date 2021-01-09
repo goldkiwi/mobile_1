@@ -1,4 +1,4 @@
-package mainPage
+package com.example.myapplication.mainPage
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.*
-import mainPage.What_eat_today
 
 private const val NUM_PAGE = 5
 /**
@@ -22,7 +21,7 @@ class Sikdang_main : AppCompatActivity() {
     var tagList_sm = arrayListOf<TagLine>();
     private lateinit var viewPager2: ViewPager2
 
-    private var num_page = 4
+    private var num_page = 5
 
 
 
@@ -53,16 +52,10 @@ class Sikdang_main : AppCompatActivity() {
 
         //뷰페이저
 
-        if(true){
 
-
-            viewPager2=findViewById(R.id.banner_view_pager_2)
-            var pagerAdapter2 = ScreenSlidePagerAdapter2(this)
-            viewPager2.adapter=pagerAdapter2
-
-
-
-        }
+        viewPager2=findViewById(R.id.banner_view_pager_2)
+        var pagerAdapter2 = ScreenSlidePagerAdapter2(this)
+        viewPager2.adapter=pagerAdapter2
 
 
 
@@ -85,6 +78,9 @@ class Sikdang_main : AppCompatActivity() {
 
 
     }
+    /*
+
+    //백 버튼
 
     override fun onBackPressed() {
         if (viewPager2.currentItem==0){
@@ -92,7 +88,7 @@ class Sikdang_main : AppCompatActivity() {
         }else{
             viewPager2.currentItem=viewPager2.currentItem-1
         }
-    }
+    }*/
 
     //배너 어댑터
     //최대 6페이지까지
@@ -101,19 +97,19 @@ class Sikdang_main : AppCompatActivity() {
 
         override fun createFragment(position: Int): Fragment {
             if (position == 0){
-                return BannerSlideFragment(R.drawable.add_main)
+                return BannerSlideFragment(R.drawable.add_main, 0)
             }else if(position == 1){
-                return BannerSlideFragment(R.drawable.add_main_2)
+                return BannerSlideFragment(R.drawable.add_main_2, 1)
             }else if(num_page >=3 && position == 2){
-                return BannerSlideFragment(R.drawable.add_main_3)
+                return BannerSlideFragment(R.drawable.add_main_3, 2)
             }else if(num_page >=4 && position == 3){
-                return BannerSlideFragment(R.drawable.add_main_4)
+                return BannerSlideFragment(R.drawable.add_main_4, 3)
             }else if(num_page >=5 && position == 4){
-                return BannerSlideFragment(R.drawable.add_main_5)
+                return BannerSlideFragment(R.drawable.add_main_5, 4)
             }else if(num_page >=6 && position == 5){
-                return BannerSlideFragment(R.drawable.add_main_6)
+                return BannerSlideFragment(R.drawable.add_main_6, 5)
             }else{
-                return BannerSlideFragment(R.drawable.add_main)
+                return BannerSlideFragment(R.drawable.add_main, 0)
             }
 
         }

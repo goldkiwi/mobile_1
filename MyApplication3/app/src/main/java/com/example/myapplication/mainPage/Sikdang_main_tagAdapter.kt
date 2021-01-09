@@ -1,4 +1,4 @@
-package mainPage
+package com.example.myapplication.mainPage
 
 import android.content.Context
 import android.view.View

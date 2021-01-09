@@ -19,8 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="mainPage.Sikdang_main"/>
-        <activity android:name="mainPage.What_eat_today"/>
+        <activity android:name=".mainPage.Sikdang_main" />
+        <activity android:name=".mainPage.What_eat_today" />
+        <activity android:name=".addPage.Add_page_0" />
+        <activity android:name=".addPage.Add_page_1" />
+        <activity android:name=".addPage.Add_page_2" />
+        <activity android:name=".addPage.Add_page_3" />
+        <activity android:name=".addPage.Add_page_4" />
+        <activity android:name=".addPage.Add_page_5" />
     </application>
 
 </manifest>
