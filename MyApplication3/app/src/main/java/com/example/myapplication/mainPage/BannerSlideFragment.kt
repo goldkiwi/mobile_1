@@ -44,37 +44,17 @@ class BannerSlideFragment(var bannerImage : Int, var pos : Int) : Fragment() {
         banner_insert.setOnClickListener{
             Log.d("종료지점확인", "BannerSlideFragment 버튼 클릭")
             //프래그먼트상에 context 존재하지 않기 때문에 getActivity() 사용
+            //Add_page 호출한다 putExtra로 몇 번째 페이지인지도 보내준다
             val intent :Intent
-            //
+            intent=Intent(getActivity(), Add_page::class.java)
             when (pos){
-                0-> {
-                    intent=Intent(getActivity(), Add_page_0::class.java)
-                    intent.putExtra("pos", 0)
-                }
-                1-> {
-                    intent=Intent(getActivity(), Add_page_1::class.java)
-                    intent.putExtra("pos", 1)
-                }
-                2-> {
-                    intent=Intent(getActivity(), Add_page_2::class.java)
-                    intent.putExtra("pos", 2)
-                }
-                3-> {
-                    intent=Intent(getActivity(), Add_page_3::class.java)
-                    intent.putExtra("pos", 3)
-                }
-                4-> {
-                    intent=Intent(getActivity(), Add_page_4::class.java)
-                    intent.putExtra("pos", 4)
-                }
-                5-> {
-                    intent=Intent(getActivity(), Add_page_5::class.java)
-                    intent.putExtra("pos", 5)
-                }
-                else -> {
-                    intent=Intent(getActivity(), Add_page_1::class.java)
-                    intent.putExtra("pos", 0)
-                }
+                0-> intent.putExtra("pos", 0)
+                1-> intent.putExtra("pos", 1)
+                2-> intent.putExtra("pos", 2)
+                3-> intent.putExtra("pos", 3)
+                4-> intent.putExtra("pos", 4)
+                5-> intent.putExtra("pos", 5)
+                else -> intent.putExtra("pos", 0)
             }
             //intent=Intent(getActivity(), Add_page::class.java)
             startActivity(intent)
