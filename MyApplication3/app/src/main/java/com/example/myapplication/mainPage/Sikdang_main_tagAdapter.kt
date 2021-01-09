@@ -11,6 +11,11 @@ import com.example.myapplication.R
 
 
 class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>) : RecyclerView.Adapter<Sikdang_main_tagAdapter.Holder>() {
+    var tagMax=18
+    var tagNum=0
+    var tagOrderList = Array(tagMax, {0})
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.sikdang_main_tagline, parent, false)
         return Holder(view)
@@ -35,6 +40,11 @@ class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>) 
             toggleBtn1?.text=item.tag1;
             toggleBtn1?.textOn=item.tag1;
             toggleBtn1?.textOff=item.tag1;
+            //여기서 뭔가 넘겨줘야 함
+            toggleBtn1?.setOnClickListener{
+                var i=Int
+
+            }
 
             toggleBtn2?.text=item.tag2;
             toggleBtn2?.textOn=item.tag2;

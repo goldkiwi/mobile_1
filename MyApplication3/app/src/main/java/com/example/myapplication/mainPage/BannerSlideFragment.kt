@@ -12,12 +12,6 @@ import com.example.myapplication.R
 import com.example.myapplication.addPage.*
 
 class BannerSlideFragment(var bannerImage : Int, var pos : Int) : Fragment() {
-    /*
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View= inflater.inflate(R.layout.banner_fragment, container, false)*/
 
     //버튼 id는 fragment_banner
 
