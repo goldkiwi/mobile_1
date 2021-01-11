@@ -1,16 +1,21 @@
 package com.example.myapplication.mainPage
 
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.view.View
 import android.widget.ToggleButton
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.recommendation.MsgCat
+import java.security.AccessController.getContext
 
 
-class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>) : RecyclerView.Adapter<Sikdang_main_tagAdapter.Holder>() {
+class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>, var msgCat: MsgCat) : RecyclerView.Adapter<Sikdang_main_tagAdapter.Holder>() {
     var tagMax=18
     var tagNum=0
     var tagOrderList = Array(tagMax, {0})
@@ -43,7 +48,8 @@ class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>) 
             //여기서 뭔가 넘겨줘야 함
             toggleBtn1?.setOnClickListener{
                 var i=Int
-
+                msgCat.setList(item.tag1)
+                //Toast.makeText(getContext(), "item.tag1", Toast.LENGTH_SHORT).show()
             }
 
             toggleBtn2?.text=item.tag2;

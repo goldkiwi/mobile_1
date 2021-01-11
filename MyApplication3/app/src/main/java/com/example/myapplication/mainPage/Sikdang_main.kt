@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.*
+import com.example.myapplication.recommendation.MsgCat
 
 private const val NUM_PAGE = 5
 /**
@@ -22,6 +23,11 @@ class Sikdang_main : AppCompatActivity() {
     private lateinit var viewPager2: ViewPager2
 
     private var num_page = 5
+    var msgCat = MsgCat()
+
+    fun plusTree(tempc:TempClass){
+        tempc.aa+=3
+    }
 
 
 
@@ -32,6 +38,23 @@ class Sikdang_main : AppCompatActivity() {
         Log.d("종료지점확인", "onCreate_30")
         Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show()
 
+        var abc=123
+        val defg:Int?=abc
+        abc=789
+        var kjh: String=defg.toString()
+        var mnb: String=abc.toString()
+        Log.d("참조 확인", mnb)
+        Log.d("참조 확인", kjh)
+
+        var tempcl =TempClass()
+        plusTree(tempcl)
+        var qaqa: String=tempcl.aa.toString()
+        Log.d("참조 확인", qaqa)
+        //tempcl.aa+=10
+
+
+
+
 
 
 
@@ -39,7 +62,7 @@ class Sikdang_main : AppCompatActivity() {
         if(true){
             var tagLineList : TagLineList = TagLineList();
             tagList_sm=tagLineList.getTagLineList()
-            var tag_Adapter= Sikdang_main_tagAdapter(this, tagList_sm)
+            var tag_Adapter= Sikdang_main_tagAdapter(this, tagList_sm, msgCat)
             var main_tagList: RecyclerView = findViewById(R.id.main_tagList);
 
             main_tagList.adapter=tag_Adapter;
@@ -119,9 +142,10 @@ class Sikdang_main : AppCompatActivity() {
 
 
 
+}
 
-
-
+class TempClass{
+    var aa=10
 }
 
 
