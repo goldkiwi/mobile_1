@@ -37,9 +37,9 @@ class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>, 
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
-        var toggleBtn1= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline1);
-        var toggleBtn2= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline2);
-        var toggleBtn3= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline3);
+        var toggleBtn1= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline1)
+        var toggleBtn2= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline2)
+        var toggleBtn3= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline3)
         fun bind(item: TagLine, context:Context) {
 
             toggleBtn1?.text=item.tag1;
@@ -48,9 +48,13 @@ class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>, 
             //여기서 뭔가 넘겨줘야 함
             toggleBtn1?.setOnClickListener{
                 var i=Int
-                msgCat.setList(item.tag1)
+                /*if (toggleBtn1.isChecked()){
+                    msgCat.setListOn(item.tag1)
+                }*/
+
                 //Toast.makeText(getContext(), "item.tag1", Toast.LENGTH_SHORT).show()
             }
+            //toggleBtn1.setOnCheckedChangeListener()
 
             toggleBtn2?.text=item.tag2;
             toggleBtn2?.textOn=item.tag2;
