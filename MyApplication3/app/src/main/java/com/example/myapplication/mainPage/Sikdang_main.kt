@@ -88,8 +88,8 @@ class Sikdang_main : AppCompatActivity() {
         var button_call_what_eat_today: Button = findViewById(R.id.button_whatEatToday)
 
         button_call_what_eat_today.setOnClickListener{
-            val intent=Intent(this, What_eat_today(msgCat)::class.java)
-            //intent.putExtra("msgCat", msgCat)
+            val intent=Intent(this, What_eat_today::class.java)
+            intent.putExtra("msgCat", msgCat)
             Log.d("종료지점확인", "call What_eat_today")
             startActivity(intent)
             Log.d("종료지점확인", "End What_eat_today")
