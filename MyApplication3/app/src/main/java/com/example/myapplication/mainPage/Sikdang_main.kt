@@ -19,15 +19,14 @@ private const val NUM_PAGE = 5
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class Sikdang_main : AppCompatActivity() {
+    //음식 추천 태그
     var tagList_sm = arrayListOf<TagLine>();
+    //배너 뷰페이저
     private lateinit var viewPager2: ViewPager2
-
+    //배너 페이지의 수
     private var num_page = 5
-    var msgCat = MsgCat()
 
-    fun plusTree(tempc:TempClass){
-        tempc.aa+=3
-    }
+    var msgCat = MsgCat()
 
 
 
@@ -38,19 +37,7 @@ class Sikdang_main : AppCompatActivity() {
         Log.d("종료지점확인", "onCreate_30")
         Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show()
 
-        var abc=123
-        val defg:Int?=abc
-        abc=789
-        var kjh: String=defg.toString()
-        var mnb: String=abc.toString()
-        Log.d("참조 확인", mnb)
-        Log.d("참조 확인", kjh)
 
-        var tempcl =TempClass()
-        plusTree(tempcl)
-        var qaqa: String=tempcl.aa.toString()
-        Log.d("참조 확인", qaqa)
-        //tempcl.aa+=10
 
 
 
@@ -87,8 +74,13 @@ class Sikdang_main : AppCompatActivity() {
         //여기에 눌러진 버튼도 매개변수로 줘야함
         var button_call_what_eat_today: Button = findViewById(R.id.button_whatEatToday)
 
+
+        //오늘 뭐먹지 버튼 누르면 msgCat 객체를 whatEatToday 클래스로 넘겨준다
         button_call_what_eat_today.setOnClickListener{
             val intent=Intent(this, What_eat_today::class.java)
+            var tempText="asasa";
+            tempText+=msgCat.getText()
+            Log.d("확인 putExtra", tempText)
             intent.putExtra("msgCat", msgCat)
             Log.d("종료지점확인", "call What_eat_today")
             startActivity(intent)

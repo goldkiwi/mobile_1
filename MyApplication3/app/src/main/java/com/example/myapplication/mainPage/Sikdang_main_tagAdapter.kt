@@ -37,14 +37,13 @@ class Sikdang_main_tagAdapter(var context: Context, var tagList: List<TagLine>, 
     }
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
-
+        //버튼 세개 생성
         var toggleBtn1= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline1)
         var toggleBtn2= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline2)
         var toggleBtn3= itemView?.findViewById<ToggleButton>(R.id.toggleBtn_tagline3)
         fun bind(item: TagLine, context:Context) {
 
             //각 버튼 문자 넣어주고 클릭시 행동 넣어준다.
-
             toggleBtn1?.text=item.tag1;
             toggleBtn1?.textOn=item.tag1;
             toggleBtn1?.textOff=item.tag1;

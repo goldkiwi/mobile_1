@@ -4,15 +4,19 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 
+//Parcelable 넣음으로서 putExtra로 넘겨줄 수 있게 한다
 class MsgCat() :Parcelable {
     val tagListMax=18 //리스트 개수 = 태그 개수
     var orderMax=0//우선순위 붙은 태그 갯수 = 최대우선순위
     //private var catName="먹을거"
     var tagOrderList = Array(tagListMax, {0})
     val tagList=arrayOf("소고기", "닭고기", "돼지고기", "매운맛", "달콤한맛", "구수한맛", "짠맛", "뜨거운것", "시원한것", "생선", "새우", "조개", "소주", "맥주", "막걸리", "데이트", "단체", "혼밥")
-    var orderText=""
+    var orderText="aaaaaa"
 
     constructor(parcel: Parcel) : this() {
+        var tempString = getText()
+        tempString+="bbbbb"
+        Log.d("확인 MsgCat constructor 생성", tempString)
         orderMax = parcel.readInt()
         orderText = parcel.readString().toString()
     }
@@ -44,7 +48,10 @@ class MsgCat() :Parcelable {
     }
 
     public fun getText():String{
-        Log.d("확인 MsgCat getText : orderText", orderText)
+        setText()
+        Log.d("확인 MsgCat getText : orderText, 아래는 logOrderList", orderText)
+        logOrderList()
+
         return orderText
     }
 
@@ -55,7 +62,7 @@ class MsgCat() :Parcelable {
             listString+=tagList[i]
             listString+=listChar
         }
-        Log.d("확인 MsgCat setList : List", listString)
+        Log.d("확인 MsgCat logOrderList : List", listString)
     }
 
 
