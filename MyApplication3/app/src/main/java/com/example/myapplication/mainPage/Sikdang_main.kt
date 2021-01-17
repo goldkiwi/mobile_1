@@ -74,17 +74,16 @@ class Sikdang_main : AppCompatActivity() {
         //여기에 눌러진 버튼도 매개변수로 줘야함
         var button_call_what_eat_today: Button = findViewById(R.id.button_whatEatToday)
 
-
+        //putExtra로 넘겨주는 객체는 원본 객체에 접근하게 하는 것이 아닌 constructor에 있는 부분만 복사한 객체 새로 생성
         //오늘 뭐먹지 버튼 누르면 msgCat 객체를 whatEatToday 클래스로 넘겨준다
         button_call_what_eat_today.setOnClickListener{
             val intent=Intent(this, What_eat_today::class.java)
             var tempText="asasa";
             tempText+=msgCat.getText()
             Log.d("확인 putExtra", tempText)
-            intent.putExtra("msgCat", msgCat)
+            intent.putExtra("msgcat", msgCat)
             Log.d("종료지점확인", "call What_eat_today")
             startActivity(intent)
-            Log.d("종료지점확인", "End What_eat_today")
         }
 
         Log.d("종료지점확인", "167")

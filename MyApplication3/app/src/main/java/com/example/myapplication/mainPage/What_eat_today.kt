@@ -15,10 +15,12 @@ class What_eat_today(): AppCompatActivity() {
         //msg객체를 넘겨받는다.
         var intent = getIntent()
         //var pos = intent.getExtras()?.getInt("msgCat")
-        var msgCat = intent.getParcelableExtra<MsgCat>("msgCat")
+        Log.d("확인 msgCat 생성? call?", "What_eat_today.onCreate")
+        var msgCat = intent.getParcelableExtra<MsgCat>("msgcat")
         Log.d("종료지점확인", "What_eat_today 1")
         var orderListText: TextView = findViewById(R.id.orderListText)
         Log.d("종료지점확인", "What_eat_today 2")
+        msgCat?.logOrderList()
         var orderText:String="123"
         orderText+=msgCat?.getText()
         Log.d("msgCat.getText 내용확인", orderText)
