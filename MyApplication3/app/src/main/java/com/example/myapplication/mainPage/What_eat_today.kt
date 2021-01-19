@@ -25,6 +25,8 @@ class What_eat_today(): AppCompatActivity() {
         orderText+=msgCat?.getText()
         Log.d("msgCat.getText 내용확인", orderText)
         orderListText.setText(msgCat?.getText())
+        msgCat?.logTagOrderListString()
+        msgCat?.logTagOrderList()
 
         Log.d("종료지점확인", "What_eat_today 3")
 
