@@ -56,12 +56,15 @@ class MsgCat() : Parcelable {
 
     //parcelable 로 Array 넘기는데 문제가 있기 때문에 String으로 넘긴 뒤 Array를 String 결과에 맞춰 수정
     //String의 값을 수정하는 함수 , Array가 수정될 때마다 이 함수 호출해서 String을 수정한다
+    //String에서 각 요소의 구분은 띄어쓰기로 구분해야할듯함
+    //StringToArray 함수가 좀 복잡해질듯
     private fun setTagOrderListString(){
         var listString: String = ""
 
         for (i in 0 until tagListMax) {
             var listChar = tagOrderList[i].toString()
             listString += listChar
+            listString += " "
         }
         tagOrderListString=listString
         //Log.d("확인 MsgCat setOrderListText() : List", listString)
@@ -81,9 +84,33 @@ class MsgCat() : Parcelable {
     }
     //String 값 가지고 Array 수정하는 함수
     private fun setStringToArray(){
+        /*
         for (i in 0 until tagListMax) {
-            tagOrderList[i]=tagOrderListString[i].toInt()
+            tagOrderList[i]=tagOrderListString[i].toInt() - 48
+            var tempNum=tagOrderListString[i].toInt().toString()
+            Log.d("확인 MsgCat.setStringToArray() : List", tempNum)
+        }*/
+
+        var i = 0
+        var j = 0
+        var tempString = ""
+        var tempChar:String=""
+        while (true){
+            Log.d("확인 MsgCat setStringToArray()", "종료지점 확인1")
+            while (tempChar!= " "){
+                Log.d("확인 MsgCat setStringToArray()", "종료지점 확인2")
+                tempChar = tagOrderListString[j].toString()
+                tempString+=tempChar
+                j++
+            }
+            tagOrderList[i] = tempString.toInt()
+            tempChar=""
+            tempString=""
+
+            i++
+            if (i>=tagListMax) break
         }
+        logTagOrderList()
     }
 
     public fun setListOn(catName: String) {
