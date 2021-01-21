@@ -37,6 +37,11 @@ class Sikdang_main : AppCompatActivity() {
         Log.d("종료지점확인", "onCreate_30")
         Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show()
 
+        var a= "1"
+        var b = a.toInt()
+        var c= b.toString()
+        Log.d("형변환 확인", c)
+
 
 
 
