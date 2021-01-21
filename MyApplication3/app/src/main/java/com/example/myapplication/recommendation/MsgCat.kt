@@ -84,12 +84,6 @@ class MsgCat() : Parcelable {
     }
     //String 값 가지고 Array 수정하는 함수
     private fun setStringToArray(){
-        /*
-        for (i in 0 until tagListMax) {
-            tagOrderList[i]=tagOrderListString[i].toInt() - 48
-            var tempNum=tagOrderListString[i].toInt().toString()
-            Log.d("확인 MsgCat.setStringToArray() : List", tempNum)
-        }*/
 
         var i = 0
         var j = 0
@@ -100,6 +94,10 @@ class MsgCat() : Parcelable {
             while (tempChar!= " "){
                 Log.d("확인 MsgCat setStringToArray()", "종료지점 확인2")
                 tempChar = tagOrderListString[j].toString()
+                if (tempChar == " "){
+                    j++
+                    break
+                }
                 tempString+=tempChar
                 j++
             }
@@ -161,7 +159,6 @@ class MsgCat() : Parcelable {
             listString += tagList[i]
             listString += listChar
         }
-        Log.d("확인 MsgCat logOrderList : List", listString)
     }
 
 
@@ -170,16 +167,6 @@ class MsgCat() : Parcelable {
         if (orderMax == 0) return //우선순위 붙은 태그가 0개면 함수 종료
         for (i in 0 until tagListMax) if (tagOrderList[i] > num) tagOrderList[i]--
         orderMax--
-    }
-
-    public fun setList(catName: String) {
-        when (catName) {
-            "소고기" -> {
-                if (tagOrderList[0] == 0) {
-                    tagOrderList[0] = 1
-                }
-            }
-        }
     }
 
 
