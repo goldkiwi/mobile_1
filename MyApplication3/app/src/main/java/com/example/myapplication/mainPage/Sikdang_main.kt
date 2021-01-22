@@ -27,6 +27,9 @@ class Sikdang_main : AppCompatActivity() {
     private var num_page = 5
 
     var msgCat = MsgCat()
+    var tagList : Array<String> = msgCat.getTagList()
+    //var tagLineList : TagLineList = TagLineList();
+    var tagLineList : TagLineList = TagLineList(tagList);
 
 
 
@@ -41,7 +44,6 @@ class Sikdang_main : AppCompatActivity() {
 
         //음식 추천 태그
         if(true){
-            var tagLineList : TagLineList = TagLineList();
             tagList_sm=tagLineList.getTagLineList()
             var tag_Adapter= Sikdang_main_tagAdapter(this, tagList_sm, msgCat)
             var main_tagList: RecyclerView = findViewById(R.id.main_tagList);
