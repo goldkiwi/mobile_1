@@ -6,18 +6,25 @@ import android.util.Log
 
 //Parcelable 넣음으로서 putExtra로 넘겨줄 수 있게 한다
 class MsgCat() : Parcelable {
-    val tagListMax = 19 //리스트 개수 = 태그 개수
+    //val tagListMax = 20 //리스트 개수 = 태그 개수
     var orderMax = 0//우선순위 붙은 태그 갯수 = 최대우선순위
     val aaa=12314
 
     //private var catName="먹을거"
-    var tagOrderList = Array(tagListMax, { 0 })
+
     //var tagOrderList = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     //var tagOrderList : ArrayList<Int> = arrayListOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-
     var tagOrderListString="000000000000000000"
-    private var tagList = arrayOf("소고기", "닭고기", "돼지고기", "매운맛", "달콤한맛", "구수한맛", "짠맛", "뜨거운것", "시원한것", "생선", "새우", "조개", "소주", "맥주", "막걸리", "데이트", "단체", "혼밥", "야채")
+    private var tagList = arrayOf("소고기", "닭고기", "돼지고기",
+            "매운맛", "달콤한맛", "구수한맛",
+            "짠맛", "뜨거운것", "시원한것",
+            "생선", "새우", "조개",
+            "소주", "맥주", "막걸리",
+            "데이트", "단체", "혼밥",
+            "야채", "좌식")
+    val tagListMax = tagList.size //리스트 개수 = 태그 개수
     var orderText = "aaaaaa"
+    var tagOrderList = Array(tagListMax, { 0 })
 /*
     constructor(parcel: Parcel) : this(
         parcel.readInt()?:"",
