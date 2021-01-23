@@ -311,10 +311,12 @@
             <!--오늘 뭐먹지 버튼-->
 
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal"
+                android:id="@+id/sikdang_cat_view"
+                ></androidx.recyclerview.widget.RecyclerView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

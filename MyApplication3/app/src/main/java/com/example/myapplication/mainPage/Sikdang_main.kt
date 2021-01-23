@@ -40,28 +40,24 @@ class Sikdang_main : AppCompatActivity() {
         Log.d("종료지점확인", "onCreate_30")
         Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show()
 
-
-
-        //음식 추천 태그
-        if(true){
-            tagList_sm=tagLineList.getTagLineList()
-            var tag_Adapter= Sikdang_main_tagAdapter(this, tagList_sm, msgCat)
-            var main_tagList: RecyclerView = findViewById(R.id.main_tagList);
-
-            main_tagList.adapter=tag_Adapter;
-
-            var tag_lm= LinearLayoutManager(this)
-            main_tagList.layoutManager=tag_lm;
-            main_tagList.setHasFixedSize(true)
-
-        }
-
         //뷰페이저
-
 
         viewPager2=findViewById(R.id.banner_view_pager_2)
         var pagerAdapter2 = ScreenSlidePagerAdapter2(this)
         viewPager2.adapter=pagerAdapter2
+
+
+        //음식 카테고리
+        var catList=CatList()
+        var sikdangMainCatAdapter=SikdangMainCatAdapter(this, catList.getCatArray())
+        var sikdangCatView : RecyclerView = findViewById(R.id.sikdang_cat_view)
+        sikdangCatView.adapter = sikdangMainCatAdapter
+
+        var catLM = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        sikdangCatView.layoutManager=catLM
+        sikdangCatView.setHasFixedSize(true)
+
+
 
 
 
@@ -81,6 +77,30 @@ class Sikdang_main : AppCompatActivity() {
             Log.d("종료지점확인", "call What_eat_today")
             startActivity(intent)
         }
+
+
+        //음식 추천 태그
+        if(true){
+            tagList_sm=tagLineList.getTagLineList()
+            var tag_Adapter= Sikdang_main_tagAdapter(this, tagList_sm, msgCat)
+            var main_tagList: RecyclerView = findViewById(R.id.main_tagList);
+
+            main_tagList.adapter=tag_Adapter;
+
+            var tag_lm= LinearLayoutManager(this)
+            main_tagList.layoutManager=tag_lm;
+            main_tagList.setHasFixedSize(true)
+
+        }
+
+
+
+
+
+
+
+
+
 
         Log.d("종료지점확인", "167")
 
