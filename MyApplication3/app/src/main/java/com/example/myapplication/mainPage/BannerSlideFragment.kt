@@ -41,15 +41,10 @@ class BannerSlideFragment(var bannerImage : Int, var pos : Int) : Fragment() {
             //Add_page 호출한다 putExtra로 몇 번째 페이지인지도 보내준다
             val intent :Intent
             intent=Intent(getActivity(), Add_page::class.java)
-            when (pos){
-                0-> intent.putExtra("pos", 0)
-                1-> intent.putExtra("pos", 1)
-                2-> intent.putExtra("pos", 2)
-                3-> intent.putExtra("pos", 3)
-                4-> intent.putExtra("pos", 4)
-                5-> intent.putExtra("pos", 5)
-                else -> intent.putExtra("pos", 0)
-            }
+
+            if (pos<=12) intent.putExtra("pos", pos)
+            else intent.putExtra("pos", 0)
+            
             //intent=Intent(getActivity(), Add_page::class.java)
             startActivity(intent)
         }

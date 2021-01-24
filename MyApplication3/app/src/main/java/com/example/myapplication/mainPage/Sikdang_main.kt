@@ -94,28 +94,14 @@ class Sikdang_main : AppCompatActivity() {
         }
 
 
-
-
-
-
-
-
-
-
         Log.d("종료지점확인", "167")
 
-        
-
-
 
     }
 
 
 
 
-    private fun catAdapter(){
-       
-    }
 
     /*
 
@@ -130,7 +116,7 @@ class Sikdang_main : AppCompatActivity() {
     }*/
 
     //배너 어댑터
-    //최대 6페이지까지
+    //최대 12페이지까지=> 진짜 12페이지까지 하려면 배너이미지 추가하고 아래 코드 좀 수정해야함
     private inner class ScreenSlidePagerAdapter2(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = num_page
 
@@ -147,6 +133,18 @@ class Sikdang_main : AppCompatActivity() {
                 return BannerSlideFragment(R.drawable.add_main_5, 4)
             }else if(num_page >=6 && position == 5){
                 return BannerSlideFragment(R.drawable.add_main_6, 5)
+            }else if(num_page >=7 && position == 5){
+                return BannerSlideFragment(R.drawable.add_main_6, 5)
+            }else if(num_page >=8 && position == 5){
+                return BannerSlideFragment(R.drawable.add_main_6, 5)
+            }else if(num_page >=9 && position == 5){
+                return BannerSlideFragment(R.drawable.add_main_6, 5)
+            }else if(num_page >=10 && position == 5){
+                return BannerSlideFragment(R.drawable.add_main_6, 5)
+            }else if(num_page >=11 && position == 5){
+                return BannerSlideFragment(R.drawable.add_main_6, 5)
+            }else if(num_page >=12 && position == 5){
+                return BannerSlideFragment(R.drawable.add_main_6, 5)
             }else{
                 return BannerSlideFragment(R.drawable.add_main, 0)
             }
@@ -159,10 +157,3 @@ class Sikdang_main : AppCompatActivity() {
 
 
 }
-
-class TempClass{
-    var aa=10
-}
-
-
-
