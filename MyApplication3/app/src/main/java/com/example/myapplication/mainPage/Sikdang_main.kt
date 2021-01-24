@@ -114,23 +114,7 @@ class Sikdang_main : AppCompatActivity() {
 
 
     private fun catAdapter(){
-        var buttonCatWes:Button = findViewById(R.id.button_cat_wes)
-        var buttonCatBeef:Button = findViewById(R.id.button_cat_beef)
-        var buttonCatNoodle:Button = findViewById(R.id.button_cat_noodle)
-        var buttonCatFork:Button = findViewById(R.id.button_cat_fork)
-        var buttonCatBunsik:Button = findViewById(R.id.button_cat_bunsik)
-        var buttonCatChicken:Button = findViewById(R.id.button_cat_chicken)
-        var buttonCatPocha:Button = findViewById(R.id.button_cat_pocha)
-        var buttonCatKor:Button = findViewById(R.id.button_cat_kor)
-        var buttonCatDessert:Button = findViewById(R.id.button_cat_dessert)
-        var buttonCatChi:Button = findViewById(R.id.button_cat_chi)
-        var buttonCatFranchise:Button = findViewById(R.id.button_cat_franchise)
-        var buttonCatJap:Button = findViewById(R.id.button_cat_jap)
-
-        buttonCatWes.setOnClickListener {
-            val intent=Intent(this, SikdangList::class.java)
-            startActivity(intent)
-        }
+       
     }
 
     /*

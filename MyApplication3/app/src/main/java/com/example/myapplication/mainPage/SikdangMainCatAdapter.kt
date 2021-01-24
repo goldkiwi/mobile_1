@@ -19,7 +19,7 @@ class SikdangMainCatAdapter(var context: Context, val catList: ArrayList<String>
 
 
     override fun getItemCount(): Int {
-        return catList.size
+        return (catList.size)/2
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
