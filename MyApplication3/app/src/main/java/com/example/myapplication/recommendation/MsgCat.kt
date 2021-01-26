@@ -14,7 +14,8 @@ class MsgCat() : Parcelable {
 
     //var tagOrderList = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     //var tagOrderList : ArrayList<Int> = arrayListOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-    var tagOrderListString="000000000000000000"
+
+
     private var tagList = arrayOf("소고기", "닭고기", "돼지고기",
             "매운맛", "달콤한맛", "구수한맛",
             "짠맛", "뜨거운것", "시원한것",
@@ -25,6 +26,7 @@ class MsgCat() : Parcelable {
     val tagListMax = tagList.size //리스트 개수 = 태그 개수
     var orderText = "aaaaaa"
     var tagOrderList = Array(tagListMax, { 0 })
+    var tagOrderListString=setTagOrderListStringToZero()
 /*
     constructor(parcel: Parcel) : this(
         parcel.readInt()?:"",
@@ -76,6 +78,17 @@ class MsgCat() : Parcelable {
         tagOrderListString=listString
         //Log.d("확인 MsgCat setOrderListText() : List", listString)
     }
+    //아무 태그도 선택하지 않고 오늘뭐먹지 누를 깨 tagOrderListString의 내용을 전부 0으로 set
+    private fun setTagOrderListStringToZero(): String {
+        var zeroTagOrderListString:String=""
+        var i = 0
+        while (i<tagListMax){
+            zeroTagOrderListString+="0 "
+            i++
+        }
+        return zeroTagOrderListString
+    }
+
     //로그 남기는 함수 : 디버그용
     public fun logTagOrderListString(){
         Log.d("확인 MsgCat logTagOrderListString() : List", tagOrderListString)
@@ -94,13 +107,14 @@ class MsgCat() : Parcelable {
 
         var i = 0
         var j = 0
-        var tempString = ""
-        var tempChar:String=""
+        var tempString = ""//여기에 두자리 또는 한 자리의 숫자 입시 저장
+        var tempChar:String=""//여기에 한 자리의 숫자 저장되어 tempString에 합쳐짐
         while (true){
             Log.d("확인 MsgCat setStringToArray()", "종료지점 확인1")
             while (tempChar!= " "){
-                Log.d("확인 MsgCat setStringToArray()", "종료지점 확인2")
+                Log.d("확인 MsgCat setStringToArray()", "종료지점 확인2"+" "+tempChar)
                 tempChar = tagOrderListString[j].toString()
+                Log.d("확인 MsgCat setStringToArray()", "종료지점 확인3")
                 if (tempChar == " "){
                     j++
                     break
@@ -108,16 +122,19 @@ class MsgCat() : Parcelable {
                 tempString+=tempChar
                 j++
             }
+            Log.d("확인 MsgCat setStringToArray()", "종료지점 확인4")
             tagOrderList[i] = tempString.toInt()
+            Log.d("확인 MsgCat setStringToArray()", "종료지점 확인5")
             tempChar=""
             tempString=""
 
             i++
             if (i>=tagListMax) break
         }
+        Log.d("확인 MsgCat setStringToArray()", "종료")
         logTagOrderList()
     }
-
+    //태그 선택 또는 해제시 리스트 수정하는 함수
     public fun setListOn(catName: String) {
         Log.d("확인 MsgCat setListOn", catName)
         for (i in 0 until tagListMax) {//태그 리스트 한바퀴 돔
@@ -126,7 +143,6 @@ class MsgCat() : Parcelable {
         setTagOrderListString()
         logOrderList()
     }
-
 
     public fun setListOff(catName: String) {
         Log.d("확인 MsgCat setListOff", catName)
@@ -139,6 +155,7 @@ class MsgCat() : Parcelable {
         logOrderList()
     }
 
+    //디버그용 함수 각 태그와 그 우선순위를 orderText 에 집어넣음
     private fun setText() {
         var listString: String = ""
         for (i in 0 until tagListMax) {
@@ -179,6 +196,10 @@ class MsgCat() : Parcelable {
     public fun getTagList(): Array<String> {
         return tagList
     }
+
+
+
+
 
 
     override fun describeContents(): Int {

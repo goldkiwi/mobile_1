@@ -44,7 +44,7 @@ class BannerSlideFragment(var bannerImage : Int, var pos : Int) : Fragment() {
 
             if (pos<=12) intent.putExtra("pos", pos)
             else intent.putExtra("pos", 0)
-            
+
             //intent=Intent(getActivity(), Add_page::class.java)
             startActivity(intent)
         }
