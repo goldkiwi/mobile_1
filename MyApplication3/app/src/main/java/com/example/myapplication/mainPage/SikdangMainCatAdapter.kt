@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.addPage.Add_page
+import com.example.myapplication.sikdangChoicePage.SikdangChoice
 
 class SikdangMainCatAdapter(var context: Context, val catList: ArrayList<String>) : RecyclerView.Adapter<SikdangMainCatAdapter.Holder>() {
     var a : String = "aaa"
@@ -40,19 +41,29 @@ class SikdangMainCatAdapter(var context: Context, val catList: ArrayList<String>
             catButtonUp.setOnClickListener {
                 //광고페이지 클래스를 호출해야 함
 
-                /*
-
                 val intent :Intent
-                intent=Intent(this@SikdangMainCatAdapter, Add_page::class.java)
+                //리사이클러 뷰 어댑터 내에서 intent 생성 좀 다르게
+                intent=Intent(itemView.context, SikdangChoice::class.java)
 
-                intent.putExtra("pos", 1)
+                //intent.putExtra("pos", 1)
+                //var a = catButtonUp.getTag()
+                intent.putExtra("cat", item1)
+                intent.putExtra("catList", catList)
 
-                startActivity(intent)*/
+                context.startActivity(intent)
             }
 
 
             var catButtonDown : Button = itemView.findViewById(R.id.cat_button_down)
             catButtonDown.setText(item2)
+            catButtonDown.setOnClickListener {
+                //광고페이지 클래스를 호출해야 함
+                val intent :Intent
+                intent=Intent(itemView.context, SikdangChoice::class.java)
+                intent.putExtra("cat", item2)
+                intent.putExtra("catList", catList)
+                context.startActivity(intent)
+            }
 
         }
 
