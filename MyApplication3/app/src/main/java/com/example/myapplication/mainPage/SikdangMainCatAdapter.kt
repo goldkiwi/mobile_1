@@ -1,33 +1,31 @@
 package com.example.myapplication.mainPage
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.addPage.Add_page
 import com.example.myapplication.sikdangChoicePage.SikdangChoice
 
-class SikdangMainCatAdapter(var context: Context, val catList: ArrayList<String>) : RecyclerView.Adapter<SikdangMainCatAdapter.Holder>() {
-    var a : String = "aaa"
+class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<String>) : RecyclerView.Adapter<SikdangMainCatAdapter.Holder>() {
     override fun  onCreateViewHolder(parent: ViewGroup, viewType: Int):SikdangMainCatAdapter.Holder{
         val view = LayoutInflater.from(context).inflate(R.layout.cat_line, parent, false)
         return Holder(view)
+
     }
 
 
 
     override fun getItemCount(): Int {
-        return (catList.size)/2
+        //if ((catArrayList.size) % 2) ==0)
+        return (((catArrayList.size))/2).toInt()
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(catList[(position)*2],catList[(position)*2+1], context)
+        holder.bind(catArrayList[(position)*2],catArrayList[(position)*2+1])
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int, payloads: MutableList<Any>) {
@@ -35,7 +33,7 @@ class SikdangMainCatAdapter(var context: Context, val catList: ArrayList<String>
     }
 
     inner class Holder (itemView: View?) : RecyclerView.ViewHolder(itemView!!){
-        fun bind(item1:String, item2:String, context:Context){
+        fun bind(item1:String, item2:String){
             var catButtonUp : Button = itemView.findViewById(R.id.cat_button_up)
             catButtonUp.setText(item1)
             catButtonUp.setOnClickListener {
@@ -48,7 +46,7 @@ class SikdangMainCatAdapter(var context: Context, val catList: ArrayList<String>
                 //intent.putExtra("pos", 1)
                 //var a = catButtonUp.getTag()
                 intent.putExtra("cat", item1)
-                intent.putExtra("catList", catList)
+                intent.putExtra("catArrayList", catArrayList)
 
                 context.startActivity(intent)
             }
@@ -61,7 +59,7 @@ class SikdangMainCatAdapter(var context: Context, val catList: ArrayList<String>
                 val intent :Intent
                 intent=Intent(itemView.context, SikdangChoice::class.java)
                 intent.putExtra("cat", item2)
-                intent.putExtra("catList", catList)
+                intent.putExtra("catArrayList", catArrayList)
                 context.startActivity(intent)
             }
 
