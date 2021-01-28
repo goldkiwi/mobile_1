@@ -11,6 +11,7 @@ import com.example.myapplication.R
 import com.example.myapplication.sikdangChoicePage.SikdangChoice
 
 class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<String>) : RecyclerView.Adapter<SikdangMainCatAdapter.Holder>() {
+    var arrayMax = catArrayList.size
     override fun  onCreateViewHolder(parent: ViewGroup, viewType: Int):SikdangMainCatAdapter.Holder{
         val view = LayoutInflater.from(context).inflate(R.layout.cat_line, parent, false)
         return Holder(view)
@@ -25,7 +26,8 @@ class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<St
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(catArrayList[(position)*2],catArrayList[(position)*2+1])
+        holder.bind(catArrayList[position],catArrayList[(arrayMax/2)+position])
+        //holder.bind(catArrayList[position*2],catArrayList[position*2 +1])
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int, payloads: MutableList<Any>) {

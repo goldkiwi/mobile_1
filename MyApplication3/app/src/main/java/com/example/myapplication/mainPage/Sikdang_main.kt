@@ -48,6 +48,7 @@ class Sikdang_main : AppCompatActivity() {
 
 
         //음식 카테고리
+        //어댑터에서 SikdangChoice 페이지를 불러오게 된다
         var catList=CatList()
         var sikdangMainCatAdapter=SikdangMainCatAdapter(this, catList.getCatArray())
         var sikdangCatView : RecyclerView = findViewById(R.id.sikdang_cat_view)

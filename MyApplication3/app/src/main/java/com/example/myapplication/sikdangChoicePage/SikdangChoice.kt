@@ -10,6 +10,7 @@ import com.example.myapplication.R
 import com.example.myapplication.recommendation.MsgCat
 
 class SikdangChoice : AppCompatActivity() {
+    //리스트는 SikdangChoiceCatAdapter 클래스의 inner class인 Holder 클래스의 bind()함수에서 칵 카테고리의 toggle 버튼으로 채워준다
     var sikdangChoice_toggleButton_arrayList = ArrayList<ToggleButton>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,18 +20,17 @@ class SikdangChoice : AppCompatActivity() {
 
         //msg객체를 넘겨받는다.
         var intent = getIntent()
-        var cat = intent.getExtras()?.getString("msgCat")
+        var selectedCat = intent.getExtras()?.getString("cat")
+        //카테고리의 이름들 ArrayList 형태로 넘겨받는다 (소고기, 돼지고기, 닭고기....)
         var catArrayList: ArrayList<String>? = intent.getExtras()?.getStringArrayList("catArrayList")
         Log.d("종료지점확인 SikdangChoice", "intent 받음")
-        //Log.d("확인 msgCat 생성? call?", "What_eat_today.onCreate")
-        //var msgCat = intent.getParcelableExtra<MsgCat>("msgcat")
 
-        var sikdangChoiceCatAdapter = SikdangChoiceCatAdapter(this, catArrayList, sikdangChoice_toggleButton_arrayList)
-        Log.d("종료지점확인 SikdangChoice", "1")
+        //어댑터 사용한다
+
+        var sikdangChoiceCatAdapter = SikdangChoiceCatAdapter(this, catArrayList, sikdangChoice_toggleButton_arrayList, selectedCat.toString())
+        //sikdangChoiceCatAdapter.setHasStableIds(true)
         var sikdangChoice_CatLine : RecyclerView = findViewById(R.id.sikdangChoice_catLine)
-        Log.d("종료지점확인 SikdangChoice", "2")
         sikdangChoice_CatLine.adapter = sikdangChoiceCatAdapter
-        Log.d("종료지점확인 SikdangChoice", "3")
 
         var sikdangChice_catLineLM = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         sikdangChoice_CatLine.layoutManager=sikdangChice_catLineLM
