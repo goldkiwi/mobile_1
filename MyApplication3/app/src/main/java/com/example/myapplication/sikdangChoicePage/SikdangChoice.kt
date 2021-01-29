@@ -31,14 +31,14 @@ class SikdangChoice : AppCompatActivity() {
         var sikdangChoiceCatAdapter = SikdangChoiceCatAdapter(this, catArrayList, sikdangChoice_toggleButton_arrayList, selectedCat.toString())
         Log.d("종료지점확인 SikdangChoice", "sikdangChoiceCatAdapter")
         //sikdangChoiceCatAdapter.setHasStableIds(true)
-        var sikdangChoice_CatLine : ListView = findViewById(R.id.sikdangChoice_catLine)
+        var sikdangChoice_CatLine : RecyclerView = findViewById(R.id.sikdangChoice_catLine)
         Log.d("종료지점확인 SikdangChoice", "sikdangChoice_CatLine")
         sikdangChoice_CatLine.adapter = sikdangChoiceCatAdapter
         Log.d("종료지점확인 SikdangChoice", "sikdangChoice_CatLine.adapter = sikdangChoiceCatAdapter")
 
-        //var sikdangChice_catLineLM = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        //sikdangChoice_CatLine.layoutManager=sikdangChice_catLineLM
-        //sikdangChoice_CatLine.setHasFixedSize(true)
+        var sikdangChice_catLineLM = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        sikdangChoice_CatLine.layoutManager=sikdangChice_catLineLM
+        sikdangChoice_CatLine.setHasFixedSize(true)
 
 
     }

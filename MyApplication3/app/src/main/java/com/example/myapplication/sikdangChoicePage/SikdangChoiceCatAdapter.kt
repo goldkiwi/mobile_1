@@ -9,14 +9,15 @@ import android.widget.BaseAdapter
 import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.mainPage.Sikdang_main_tagAdapter
 
 class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList<String>?,
                               var sikdangChoice_toggleButton_arrayList: ArrayList<ToggleButton>,
-                              var selectedCat :String) : BaseAdapter() {
+                              var selectedCat :String) : RecyclerView.Adapter<SikdangChoiceCatAdapter.Holder>() {
     var catArrayListSize = catArrayList?.size!!
-    //var toggleArrayList= Array<Boolean>(catArrayListSize, {false})
+    var toggleArrayList= Array<Boolean>(catArrayListSize, {false})
 
-    /*
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         //Log.d("종료지점확인 SikdangChoiceCatAdapter", "onCreateViewHolder 시작")
         val view = LayoutInflater.from(context).inflate(R.layout.sikdangchoice_cat, parent, false)
@@ -35,9 +36,9 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
         //holder.setIsRecyclable(false)
         holder.bind()
     }
-    */
 
-/*
+
+
     inner class Holder (itemView: View?) : RecyclerView.ViewHolder(itemView!!){
         var sikdangChoice_toggleButton : ToggleButton = itemView?.findViewById(R.id.sikdangchice_toggleButton)!!
 
@@ -124,8 +125,11 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
             }
         }
 
-    }*/
+    }
 
+    //아래는 리스트뷰일경우
+
+    /*
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         Log.d("종료지점확인 SikdangChoiceCatAdapter", "getView()")
         val view = LayoutInflater.from(context).inflate(R.layout.sikdangchoice_cat, parent, false)
@@ -157,5 +161,5 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
 
     override fun getCount(): Int {
         return catArrayListSize
-    }
+    }*/
 }
