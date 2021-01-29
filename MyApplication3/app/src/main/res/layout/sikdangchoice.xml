@@ -19,9 +19,16 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/sikdangChoice_catLine"
+            android:id="@+id/sikdangChoice_catLine_2"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
+
+        <ListView
+            android:id="@+id/sikdangChoice_catLine"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

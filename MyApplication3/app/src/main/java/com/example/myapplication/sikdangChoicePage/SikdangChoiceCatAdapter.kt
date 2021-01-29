@@ -5,15 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 
 class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList<String>?,
                               var sikdangChoice_toggleButton_arrayList: ArrayList<ToggleButton>,
-                              var selectedCat :String) : RecyclerView.Adapter<SikdangChoiceCatAdapter.Holder>() {
+                              var selectedCat :String) : BaseAdapter() {
     var catArrayListSize = catArrayList?.size!!
-    var toggleArrayList= Array<Boolean>(catArrayListSize, {false})
+    //var toggleArrayList= Array<Boolean>(catArrayListSize, {false})
+
+    /*
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         //Log.d("종료지점확인 SikdangChoiceCatAdapter", "onCreateViewHolder 시작")
         val view = LayoutInflater.from(context).inflate(R.layout.sikdangchoice_cat, parent, false)
@@ -32,8 +35,9 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
         //holder.setIsRecyclable(false)
         holder.bind()
     }
+    */
 
-
+/*
     inner class Holder (itemView: View?) : RecyclerView.ViewHolder(itemView!!){
         var sikdangChoice_toggleButton : ToggleButton = itemView?.findViewById(R.id.sikdangchice_toggleButton)!!
 
@@ -44,6 +48,8 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
             else{
                 sikdangChoice_toggleButton.setChecked(false)
             }
+
+
 
             var catName: String? = catArrayList?.get(position)
             Log.d("종료지점확인 SikdangChoiceCatAdapter", "holder.bind()"+selectedCat+catName)
@@ -61,6 +67,20 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
             sikdangChoice_toggleButton.setOnClickListener {
 
             }*/
+
+            /*
+            var i = 0
+            while (i< catArrayListSize){
+                if (toggleArrayList[i]==true){
+                    //sikdangChoice_toggleButton_arrayList[i].setChecked(true)
+                }
+                else{
+                    //sikdangChoice_toggleButton_arrayList[i].setChecked(false)
+                }
+                i++
+            }*/
+
+
 
 
 
@@ -104,5 +124,38 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
             }
         }
 
+    }*/
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getView()")
+        val view = LayoutInflater.from(context).inflate(R.layout.sikdangchoice_cat, parent, false)
+        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getView()2")
+        var sikdangChoice_toggleButton : ToggleButton = view?.findViewById(R.id.sikdangchice_toggleButton)!!
+        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getView()3")
+        //Log.d("종료지점확인 SikdangChoiceCatAdapter", "onCreateViewHolder 2")
+        //Holder(view).bind()
+        //Holder(convertView).bind()
+        var catName: String? = catArrayList?.get(position)
+        Log.d("종료지점확인 SikdangChoiceCatAdapter", "holder.bind()"+selectedCat+catName)
+        sikdangChoice_toggleButton.text=catName
+        sikdangChoice_toggleButton.textOn=catName
+        sikdangChoice_toggleButton.textOff=catName
+
+        return view
+    }
+
+    override fun getItem(position: Int): Any {
+        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getItem")
+        var item = catArrayList?.get(position)!!
+        return item
+    }
+
+    override fun getItemId(position: Int): Long {
+        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getItemId")
+        return position.toLong()
+    }
+
+    override fun getCount(): Int {
+        return catArrayListSize
     }
 }
