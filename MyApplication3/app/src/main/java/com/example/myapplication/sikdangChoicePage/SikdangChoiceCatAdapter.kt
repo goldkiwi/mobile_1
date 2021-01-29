@@ -5,11 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.mainPage.Sikdang_main_tagAdapter
 
 class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList<String>?,
                               var sikdangChoice_toggleButton_arrayList: ArrayList<ToggleButton>,
@@ -37,22 +35,30 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
         holder.bind()
     }
 
+    private fun getCount(catName: String?):Int{
+        var count = 0
+        var i = 0
+        while (i<catArrayListSize){
+            if (catName== this!!.catArrayList!![i]){
+                break
+            }
+            i++
+        }
+        count = i
+        return count
+    }
+
 
 
     inner class Holder (itemView: View?) : RecyclerView.ViewHolder(itemView!!){
-        var sikdangChoice_toggleButton : ToggleButton = itemView?.findViewById(R.id.sikdangchice_toggleButton)!!
+
 
         fun bind(){
-            if(sikdangChoice_toggleButton.isChecked){
-                sikdangChoice_toggleButton.setChecked(true)
-            }
-            else{
-                sikdangChoice_toggleButton.setChecked(false)
-            }
-
-
-
+            var sikdangChoice_toggleButton : ToggleButton = itemView.findViewById(R.id.sikdangchice_toggleButton)
             var catName: String? = catArrayList?.get(position)
+            var catCount = getCount(catName)
+
+
             Log.d("종료지점확인 SikdangChoiceCatAdapter", "holder.bind()"+selectedCat+catName)
             sikdangChoice_toggleButton.text=catName
             sikdangChoice_toggleButton.textOn=catName
@@ -61,9 +67,15 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
                 Log.d("확인 SikdangChoiceCatAdapter if ", selectedCat+catName)
                 //sikdangChoice_toggleButton.toggle()
             }
+            if (toggleArrayList[catCount] == true){
+                sikdangChoice_toggleButton.setChecked(true)
+            }
+            else{
+                sikdangChoice_toggleButton.setChecked(false)
+            }
             //토글버튼을 ArrayList에 추가해 이 클래스 밖(SikdangChoice 클래스)에세 토글버튼을 사용할 수 있게 한다
             //onClickListener 사용해서 하나의 버튼이 켜지면 나머지 버튼은 꺼지도록 - 아예 SikdangChoice 클래스에서 구현핟고록 하는게 나을듯
-            //sikdangChoice_toggleButton_arrayList.add(sikdangChoice_toggleButton)
+            sikdangChoice_toggleButton_arrayList.add(sikdangChoice_toggleButton)
             /*
             sikdangChoice_toggleButton.setOnClickListener {
 
@@ -83,8 +95,50 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
 
 
 
+            sikdangChoice_toggleButton.setOnClickListener {
+                if (sikdangChoice_toggleButton.isChecked){
+                    Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "isChecked"+selectedCat+catName)
+                    var i = 0
+                    while (i< catArrayListSize){
+                        if (catArrayList?.get(i) == catName){
+                            toggleArrayList[i] = true
+                        }
+                        i++
+                    }
 
 
+                    //여기서 다른 토글버튼 모두 끄고 이 버튼에 맞는 프래그먼트 아래쪽에 불러온다
+                }else{
+                    var i = 0
+                    while (i< catArrayListSize){
+                        if (catArrayList?.get(i) == catName){
+                            toggleArrayList[i] = false
+                        }
+                        i++
+                    }
+                    Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "else"+selectedCat+catName)
+                    //sikdangChoice_toggleButton.toggle()
+                }
+                var i = 0
+                var tempString=""
+                while (i< catArrayListSize){
+                    if (toggleArrayList[i] == true){
+                        tempString+="1"
+                    }
+                    else{
+                        tempString+="0"
+                    }
+                    i++
+                }
+                Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "불배열확인"+tempString)
+            }
+
+
+
+
+
+
+            /*
             sikdangChoice_toggleButton.setOnCheckedChangeListener{ _, isChecked ->
                 if (isChecked){
                     Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "isChecked"+selectedCat+catName)
@@ -122,44 +176,14 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
                 }
                 Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "불배열확인"+tempString)
 
-            }
+            }*/
+
+
+
+
+
         }
 
     }
 
-    //아래는 리스트뷰일경우
-
-    /*
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getView()")
-        val view = LayoutInflater.from(context).inflate(R.layout.sikdangchoice_cat, parent, false)
-        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getView()2")
-        var sikdangChoice_toggleButton : ToggleButton = view?.findViewById(R.id.sikdangchice_toggleButton)!!
-        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getView()3")
-        //Log.d("종료지점확인 SikdangChoiceCatAdapter", "onCreateViewHolder 2")
-        //Holder(view).bind()
-        //Holder(convertView).bind()
-        var catName: String? = catArrayList?.get(position)
-        Log.d("종료지점확인 SikdangChoiceCatAdapter", "holder.bind()"+selectedCat+catName)
-        sikdangChoice_toggleButton.text=catName
-        sikdangChoice_toggleButton.textOn=catName
-        sikdangChoice_toggleButton.textOff=catName
-
-        return view
-    }
-
-    override fun getItem(position: Int): Any {
-        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getItem")
-        var item = catArrayList?.get(position)!!
-        return item
-    }
-
-    override fun getItemId(position: Int): Long {
-        Log.d("종료지점확인 SikdangChoiceCatAdapter", "getItemId")
-        return position.toLong()
-    }
-
-    override fun getCount(): Int {
-        return catArrayListSize
-    }*/
 }
