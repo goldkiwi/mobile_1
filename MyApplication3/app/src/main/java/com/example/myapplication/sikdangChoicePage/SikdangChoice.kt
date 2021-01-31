@@ -6,14 +6,20 @@ import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
 import com.example.myapplication.recommendation.MsgCat
 
 class SikdangChoice : AppCompatActivity() {
     //리스트는 SikdangChoiceCatAdapter 클래스의 inner class인 Holder 클래스의 bind()함수에서 칵 카테고리의 toggle 버튼으로 채워준다
     var sikdangChoice_toggleButton_arrayList = ArrayList<ToggleButton>()
+    private lateinit var sikdangChoiceMenuViewPager : ViewPager2//메뉴부분 뷰페이저
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,14 +33,14 @@ class SikdangChoice : AppCompatActivity() {
         //카테고리의 이름들 ArrayList 형태로 넘겨받는다 (소고기, 돼지고기, 닭고기....)
         var catArrayList: ArrayList<String>? = intent.getExtras()?.getStringArrayList("catArrayList")
         Log.d("종료지점확인 SikdangChoice", "intent 받음")
-
+        //일단 배열을 비어있는 토글버튼으로 채운다
         var i = 0
         while(i< catArrayList?.size!!) {
             sikdangChoice_toggleButton_arrayList.add(findViewById(R.id.sikdangchice_toggleButton))
             i++
         }
 
-        //어댑터 사용한다
+        //catLine 어댑터 사용한다
 
         var sikdangChoiceCatAdapter = SikdangChoiceCatAdapter(this, catArrayList, sikdangChoice_toggleButton_arrayList, selectedCat.toString())
         Log.d("종료지점확인 SikdangChoice", "sikdangChoiceCatAdapter")
@@ -51,5 +57,17 @@ class SikdangChoice : AppCompatActivity() {
         sikdangChoice_CatLine.setHasFixedSize(true)
 
 
+        //menu 뷰페이저 fragment 설정
+        sikdangChoiceMenuViewPager = findViewById(R.id.sikdangChoiceMenuViewPager)
+        val menuPagerAdapter = SikdangChoiceMenuViewPagerAdapter(this)
+        sikdangChoiceMenuViewPager.adapter = menuPagerAdapter
+
+
+
     }
+
+
+
+
+
 }
