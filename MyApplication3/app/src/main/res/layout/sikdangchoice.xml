@@ -21,14 +21,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sikdangChoice_catLine"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="50dp">
 
-        <ListView
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
             android:id="@+id/sikdangChoice_catLine2"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"></LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

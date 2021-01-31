@@ -34,7 +34,7 @@ class TagLineList(){
             var tempI = i.toString()
             tempI+=" "
             tempI+=tempString
-            Log.d("확인 TagLineList.setTagLine while문 반복", tempI)
+            //Log.d("확인 TagLineList.setTagLine while문 반복", tempI)
             if ((i+2)<arrayMax){
                 var tagLine = TagLine(tagArray[i], tagArray[i+1], tagArray[i+2])
                 tagList.add(tagLine)

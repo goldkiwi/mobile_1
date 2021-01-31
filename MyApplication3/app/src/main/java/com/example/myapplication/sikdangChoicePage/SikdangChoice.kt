@@ -2,6 +2,7 @@ package com.example.myapplication.sikdangChoicePage
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ class SikdangChoice : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         setContentView(R.layout.sikdangchoice)
         Log.d("종료지점확인 SikdangChoice", "레이아웃 호출")
 
@@ -26,6 +28,12 @@ class SikdangChoice : AppCompatActivity() {
         var catArrayList: ArrayList<String>? = intent.getExtras()?.getStringArrayList("catArrayList")
         Log.d("종료지점확인 SikdangChoice", "intent 받음")
 
+        var i = 0
+        while(i< catArrayList?.size!!) {
+            sikdangChoice_toggleButton_arrayList.add(findViewById(R.id.sikdangchice_toggleButton))
+            i++
+        }
+
         //어댑터 사용한다
 
         var sikdangChoiceCatAdapter = SikdangChoiceCatAdapter(this, catArrayList, sikdangChoice_toggleButton_arrayList, selectedCat.toString())
@@ -33,6 +41,8 @@ class SikdangChoice : AppCompatActivity() {
         //sikdangChoiceCatAdapter.setHasStableIds(true)
         var sikdangChoice_CatLine : RecyclerView = findViewById(R.id.sikdangChoice_catLine)
         Log.d("종료지점확인 SikdangChoice", "sikdangChoice_CatLine")
+
+
         sikdangChoice_CatLine.adapter = sikdangChoiceCatAdapter
         Log.d("종료지점확인 SikdangChoice", "sikdangChoice_CatLine.adapter = sikdangChoiceCatAdapter")
 
