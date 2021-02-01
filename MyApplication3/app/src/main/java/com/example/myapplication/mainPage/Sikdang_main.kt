@@ -134,18 +134,18 @@ class Sikdang_main : AppCompatActivity() {
                 return BannerSlideFragment(R.drawable.add_main_5, 4)
             }else if(num_page >=6 && position == 5){
                 return BannerSlideFragment(R.drawable.add_main_6, 5)
-            }else if(num_page >=7 && position == 5){
-                return BannerSlideFragment(R.drawable.add_main_6, 5)
-            }else if(num_page >=8 && position == 5){
-                return BannerSlideFragment(R.drawable.add_main_6, 5)
-            }else if(num_page >=9 && position == 5){
-                return BannerSlideFragment(R.drawable.add_main_6, 5)
-            }else if(num_page >=10 && position == 5){
-                return BannerSlideFragment(R.drawable.add_main_6, 5)
-            }else if(num_page >=11 && position == 5){
-                return BannerSlideFragment(R.drawable.add_main_6, 5)
-            }else if(num_page >=12 && position == 5){
-                return BannerSlideFragment(R.drawable.add_main_6, 5)
+            }else if(num_page >=7 && position == 6){
+                return BannerSlideFragment(R.drawable.add_main_6, 6)
+            }else if(num_page >=8 && position == 7){
+                return BannerSlideFragment(R.drawable.add_main_6, 7)
+            }else if(num_page >=9 && position == 8){
+                return BannerSlideFragment(R.drawable.add_main_6, 8)
+            }else if(num_page >=10 && position == 9){
+                return BannerSlideFragment(R.drawable.add_main_6, 9)
+            }else if(num_page >=11 && position == 10){
+                return BannerSlideFragment(R.drawable.add_main_6, 10)
+            }else if(num_page >=12 && position == 11){
+                return BannerSlideFragment(R.drawable.add_main_6, 11)
             }else{
                 return BannerSlideFragment(R.drawable.add_main, 0)
             }

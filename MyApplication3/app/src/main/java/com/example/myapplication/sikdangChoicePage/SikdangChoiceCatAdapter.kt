@@ -20,6 +20,7 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        //view 는 cat 버튼 하나 들어있는 레이아웃
         val view = LayoutInflater.from(context).inflate(R.layout.sikdangchoice_cat, parent, false)
         return Holder(view)
     }
