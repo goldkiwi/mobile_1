@@ -14,7 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
 
 //리사이클러뷰에 어댑터 설정하는 클래스
-class SikdangChoiceMenuFragment(var sikdangImage : Int, val sikdangName : String, val repMenuArrayList:ArrayList<String>, val anyList:ArrayList<Int>, var vp:ViewPager2) :Fragment() {
+class SikdangChoiceMenuFragment(var sikdangMenuData: SikdangMenuData, var vp:ViewPager2) :Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //return super.onCreateView(inflater, container, savedInstanceState)
         //view 는 리사이클러뷰 하나 들어있는 레이아웃
@@ -33,7 +33,7 @@ class SikdangChoiceMenuFragment(var sikdangImage : Int, val sikdangName : String
         //var sikdangchoice_menuline : LinearLayout = itemView.findViewById(R.id.sikdangChoiceMenuFragmentRecyclerView)
         //itemView.setCurrentItem(1)
         var sikdangChoiceMenuFragmentRecyclerView : RecyclerView = itemView.findViewById(R.id.sikdangChoiceMenuFragmentRecyclerView)
-        var sikdangChoiceMenuAdapter = SikdangChoiceMenuAdapter(this!!.getActivity()!!, sikdangName)
+        var sikdangChoiceMenuAdapter = SikdangChoiceMenuAdapter(this!!.getActivity()!!, sikdangMenuData.getSikdangName())
         sikdangChoiceMenuFragmentRecyclerView.adapter = sikdangChoiceMenuAdapter
 
         var sikdangChice_catLineLM = LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false)

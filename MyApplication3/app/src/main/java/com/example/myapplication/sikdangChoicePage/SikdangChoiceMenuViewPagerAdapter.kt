@@ -26,7 +26,10 @@ class SikdangChoiceMenuViewPagerAdapter(fa:FragmentActivity, val catArrayList : 
     }
 
     override fun createFragment(position: Int): Fragment {
-        var sikdangChoiceMenuFragment = SikdangChoiceMenuFragment(R.drawable.foodimage, catArrayList[position], repMenuArrayList, anyList, vp)
+        //프래그먼트 초기화
+        //좌표는 지도와 연동해서 구해야 함
+        var sikdangMenuData = SikdangMenuData(catArrayList[position], 0, 0.toFloat(), 0.toFloat())
+        var sikdangChoiceMenuFragment = SikdangChoiceMenuFragment(sikdangMenuData, vp)
         if (isFirst == true){//카테고리 클릭해서 페이지 들어갔을 때 클릭한 카테고리의 프래그먼트가 제일 처음 뜨게 해준다
             var pos = sikdangChoiceCatAdapter.getCurruntNum()
             vp.setCurrentItem(pos, true)
