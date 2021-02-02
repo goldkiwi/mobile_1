@@ -11,10 +11,11 @@ import com.example.myapplication.R
 
 class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList<String>?,
                               var sikdangChoice_toggleButton_arrayList: ArrayList<ToggleButton>,
-                              var selectedCat :String) : RecyclerView.Adapter<SikdangChoiceCatAdapter.Holder>() {
+                              var selectedCat :String,
+                              var sikdangChoiceCatLine : RecyclerView) : RecyclerView.Adapter<SikdangChoiceCatAdapter.Holder>() {
     var catArrayListSize = catArrayList?.size!!
     var toggleArrayList= Array<Boolean>(catArrayListSize, {false})
-    var firstCatCount = getCount(selectedCat)
+    var firstCatCount = getCount(selectedCat) // 처음 들어온 카테고리의 위치
     var lastBindCount = 0 //현재 바인드 되어있는 최대 숫자
     var isFirst = true //처음 클린한 것인가
 
@@ -48,6 +49,54 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
         return count
     }
 
+    public fun scrollPosition(pos: Int){
+        sikdangChoiceCatLine.smoothScrollToPosition(pos)//그냥 scrollToPosition 쓰면 늦게 옯겨진다
+    }
+
+    public fun toggleOn(buttonNum:Int){
+
+        var sikdangChoice_toggleButton = sikdangChoice_toggleButton_arrayList[buttonNum]
+        var catName = catArrayList?.get(buttonNum)
+
+
+
+        if (sikdangChoice_toggleButton.isChecked){//꺼진 버튼 누를 시 켜지고 다른 버튼 꺼지도록 한다
+            //Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "isChecked"+selectedCat+catName)
+            var i = 0
+            var catCount = getCount(catName)
+            while (i< sikdangChoice_toggleButton_arrayList.size){//와일문 전체 돈다
+                //Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "와일문 돔"+i.toString() +"/"+sikdangChoice_toggleButton_arrayList.size.toString())
+                if(i != catCount){
+                    toggleArrayList[i] = false//불리스트 수정
+                    //Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", i.toString()+" "+catArrayList?.get(i)+" "+"토글 오프")
+                    if (lastBindCount>=i)sikdangChoice_toggleButton_arrayList[i].isChecked=false//토글 끔 if 는 바인드된 버튼 위치가 앞쪽이면 뒤쪽의 토글버튼은 건드리지 않는다
+                }
+                else if (i == catCount){
+                    //Log.d("확인 sikdangChoice_toggleButton.setOnClickListener", catArrayList?.get(i).toString() + "토글 온")
+                    toggleArrayList[i] = true//불리스트 수정
+                    if (lastBindCount>=i)sikdangChoice_toggleButton_arrayList[i].isChecked=true//토글 킴 if 는 바인드된 버튼 위치가 앞쪽이면 뒤쪽의 토글버튼은 건드리지 않는다
+                }
+                i++
+            }
+            //Log.d("확인 sikdangChoice_toggleButton.setOnClickListener", "와일문 끝")
+
+        }else{//이미 켜진 버튼 눌러도 변화 없도록 함
+            sikdangChoice_toggleButton.setChecked(true)
+        }
+        var i = 0
+        while( i <=lastBindCount){
+            if (i==buttonNum){
+                sikdangChoice_toggleButton_arrayList[i].setChecked(true)
+            }
+            else{
+                sikdangChoice_toggleButton_arrayList[i].setChecked(false)
+            }
+            i++
+        }
+
+
+    }
+
     //맨 처음 선택된 카테고리만 킴
 
 
@@ -66,12 +115,17 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
 
             //Log.d("종료지점확인 SikdangChoiceCatAdapter", "holder.bind()"+selectedCat+catName)
 
+            if (isFirst == true){
+                scrollPosition(firstCatCount)
+                Log.d("확인 sikdangChoiceCatAdapter.Holder.bind", firstCatCount.toString())
+            }
             //처음 바인드 될 때 클릭해서 들어온 버튼의 카테고리 킴
             if ((catName == selectedCat)&& (isFirst==true)){
                 sikdangChoice_toggleButton.setChecked(true)
                 toggleArrayList[firstCatCount] = true
                 isFirst=false
             }
+
             //토글버튼 바인드
             sikdangChoice_toggleButton.text=catName
             sikdangChoice_toggleButton.textOn=catName

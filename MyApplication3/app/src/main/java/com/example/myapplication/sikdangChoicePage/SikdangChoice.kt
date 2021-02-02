@@ -42,10 +42,10 @@ class SikdangChoice : AppCompatActivity() {
 
         //catLine 어댑터 사용한다
 
-        var sikdangChoiceCatAdapter = SikdangChoiceCatAdapter(this, catArrayList, sikdangChoice_toggleButton_arrayList, selectedCat.toString())
+        var sikdangChoice_CatLine : RecyclerView = findViewById(R.id.sikdangChoice_catLine)
+        var sikdangChoiceCatAdapter = SikdangChoiceCatAdapter(this, catArrayList, sikdangChoice_toggleButton_arrayList, selectedCat.toString(), sikdangChoice_CatLine)
         Log.d("종료지점확인 SikdangChoice", "sikdangChoiceCatAdapter")
         //sikdangChoiceCatAdapter.setHasStableIds(true)
-        var sikdangChoice_CatLine : RecyclerView = findViewById(R.id.sikdangChoice_catLine)
         Log.d("종료지점확인 SikdangChoice", "sikdangChoice_CatLine")
 
 
@@ -59,8 +59,21 @@ class SikdangChoice : AppCompatActivity() {
 
         //menu 뷰페이저 fragment 설정
         sikdangChoiceMenuViewPager = findViewById(R.id.sikdangChoiceMenuViewPager)
-        val menuPagerAdapter = SikdangChoiceMenuViewPagerAdapter(this)
+        val menuPagerAdapter = SikdangChoiceMenuViewPagerAdapter(this, catArrayList)
         sikdangChoiceMenuViewPager.adapter = menuPagerAdapter
+        //sikdangChoiceMenuViewPager.registerOnPageChangeCallback()
+        sikdangChoiceMenuViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                Log.e("ViewPagerFragment", "Page ${position+1}")
+                sikdangChoiceCatAdapter.toggleOn(position)
+                sikdangChoiceCatAdapter.scrollPosition(position)
+
+            }
+        })
+        //sikdangChoiceMenuViewPager.setCurrentItem(3)
+
+
 
 
 
