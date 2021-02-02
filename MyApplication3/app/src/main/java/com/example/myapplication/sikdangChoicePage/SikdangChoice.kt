@@ -19,9 +19,11 @@ class SikdangChoice : AppCompatActivity() {
     //리스트는 SikdangChoiceCatAdapter 클래스의 inner class인 Holder 클래스의 bind()함수에서 칵 카테고리의 toggle 버튼으로 채워준다
     var sikdangChoice_toggleButton_arrayList = ArrayList<ToggleButton>()
     private lateinit var sikdangChoiceMenuViewPager : ViewPager2//메뉴부분 뷰페이저
+    var isFirst = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lateinit var menuPagerAdapter : SikdangChoiceMenuViewPagerAdapter
 
 
         setContentView(R.layout.sikdangchoice)
@@ -59,19 +61,27 @@ class SikdangChoice : AppCompatActivity() {
 
         //menu 뷰페이저 fragment 설정
         sikdangChoiceMenuViewPager = findViewById(R.id.sikdangChoiceMenuViewPager)
-        val menuPagerAdapter = SikdangChoiceMenuViewPagerAdapter(this, catArrayList)
+        menuPagerAdapter = SikdangChoiceMenuViewPagerAdapter(this, catArrayList, sikdangChoiceMenuViewPager, sikdangChoiceCatAdapter)
+        sikdangChoiceCatAdapter.setVPAdapter(menuPagerAdapter)
         sikdangChoiceMenuViewPager.adapter = menuPagerAdapter
         //sikdangChoiceMenuViewPager.registerOnPageChangeCallback()
         sikdangChoiceMenuViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
+                Log.e("확인 페이지 넘긴 후", "1")
                 super.onPageSelected(position)
-                Log.e("ViewPagerFragment", "Page ${position+1}")
-                sikdangChoiceCatAdapter.toggleOn(position)
+                Log.e("확인 ViewPagerFragment", "Page ${position+1}")
                 sikdangChoiceCatAdapter.scrollPosition(position)
+                Log.e("확인 페이지 넘긴 후", "2")
+                if (isFirst == false){
+                    Log.e("확인 페이지 넘긴 후", "toggleOn")
+                    sikdangChoiceCatAdapter.toggleOn(position)
+                }
+                Log.e("확인 페이지 넘긴 후", "3")
+                isFirst = false
 
             }
         })
-        //sikdangChoiceMenuViewPager.setCurrentItem(3)
+        //sikdangChoiceMenuViewPager.setCurrentItem(1, true)
 
 
 

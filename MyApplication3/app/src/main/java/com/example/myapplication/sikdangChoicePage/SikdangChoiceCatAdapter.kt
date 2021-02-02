@@ -18,6 +18,7 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
     var firstCatCount = getCount(selectedCat) // 처음 들어온 카테고리의 위치
     var lastBindCount = 0 //현재 바인드 되어있는 최대 숫자
     var isFirst = true //처음 클린한 것인가
+    lateinit var vpAdapter : SikdangChoiceMenuViewPagerAdapter
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -36,6 +37,10 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
         holder.bind()
     }
 
+    public fun setVPAdapter(sikdangChoiceMenuViewPagerAdapter: SikdangChoiceMenuViewPagerAdapter){
+        vpAdapter = sikdangChoiceMenuViewPagerAdapter
+    }
+
     private fun getCount(catName: String?):Int{
         var count = 0
         var i = 0
@@ -52,6 +57,19 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
     public fun scrollPosition(pos: Int){
         sikdangChoiceCatLine.smoothScrollToPosition(pos)//그냥 scrollToPosition 쓰면 늦게 옯겨진다
     }
+
+    public fun getCurruntNum():Int{
+        var i = 0
+        while (i<catArrayListSize){
+            if (toggleArrayList[i]== true){
+                break
+            }
+            i++
+        }
+        Log.d("확인 getCurruntNum()", "종료")
+        return i
+    }
+
 
     public fun toggleOn(buttonNum:Int){
 
@@ -75,6 +93,8 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
                     //Log.d("확인 sikdangChoice_toggleButton.setOnClickListener", catArrayList?.get(i).toString() + "토글 온")
                     toggleArrayList[i] = true//불리스트 수정
                     if (lastBindCount>=i)sikdangChoice_toggleButton_arrayList[i].isChecked=true//토글 킴 if 는 바인드된 버튼 위치가 앞쪽이면 뒤쪽의 토글버튼은 건드리지 않는다
+
+
                 }
                 i++
             }
@@ -117,12 +137,13 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
 
             if (isFirst == true){
                 scrollPosition(firstCatCount)
+                toggleArrayList[firstCatCount] = true
                 Log.d("확인 sikdangChoiceCatAdapter.Holder.bind", firstCatCount.toString())
             }
             //처음 바인드 될 때 클릭해서 들어온 버튼의 카테고리 킴
             if ((catName == selectedCat)&& (isFirst==true)){
                 sikdangChoice_toggleButton.setChecked(true)
-                toggleArrayList[firstCatCount] = true
+
                 isFirst=false
             }
 
@@ -149,7 +170,7 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
                     //Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "isChecked"+selectedCat+catName)
                     var i = 0
                     var catCount = getCount(catName)
-                    while (i< sikdangChoice_toggleButton_arrayList.size){//와일문 전체 돈다
+                    while (i< sikdangChoice_toggleButton_arrayList.size){//와일문 전체 돌며 불리스트와 버튼리스트 키고 끈다
                         //Log.d("확인 SikdangChoiceCatAdapter   sikdangChoice_toggleButton.setOnCheckedChangeListener ", "와일문 돔"+i.toString() +"/"+sikdangChoice_toggleButton_arrayList.size.toString())
                         if(i != catCount){
                             toggleArrayList[i] = false//불리스트 수정
@@ -160,6 +181,9 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
                             //Log.d("확인 sikdangChoice_toggleButton.setOnClickListener", catArrayList?.get(i).toString() + "토글 온")
                             toggleArrayList[i] = true//불리스트 수정
                             if (lastBindCount>=i)sikdangChoice_toggleButton_arrayList[i].isChecked=true//토글 킴 if 는 바인드된 버튼 위치가 앞쪽이면 뒤쪽의 토글버튼은 건드리지 않는다
+                            if (isFirst == false) {
+                                vpAdapter.setPagerPos(i)
+                            }
                         }
                         i++
                     }

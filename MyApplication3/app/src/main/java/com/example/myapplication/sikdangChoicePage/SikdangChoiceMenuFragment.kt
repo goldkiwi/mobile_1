@@ -1,6 +1,7 @@
 package com.example.myapplication.sikdangChoicePage
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
 
 //리사이클러뷰에 어댑터 설정하는 클래스
-class SikdangChoiceMenuFragment(var sikdangImage : Int, val sikdangName : String, val repMenuArrayList:ArrayList<String>, val anyList:ArrayList<Int>) :Fragment() {
+class SikdangChoiceMenuFragment(var sikdangImage : Int, val sikdangName : String, val repMenuArrayList:ArrayList<String>, val anyList:ArrayList<Int>, var vp:ViewPager2) :Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //return super.onCreateView(inflater, container, savedInstanceState)
         //view 는 리사이클러뷰 하나 들어있는 레이아웃
@@ -30,6 +31,7 @@ class SikdangChoiceMenuFragment(var sikdangImage : Int, val sikdangName : String
     fun bind(itemView:View):View?{
         //itemView는 프래그먼트 자체
         //var sikdangchoice_menuline : LinearLayout = itemView.findViewById(R.id.sikdangChoiceMenuFragmentRecyclerView)
+        //itemView.setCurrentItem(1)
         var sikdangChoiceMenuFragmentRecyclerView : RecyclerView = itemView.findViewById(R.id.sikdangChoiceMenuFragmentRecyclerView)
         var sikdangChoiceMenuAdapter = SikdangChoiceMenuAdapter(this!!.getActivity()!!, sikdangName)
         sikdangChoiceMenuFragmentRecyclerView.adapter = sikdangChoiceMenuAdapter
@@ -37,6 +39,12 @@ class SikdangChoiceMenuFragment(var sikdangImage : Int, val sikdangName : String
         var sikdangChice_catLineLM = LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false)
         sikdangChoiceMenuFragmentRecyclerView.layoutManager=sikdangChice_catLineLM
         sikdangChoiceMenuFragmentRecyclerView.setHasFixedSize(true)
+
+        //Log.e("확인 페이지 넘기기 전", "1")
+        //vp.setCurrentItem(10, true)
+        //Log.e("확인 페이지 넘김", "1")
+        //vp.setCurrentItem(4, true)
+        //Log.e("확인 페이지 넘김", "2")
 
 
         return itemView
