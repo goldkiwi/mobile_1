@@ -33,7 +33,7 @@ class SikdangChoiceMenuFragment(var sikdangMenuData: SikdangMenuData, var vp:Vie
         //var sikdangchoice_menuline : LinearLayout = itemView.findViewById(R.id.sikdangChoiceMenuFragmentRecyclerView)
         //itemView.setCurrentItem(1)
         var sikdangChoiceMenuFragmentRecyclerView : RecyclerView = itemView.findViewById(R.id.sikdangChoiceMenuFragmentRecyclerView)
-        var sikdangChoiceMenuAdapter = SikdangChoiceMenuAdapter(this!!.getActivity()!!, sikdangMenuData.getSikdangName())
+        var sikdangChoiceMenuAdapter = SikdangChoiceMenuAdapter(this!!.getActivity()!!, sikdangMenuData)
         sikdangChoiceMenuFragmentRecyclerView.adapter = sikdangChoiceMenuAdapter
 
         var sikdangChice_catLineLM = LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false)

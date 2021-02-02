@@ -29,7 +29,7 @@ class SikdangMenuData() {
     //데이터베이스에서 가저와서 각 변수에 넣어야 함
     private fun getData(cat:String, dist:Int, coorX : Float, coorY:Float){
         sikdangImage= R.drawable.foodimage //식당의 이미지
-        sikdangName = "식당이름"
+        sikdangName = cat
         repMenuArrayList = arrayListOf("대표메뉴1", "대표메뉴2", "대표메뉴3", "대표메뉴4")
         anyList= arrayListOf(0, 0, 0, 0)
     }
