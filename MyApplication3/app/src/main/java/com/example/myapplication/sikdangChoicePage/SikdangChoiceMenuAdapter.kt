@@ -38,8 +38,10 @@ class SikdangChoiceMenuAdapter(var context : Context, var sikdangListReqData: Si
     inner class Holder (itemView: View?) : RecyclerView.ViewHolder(itemView!!){
 
         fun bind(position:Int){
+            Log.d("확인 SikdangChoiceMenuAdapter", "Holder.bind")
             sikdangListReqData.setPos(position)
             var sikdangMenuData = SikdangMenuData(sikdangListReqData)
+            var sikdangId = sikdangMenuData.getSikdangId()
 
             Log.d("position확인 SikdangChoice", position.toString())
 
@@ -88,6 +90,7 @@ class SikdangChoiceMenuAdapter(var context : Context, var sikdangListReqData: Si
             var menuLL : LinearLayout = itemView.findViewById(R.id.sikdangChoice_menuLine)
             menuLL.setOnClickListener(){
                 val intent= Intent(itemView.context, BookTime::class.java)
+                intent.putExtra("sikdangId", sikdangId)
                 context.startActivity(intent)
 
             }

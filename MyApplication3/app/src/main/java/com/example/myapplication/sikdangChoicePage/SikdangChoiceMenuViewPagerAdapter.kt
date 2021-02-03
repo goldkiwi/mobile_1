@@ -11,8 +11,7 @@ import com.example.myapplication.R
 //매뉴 어댑터 받아서 메뉴 어댑터의 스크롤 함수르 호출한다
 class SikdangChoiceMenuViewPagerAdapter(fa:FragmentActivity, var sikdangListReqData: SikdangListReqData, val catArrayList : ArrayList<String>, var vp: ViewPager2,
                                         val sikdangChoiceCatAdapter: SikdangChoiceCatAdapter) : FragmentStateAdapter(fa) {
-    var repMenuArrayList : ArrayList<String> = arrayListOf("파인애플피자", "민트초코피자", "오이피자", "두리안피자")
-    var anyList : ArrayList<Int> = arrayListOf(0, 0, 0, 0)
+
     var isFirst =true
 
 

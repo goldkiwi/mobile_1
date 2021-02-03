@@ -2,6 +2,7 @@ package com.example.myapplication.mainPage
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,8 +37,10 @@ class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<St
         super.onBindViewHolder(holder, position, payloads)
     }
 
+    //버튼업과 버튼 다운을 똑같이 만들어줘야함
     inner class Holder (itemView: View?) : RecyclerView.ViewHolder(itemView!!){
         fun bind(item1:String, item2:String){
+            Log.d("확인 SikdangMinCatAdapter", "Holder.bind")
             var catButtonUp : Button = itemView.findViewById(R.id.cat_button_up)
             catButtonUp.setText(item1)
             catButtonUp.setOnClickListener {
@@ -52,7 +55,13 @@ class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<St
                 intent.putExtra("cat", item1)
                 intent.putExtra("catArrayList", catArrayList)
                 var dist = 0
-                dist = distText.getText().toString().toInt()
+                if (distText.getText().toString().length == 0 ){
+                    dist = 0
+                }
+                else{
+                    dist = distText.getText().toString().toInt()
+                }
+
                 intent.putExtra("dist", dist)
 
                 context.startActivity(intent)
@@ -67,6 +76,15 @@ class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<St
                 intent=Intent(itemView.context, SikdangChoice::class.java)
                 intent.putExtra("cat", item2)
                 intent.putExtra("catArrayList", catArrayList)
+                var dist = 0
+                if (distText.getText().toString().length == 0 ){
+                    dist = 0
+                }
+                else{
+                    dist = distText.getText().toString().toInt()
+                }
+
+                intent.putExtra("dist", dist)
                 context.startActivity(intent)
             }
 
