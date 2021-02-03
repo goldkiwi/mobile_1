@@ -22,7 +22,9 @@ class MsgCat() : Parcelable {
             "생선", "새우", "조개",
             "소주", "맥주", "막걸리",
             "데이트", "단체", "혼밥",
-            "야채", "좌식")
+            "야채", "좌식", "오감자",
+            "썬칩", "꼬북칩", "베라",
+            "뫄이쩡", "졸려", "까까")
     val tagListMax = tagList.size //리스트 개수 = 태그 개수
     var orderText = "aaaaaa"
     var tagOrderList = Array(tagListMax, { 0 })

@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.sikdangChoicePage.SikdangChoice
-
-class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<String>) : RecyclerView.Adapter<SikdangMainCatAdapter.Holder>() {
+import kotlin.jvm.internal.Intrinsics
+//Sikdang_main 에서 사용 카테고리 리스트와 거리가 적힌 에딧텍스트 받는다
+class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<String>, val distText : EditText) : RecyclerView.Adapter<SikdangMainCatAdapter.Holder>() {
     var arrayMax = catArrayList.size
     override fun  onCreateViewHolder(parent: ViewGroup, viewType: Int):SikdangMainCatAdapter.Holder{
         val view = LayoutInflater.from(context).inflate(R.layout.cat_line, parent, false)
@@ -49,6 +51,9 @@ class SikdangMainCatAdapter(var context: Context, val catArrayList: ArrayList<St
                 //var a = catButtonUp.getTag()
                 intent.putExtra("cat", item1)
                 intent.putExtra("catArrayList", catArrayList)
+                var dist = 0
+                dist = distText.getText().toString().toInt()
+                intent.putExtra("dist", dist)
 
                 context.startActivity(intent)
             }

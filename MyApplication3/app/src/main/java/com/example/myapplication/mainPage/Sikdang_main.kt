@@ -37,7 +37,7 @@ class Sikdang_main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sikdang_main)
-        Log.d("종료지점확인", "onCreate_30")
+        Log.d("종료지점확인", "onCreate_1")
         Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show()
 
         //뷰페이저
@@ -46,13 +46,24 @@ class Sikdang_main : AppCompatActivity() {
         var pagerAdapter2 = ScreenSlidePagerAdapter2(this)
         viewPager2.adapter=pagerAdapter2
 
+        //에딧 텍스트 : 거리
+        var editTextDist : EditText = findViewById(R.id.editTextDist)
+        //editTextDist.editableText
 
         //음식 카테고리
         //어댑터에서 SikdangChoice 페이지를 불러오게 된다
+        Log.d("종료지점확인", "onCreate_2")
         var catList=CatList()
-        var sikdangMainCatAdapter=SikdangMainCatAdapter(this, catList.getCatArray())
+        Log.d("종료지점확인", "onCreate_3")
+        var dist :Int = 0
+        //dist = editTextDist.getText().toString().toInt()
+        Log.d("종료지점확인", "onCreate_3.5 "+dist.toString())
+        var sikdangMainCatAdapter=SikdangMainCatAdapter(this, catList.getCatArray(), editTextDist)
+        Log.d("종료지점확인", "onCreate_4")
         var sikdangCatView : RecyclerView = findViewById(R.id.sikdang_cat_view)
+        Log.d("종료지점확인", "onCreate_5")
         sikdangCatView.adapter = sikdangMainCatAdapter
+        Log.d("종료지점확인", "onCreate_6")
 
         var catLM = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         sikdangCatView.layoutManager=catLM

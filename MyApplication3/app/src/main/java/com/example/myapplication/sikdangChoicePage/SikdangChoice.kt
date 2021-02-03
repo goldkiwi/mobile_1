@@ -2,19 +2,16 @@ package com.example.myapplication.sikdangChoicePage
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.LinearLayout
-import android.widget.ListView
+import android.widget.EditText
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
-import com.example.myapplication.recommendation.MsgCat
 
+//SikdangMainCatAdapter에서 쓰임
+//선택된 카테고리, 카테고리 리스트, 거리를 받음
 class SikdangChoice : AppCompatActivity() {
     //리스트는 SikdangChoiceCatAdapter 클래스의 inner class인 Holder 클래스의 bind()함수에서 칵 카테고리의 toggle 버튼으로 채워준다
     var sikdangChoice_toggleButton_arrayList = ArrayList<ToggleButton>()
@@ -34,6 +31,14 @@ class SikdangChoice : AppCompatActivity() {
         var selectedCat = intent.getExtras()?.getString("cat")
         //카테고리의 이름들 ArrayList 형태로 넘겨받는다 (소고기, 돼지고기, 닭고기....)
         var catArrayList: ArrayList<String>? = intent.getExtras()?.getStringArrayList("catArrayList")
+        //var sikdangMainET:EditText = intent.getExtras("a")
+        var dist:Int = 0
+        dist = intent.getExtras()?.getInt("dist")!!
+
+        //넘겨주는 데이터 생성 dist 넣음
+        var sikdangListReqData = SikdangListReqData()
+        sikdangListReqData.setMaxDist(dist!!)
+
         Log.d("종료지점확인 SikdangChoice", "intent 받음")
         //일단 배열을 비어있는 토글버튼으로 채운다
         var i = 0
@@ -59,9 +64,15 @@ class SikdangChoice : AppCompatActivity() {
         sikdangChoice_CatLine.setHasFixedSize(true)
 
 
-        //menu 뷰페이저 fragment 설정
+        //거리 에딧텍스트
+        var sikdangChoice_distET:EditText = findViewById(R.id.sikdangChoice_distET)
+        sikdangChoice_distET.setText(dist.toString())
+
+
+
+        //mnu 뷰페이저 fragment 설정
         sikdangChoiceMenuViewPager = findViewById(R.id.sikdangChoiceMenuViewPager)
-        menuPagerAdapter = SikdangChoiceMenuViewPagerAdapter(this, catArrayList, sikdangChoiceMenuViewPager, sikdangChoiceCatAdapter)
+        menuPagerAdapter = SikdangChoiceMenuViewPagerAdapter(this, sikdangListReqData, catArrayList, sikdangChoiceMenuViewPager, sikdangChoiceCatAdapter)
         sikdangChoiceCatAdapter.setVPAdapter(menuPagerAdapter)
         sikdangChoiceMenuViewPager.adapter = menuPagerAdapter
         //sikdangChoiceMenuViewPager.registerOnPageChangeCallback()

@@ -24,6 +24,7 @@
         <activity android:name=".addPage.Add_page" />
         <activity android:name=".mainPage.SikdangList" />
         <activity android:name=".sikdangChoicePage.SikdangChoice" />
+        <activity android:name=".bookTime.BookTime" />
     </application>
 
 </manifest>
