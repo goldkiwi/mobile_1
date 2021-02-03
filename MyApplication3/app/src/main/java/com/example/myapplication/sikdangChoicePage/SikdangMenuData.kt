@@ -63,7 +63,7 @@ class SikdangMenuData() {
         sikdangId = 12345678
         sikdangImage = R.drawable.foodimage //식당의 이미지
         sikdangName = cat+" "+pos.toString() // 식당 이름
-        Log.d("확인 SikdangMenuData", "setData")
+        //Log.d("확인 SikdangMenuData", "setData")
         dist = dist_.toFloat()
         repMenuArrayList = arrayListOf("대표메뉴1", "대표메뉴2", "대표메뉴3", "대표메뉴4") // 대표메뉴 네개
         anyList= arrayListOf(0, 0, 0)

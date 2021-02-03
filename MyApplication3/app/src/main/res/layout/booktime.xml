@@ -28,7 +28,9 @@
                 android:id="@+id/bookTime_sikdangName"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:text="식당이름" />
+                android:gravity="center"
+                android:text="식당이름"
+                android:textSize="30sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"

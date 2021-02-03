@@ -78,16 +78,16 @@ class SikdangChoice : AppCompatActivity() {
         //sikdangChoiceMenuViewPager.registerOnPageChangeCallback()
         sikdangChoiceMenuViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                Log.e("확인 페이지 넘긴 후", "1")
+                //Log.e("확인 페이지 넘긴 후", "1")
                 super.onPageSelected(position)
-                Log.e("확인 ViewPagerFragment", "Page ${position+1}")
+                //Log.e("확인 ViewPagerFragment", "Page ${position+1}")
                 sikdangChoiceCatAdapter.scrollPosition(position)
-                Log.e("확인 페이지 넘긴 후", "2")
+                //Log.e("확인 페이지 넘긴 후", "2")
                 if (isFirst == false){
-                    Log.e("확인 페이지 넘긴 후", "toggleOn")
+                    //Log.e("확인 페이지 넘긴 후", "toggleOn")
                     sikdangChoiceCatAdapter.toggleOn(position)
                 }
-                Log.e("확인 페이지 넘긴 후", "3")
+                //Log.e("확인 페이지 넘긴 후", "3")
                 isFirst = false
 
             }

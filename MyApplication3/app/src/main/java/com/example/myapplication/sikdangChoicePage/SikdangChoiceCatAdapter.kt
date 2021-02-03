@@ -138,7 +138,7 @@ class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList
             if (isFirst == true){
                 scrollPosition(firstCatCount)
                 toggleArrayList[firstCatCount] = true
-                Log.d("확인 sikdangChoiceCatAdapter.Holder.bind", firstCatCount.toString())
+                //Log.d("확인 sikdangChoiceCatAdapter.Holder.bind", firstCatCount.toString())
             }
             //처음 바인드 될 때 클릭해서 들어온 버튼의 카테고리 킴
             if ((catName == selectedCat)&& (isFirst==true)){

@@ -30,7 +30,7 @@ class SikdangChoiceMenuFragment(var sikdangListReqData: SikdangListReqData, var 
 
 
     fun bind(itemView:View):View?{
-        Log.d("확인 SikdangChoiceMenuFragment", "bind")
+        //Log.d("확인 SikdangChoiceMenuFragment", "bind")
         //itemView는 프래그먼트 자체
         //var sikdangchoice_menuline : LinearLayout = itemView.findViewById(R.id.sikdangChoiceMenuFragmentRecyclerView)
         //itemView.setCurrentItem(1)

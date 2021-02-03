@@ -38,12 +38,12 @@ class SikdangChoiceMenuAdapter(var context : Context, var sikdangListReqData: Si
     inner class Holder (itemView: View?) : RecyclerView.ViewHolder(itemView!!){
 
         fun bind(position:Int){
-            Log.d("확인 SikdangChoiceMenuAdapter", "Holder.bind")
+            //Log.d("확인 SikdangChoiceMenuAdapter", "Holder.bind")
             sikdangListReqData.setPos(position)
             var sikdangMenuData = SikdangMenuData(sikdangListReqData)
             var sikdangId = sikdangMenuData.getSikdangId()
 
-            Log.d("position확인 SikdangChoice", position.toString())
+            //Log.d("position확인 SikdangChoice", position.toString())
 
 
             //식당 이미지 불러와서 set
