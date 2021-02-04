@@ -50,13 +50,12 @@ class BookTime: AppCompatActivity() {
 
     }
 
-/*
 
+/*
     public fun showBookTime(bookTimeData:BookTimeData){
         val transaction = manager.beginTransaction()
         val fragment = BookTimeFragment(bookTimeData)
-        transaction.replace(R.id.bookTimefragment, fragment)
-        transaction.addToBackStack(null)
+        transaction.add(R.id.bookfragment, fragment)
         transaction.commit()
 
     }*/

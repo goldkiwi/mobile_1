@@ -1,6 +1,7 @@
 package com.example.myapplication.bookTime
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.bookTable.BookTable
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -34,13 +36,13 @@ class BookTimeRVAdapter(var context: Context, val bookTimeData: BookTimeData):Re
 
         //예약은 최소 30분 전에 해야함
         //코드는 나중에 추가하도록
-       Log.d("확인 time ", "종료되나?")
+       //Log.d("확인 time ", "종료되나?")
         var i = 0
         while (i<bookTimeData.getTimeArrayList().size){
             if(timeString <= bookTimeData.getTimeArrayList()[i]){
                 break
             }
-            Log.d("확인 time 현재 다음 ", timeString+" "+bookTimeData.getTimeArrayList()[i])
+            //Log.d("확인 time 현재 다음 ", timeString+" "+bookTimeData.getTimeArrayList()[i])
             i++
         }
         if(i==bookTimeData.getTimeArrayList().size){
@@ -68,7 +70,7 @@ class BookTimeRVAdapter(var context: Context, val bookTimeData: BookTimeData):Re
 
     override fun getItemCount(): Int {
         var i =timeNumMax - timePoint
-        Log.d("확인 getItemCount ", i.toString()+" "+(i/2).toString())
+        //Log.d("확인 getItemCount ", i.toString()+" "+(i/2).toString())
         return (i+1)/2
     }
 
@@ -78,6 +80,7 @@ class BookTimeRVAdapter(var context: Context, val bookTimeData: BookTimeData):Re
 
     
     inner class Holder(itemView: View):RecyclerView.ViewHolder(itemView){
+        var callTimePoint =vartimePoint
         public fun bind(){
 
             //왼쪽버튼 바인드
@@ -86,10 +89,21 @@ class BookTimeRVAdapter(var context: Context, val bookTimeData: BookTimeData):Re
             if (bookTimeData.getIsFull()[vartimePoint]==false){//이시간대 예약이 꽉찬 경우
                 buttonLeft.setBackgroundColor(Color.RED)
                 buttonLeft.setOnClickListener {
+
                 }
             }
             else{//예약이 빈 경우
-
+                buttonLeft.setOnClickListener {
+                    Log.d("확인 BookTimeRVAdapter", "버튼클릭")
+                    val intent= Intent(itemView.context, BookTable::class.java)
+                    Log.d("확인 BookTimeRVAdapter", "1")
+                    intent.putExtra("sikdangId", bookTimeData.getSikdangId())
+                    Log.d("확인 BookTimeRVAdapter", "2"+callTimePoint.toString())
+                    Log.d("확인 BookTimeRVAdapter", "3")
+                    intent.putExtra("tableTime", bookTimeData.getTimeArrayList()[callTimePoint])
+                    Log.d("확인 BookTimeRVAdapter", "call BookTable")
+                    context.startActivity(intent)
+                }
             }
 
             //오른쪽 버튼 바인드
