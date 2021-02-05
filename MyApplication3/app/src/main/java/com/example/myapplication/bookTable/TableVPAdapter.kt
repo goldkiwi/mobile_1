@@ -9,7 +9,7 @@ class TableVPAdapter(fa:FragmentActivity): FragmentStateAdapter(fa) {
     //총 몇층인가
     override fun getItemCount(): Int {
         Log.d("확인 TableVPAdapter", "getItemCount()")
-        return 1
+        return 2
     }
 
     override fun createFragment(position: Int): Fragment {

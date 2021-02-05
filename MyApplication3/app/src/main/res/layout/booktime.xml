@@ -44,11 +44,14 @@
             -->
 
 
-            <fragment
-                android:id="@+id/timeFragment"
-                android:name="com.example.myapplication.bookTime.TimeFragment"
+
+
+            <FrameLayout
+                android:id="@+id/bookFragment"
                 android:layout_width="match_parent"
-                android:layout_height="192dp" />
+                android:layout_height="match_parent">
+
+            </FrameLayout>
 
 
         </LinearLayout>

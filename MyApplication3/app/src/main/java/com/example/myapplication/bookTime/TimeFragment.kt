@@ -1,6 +1,7 @@
 package com.example.myapplication.bookTime
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.example.myapplication.R
 //BookTime 의 프래그먼트에 붙일 리사이클러뷰를 설정
 class TimeFragment() : Fragment() {
     //북 타임 데이터는 BookTime에서 데이터 받아와야함 원래
-    var bookTimeData=BookTimeData(1234568)
+    var bookData=BookData(1234568)
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -23,10 +24,16 @@ class TimeFragment() : Fragment() {
 
 
     public fun bind(itemView: View){
+        var bundle = getArguments()
+        if (bundle != null) bookData = bundle.getSerializable("bookData") as BookData
+        else{
+            Log.d("확인 TimeFragment.bind", "else")
+        }
 
-
+        //bookData = bundle!!.getSerializable("bookData") as BookData
+        //Log.d("확인 TimeFragment.bind", bookData.getSikdangName())
         var bookTimeRV : RecyclerView = itemView.findViewById(R.id.bookTimeRV2)
-        var bookTimeRVAdapter = BookTimeRVAdapter(this!!.getActivity()!!, bookTimeData)
+        var bookTimeRVAdapter = BookTimeRVAdapter(this!!.getActivity()!!, bookData)
         bookTimeRV.adapter = bookTimeRVAdapter
 
 

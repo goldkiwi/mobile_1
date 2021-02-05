@@ -1,5 +1,6 @@
 package com.example.myapplication.bookTime
 
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -8,17 +9,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.bookTable.BookTable
-import java.time.LocalDate
+import com.example.myapplication.bookTable.TableFragment
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 //아예 그날 영업이 끝난 경우도 따로 상정해야할것
 
-class BookTimeRVAdapter(var context: Context, val bookTimeData: BookTimeData):RecyclerView.Adapter<BookTimeRVAdapter.Holder>() {
+class BookTimeRVAdapter(var context: Context, val bookTimeData: BookData):RecyclerView.Adapter<BookTimeRVAdapter.Holder>() {
     var timeNumMax = bookTimeData.getTimeArrayList().size
     var timePoint = timeset()
     var vartimePoint=timePoint
@@ -94,15 +94,14 @@ class BookTimeRVAdapter(var context: Context, val bookTimeData: BookTimeData):Re
             }
             else{//예약이 빈 경우
                 buttonLeft.setOnClickListener {
-                    Log.d("확인 BookTimeRVAdapter", "버튼클릭")
+                    //Log.d("확인 BookTimeRVAdapter", "버튼클릭")
+
+                    /*
                     val intent= Intent(itemView.context, BookTable::class.java)
-                    Log.d("확인 BookTimeRVAdapter", "1")
                     intent.putExtra("sikdangId", bookTimeData.getSikdangId())
-                    Log.d("확인 BookTimeRVAdapter", "2"+callTimePoint.toString())
-                    Log.d("확인 BookTimeRVAdapter", "3")
                     intent.putExtra("tableTime", bookTimeData.getTimeArrayList()[callTimePoint])
-                    Log.d("확인 BookTimeRVAdapter", "call BookTable")
-                    context.startActivity(intent)
+                    context.startActivity(intent)*/
+                    //getActivity().replaceFragment(TableFragment.newInstance())
                 }
             }
 

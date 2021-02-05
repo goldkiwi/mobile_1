@@ -1,8 +1,11 @@
 package com.example.myapplication.bookTime
 
 import com.example.myapplication.R
+import java.io.Serializable
 
-class BookTimeData(sikdangId_:Int) {
+//프래그먼트간에 intent로 안되니 Bundle로 넘김
+//여기서 Serializable
+class BookData(sikdangId_:Int):Serializable {
     private var sikdangName: String = ""
     private var sikdangImage:Int=0
     private val sikdangId = sikdangId_
@@ -10,6 +13,11 @@ class BookTimeData(sikdangId_:Int) {
     lateinit private var isFull:ArrayList<Boolean> // 각 예약시간대에 예약이 차있는가
     init{
         setData(sikdangId)
+    }
+
+
+    public fun setName(sikdangName_:String){
+        sikdangName=sikdangName_
     }
 
 
