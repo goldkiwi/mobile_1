@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter
 
 //아예 그날 영업이 끝난 경우도 따로 상정해야할것
 
-class BookTimeRVAdapter(var context: Context, val bookTimeData: BookData):RecyclerView.Adapter<BookTimeRVAdapter.Holder>() {
+class BookTimeRVAdapter(var context: Context, val bookTimeData: BookData, val bookTimeActivity:BookTime):RecyclerView.Adapter<BookTimeRVAdapter.Holder>() {
     var timeNumMax = bookTimeData.getTimeArrayList().size
     var timePoint = timeset()
     var vartimePoint=timePoint
@@ -102,6 +102,11 @@ class BookTimeRVAdapter(var context: Context, val bookTimeData: BookData):Recycl
                     intent.putExtra("tableTime", bookTimeData.getTimeArrayList()[callTimePoint])
                     context.startActivity(intent)*/
                     //getActivity().replaceFragment(TableFragment.newInstance())
+
+                    var tableFragment = TableFragment()
+                    //val aaaa=activity as BookTime
+                    //(aaaa as BookTime).replaceTableFragment(tableFragment)
+                    bookTimeActivity.replaceTableFragment(tableFragment)
                 }
             }
 

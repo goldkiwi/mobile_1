@@ -29,11 +29,13 @@ class TimeFragment() : Fragment() {
         else{
             Log.d("확인 TimeFragment.bind", "else")
         }
+        var bookTimeActivity= activity as BookTime
+
 
         //bookData = bundle!!.getSerializable("bookData") as BookData
         //Log.d("확인 TimeFragment.bind", bookData.getSikdangName())
         var bookTimeRV : RecyclerView = itemView.findViewById(R.id.bookTimeRV2)
-        var bookTimeRVAdapter = BookTimeRVAdapter(this!!.getActivity()!!, bookData)
+        var bookTimeRVAdapter = BookTimeRVAdapter(this!!.getActivity()!!, bookData, bookTimeActivity)
         bookTimeRV.adapter = bookTimeRVAdapter
 
 

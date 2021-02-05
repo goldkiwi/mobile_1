@@ -24,7 +24,7 @@ class BookTable: AppCompatActivity() {
 
 
         val fragment = TableFragment()
-        //fragmentTransaction.add(R.id.bookFragment, fragment)
+        fragmentTransaction.add(R.id.tableFragment, fragment)
         //fragmentTransaction.commit()
     }
 }

@@ -7,16 +7,24 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="244dp"
+        android:layout_height="6dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="식당이름"
         android:textSize="30sp" />
 
-    <fragment
-        android:id="@+id/bookFragment"
-        android:name="com.example.myapplication.bookTable.TableFragment"
+    <Button
+        android:id="@+id/button3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_height="103dp"
+        android:layout_weight="1"
+        android:text="Button" />
+
+    <FrameLayout
+        android:id="@+id/tableFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+    </FrameLayout>
 </LinearLayout>
