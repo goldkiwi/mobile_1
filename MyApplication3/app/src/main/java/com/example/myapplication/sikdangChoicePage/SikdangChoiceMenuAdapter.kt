@@ -91,6 +91,7 @@ class SikdangChoiceMenuAdapter(var context : Context, var sikdangListReqData: Si
             menuLL.setOnClickListener(){
                 val intent= Intent(itemView.context, BookTime::class.java)
                 intent.putExtra("sikdangId", sikdangId)
+                Log.d("확인 SikdangChoiceMenuAdapter ", "BookTime 호출")
                 context.startActivity(intent)
 
             }

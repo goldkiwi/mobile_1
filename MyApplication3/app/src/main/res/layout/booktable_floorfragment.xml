@@ -9,7 +9,7 @@
     >
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/floorText"
         android:layout_width="match_parent"
         android:layout_height="115dp"
         android:gravity="center"
@@ -20,15 +20,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="136dp"
-        android:text="Button" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/floorLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/sikdangStr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/sikdangstr" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </LinearLayout>

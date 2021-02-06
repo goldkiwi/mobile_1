@@ -8,10 +8,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.myapplication.R
+import com.example.myapplication.bookTable.TableFragment
 
 //아예 시간표는 프래그먼트로 넣을까?
 
 class BookTime: AppCompatActivity() {
+    val fragmentManager = supportFragmentManager
+    val fragmentTransaction = fragmentManager.beginTransaction()
+
+
+    lateinit var bookData :BookData
+    var fragmentPage = 0
+
+    //var tableFragment = TableFragment()
+    var timeFragment = TimeFragment()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +30,7 @@ class BookTime: AppCompatActivity() {
         Log.d("확인 BookTime", "onCreate")
         //식당 id 불러와서 BookTimeData에 데이터 set
         var sikdangId = intent.getExtras()!!.getInt("sikdangId")
-        val bookData = BookData(sikdangId)
+        bookData = BookData(sikdangId)
 
 
         //식당 이미지 set
@@ -44,18 +54,15 @@ class BookTime: AppCompatActivity() {
 
         //showBookTime(bookTimeData)
 
-
-        bookData.setName("시익당")
-        val timeFragment = TimeFragment()
-
+        replaceTimeFragment(timeFragment)
+        /*
         var bundle:Bundle = Bundle()
         bundle.putSerializable("bookData", bookData)
         timeFragment.setArguments(bundle)
+        fragmentPage=1
 
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.bookFragment, timeFragment).commit()*/
 
-        fragmentManager.beginTransaction().replace(R.id.bookFragment, timeFragment).commit()
         //fragmentTransaction.replace(R.id.bookFragment, timeFragment)
 
         //fragmentTransaction.add(R.id.bookFragment, timeFragment)
@@ -67,19 +74,45 @@ class BookTime: AppCompatActivity() {
 
 
 
+
+    }
+    public fun replaceTimeFragment(timeFragment: Fragment) {
+        fragmentPage=1
+        var bundle:Bundle = Bundle()
+        bundle.putSerializable("bookData", bookData)
+        timeFragment.setArguments(bundle)
+        //val fragmentManager = supportFragmentManager
+        val fragmentTransaction2 = fragmentManager.beginTransaction()
+
+        fragmentTransaction2.replace(R.id.bookFragment, timeFragment).commit()
     }
 
     //테이블 프래그먼트 호출하는 함수
-    public fun replaceTableFragment(fragment: Fragment) {
-        var fragmentManager: FragmentManager = getSupportFragmentManager()
-        var fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.bookFragment, fragment).commit();
+    public fun replaceTableFragment() {
+        var tableFragment = TableFragment()
+        fragmentPage = 2
+        var bundle:Bundle = Bundle()
+        bundle.putSerializable("bookData", bookData)
+        tableFragment.setArguments(bundle)
+        val fragmentTransaction3 = fragmentManager.beginTransaction()
+        fragmentTransaction3.replace(R.id.bookFragment, tableFragment).commit()
     }
 
 
     //그 뭐냐 그 뒤로가기 버튼 눌으면 전 프래그먼트로 돌아가게 해야함
     override fun onBackPressed() {
-
+        if (fragmentPage == 1){
+            Log.d("확인 onBackPressed", fragmentPage.toString())
+            super.onBackPressed()
+        }
+        else if(fragmentPage == 2){
+            Log.d("확인 onBackPressed", fragmentPage.toString())
+            replaceTimeFragment(timeFragment)
+        }
+        else {
+            Log.d("확인 onBackPressed", fragmentPage.toString())
+            super.onBackPressed()
+        }
     }
 
 

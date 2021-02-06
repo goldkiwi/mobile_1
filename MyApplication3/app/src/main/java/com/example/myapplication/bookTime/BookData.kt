@@ -1,5 +1,6 @@
 package com.example.myapplication.bookTime
 
+import android.util.Log
 import com.example.myapplication.R
 import java.io.Serializable
 
@@ -14,6 +15,13 @@ class BookData(sikdangId_:Int):Serializable {
     init{
         setData(sikdangId)
     }
+
+    private var floor:Int =2//층수
+    private var bookTime:String = ""
+    init{
+        Log.d("확인 BookData", sikdangId.toString()+"생성@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    }
+
 
 
     public fun setName(sikdangName_:String){
@@ -35,6 +43,18 @@ class BookData(sikdangId_:Int):Serializable {
     }
     public fun getIsFull():ArrayList<Boolean>{
         return isFull
+    }
+    public fun getFloor():Int{
+        return floor
+    }
+    public fun getBookTime():String{
+        return bookTime
+    }
+
+
+
+    public fun setBookTime(time:String){
+        bookTime = time
     }
 
 
@@ -61,6 +81,11 @@ class BookData(sikdangId_:Int):Serializable {
                 false, true)
 
     }
+
+
+
+
+
 
 
 }

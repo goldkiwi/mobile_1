@@ -13,7 +13,7 @@ import com.example.myapplication.R
 //BookTime 의 프래그먼트에 붙일 리사이클러뷰를 설정
 class TimeFragment() : Fragment() {
     //북 타임 데이터는 BookTime에서 데이터 받아와야함 원래
-    var bookData=BookData(1234568)
+    lateinit var bookData:BookData
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -37,6 +37,7 @@ class TimeFragment() : Fragment() {
         var bookTimeRV : RecyclerView = itemView.findViewById(R.id.bookTimeRV2)
         var bookTimeRVAdapter = BookTimeRVAdapter(this!!.getActivity()!!, bookData, bookTimeActivity)
         bookTimeRV.adapter = bookTimeRVAdapter
+
 
 
         var sikdangChice_catLineLM = LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false)
