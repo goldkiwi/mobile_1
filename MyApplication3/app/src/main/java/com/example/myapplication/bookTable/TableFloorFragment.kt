@@ -52,21 +52,29 @@ class TableFloorFragment():Fragment() {
 
 
         var i = 0
+        Log.d("확인 TableFloorFragment().bind", tableData.recTableList.size.toString())
         while(i<tableData.recTableList.size){
             var button= Button(getContext())
             if (tableData.recTableList[i].isBooked == true){
-                button.setBackgroundColor(Color.WHITE)
+                button.setBackgroundColor(Color.GRAY)
             }
             else{
                 button.setBackgroundColor(Color.RED)
             }
-            var layoutParams = ConstraintLayout.LayoutParams (ViewGroup.LayoutParams. WRAP_CONTENT , ViewGroup.LayoutParams. WRAP_CONTENT )
-            layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
-            layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
-            layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
-            //layoutParams.topMargin = fromDpToPx(LAYOUT_MARGIN_TOP);
-            //layoutParams.matchConstraintPercentHeight = -1f
+            //button.width = tableData.recTableList[i].lengX.toInt()
+            ///button.height = tableData.recTableList[i].lengY.toInt()
+            ///button.width =5
 
+            //var layoutParams = ConstraintLayout.LayoutParams (ViewGroup.LayoutParams. WRAP_CONTENT , ViewGroup.LayoutParams. WRAP_CONTENT )
+            var layoutParams = ConstraintLayout.LayoutParams (dpToPx(50), dpToPx(50))
+            //with와 height에 픽셀값 들어감 => dp를 픽셀값으로 변환한 값 들어가야 한다.
+
+            layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+            layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
+            layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID
+            layoutParams.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
+            layoutParams.horizontalBias =tableData.recTableList[i].locX
+            layoutParams.verticalBias =tableData.recTableList[i].locy
 
 
 
@@ -81,11 +89,16 @@ class TableFloorFragment():Fragment() {
             //button.setLayoutParams(layoutParam)
             //button.constra
 
-
             i++
         }
 
 
-
     }
+
+    public fun dpToPx(dp:Int):Int {
+        var density:Float = getResources().getDisplayMetrics().density;
+        return Math.round(dp.toFloat() * density.toFloat()).toInt()
+    }
+
+
 }
