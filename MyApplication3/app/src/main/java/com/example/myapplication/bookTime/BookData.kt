@@ -60,6 +60,7 @@ class BookData(sikdangId_:Int):Serializable {
 
     //여기세 데이터베이스 접속해서
     //지금 들어가있는건 임시 데이터
+    //아래있는것들만 데이터베이스에서 호출
    private fun setData(sikdangId: Int){
         sikdangName = "시이이익당이름"
         sikdangImage= R.drawable.sikdangimage

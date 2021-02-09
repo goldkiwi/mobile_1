@@ -4,11 +4,8 @@ package com.example.myapplication.bookTable
 
 class TableData(val sikdangId:Int, val bookTime:String) {
     //가로좌표 세로좌표 가로길이 세로길이
-    //var recTable=arrayListOf(0, 0, 0, 0)
-    //var circleTable=arrayListOf(0, 0, 0, 0)
 
-    var recTableList=ArrayList<RecTable>()
-    var circleTableList=ArrayList<CircleTable>()
+    var tableList = ArrayList<Table>()
 
 
     init{
@@ -16,20 +13,18 @@ class TableData(val sikdangId:Int, val bookTime:String) {
 
     }
     //여기서 DB 접근 현재는 임시데이터
+    //tableList 만 채워주면 된다
     private fun setData(){
-        var recNum = 3
-        var cirNum = 2
 
-        recTableList.add(RecTable(0.5F, 0.5F, 0.05F, 0.05F, 4, false))
-        recTableList.add(RecTable(0.7F, 0.5F, 0.05F, 0.05F, 4, true))
-        recTableList.add(RecTable(0.9F, 0.5F, 0.05F, 0.05F, 4, false))
-        circleTableList.add(CircleTable(0.5F, 0.7F, 0.05F, 0.05F, 4, false))
-        circleTableList.add(CircleTable(0.5F, 0.9F, 0.05F, 0.05F, 4, true))
+        tableList.add(Table(0.5F, 0.3F, 30, 30, 2, true, true))
+        tableList.add(Table(0.6F, 0.3F, 30, 30, 2, false, true))
+        tableList.add(Table(0.7F, 0.3F, 30, 30, 4, false, true))
+        tableList.add(Table(0.2F, 0.6F, 60, 30, 6, false, false))
+        tableList.add(Table(0.35F, 0.6F, 60, 30, 3, true, false))
 
     }
 
-    inner class RecTable(var locX:Float, var locy:Float, var lengX:Float, var lengY:Float, var maxP:Int, var isBooked:Boolean){
+    inner class Table(var locX:Float, var locy:Float, var lengX:Int, var lengY:Int, var maxP:Int, var isBooked:Boolean, var isCircle:Boolean){
     }
-    inner class CircleTable(var locX:Float, var locy:Float, var lengX:Float, var lengY:Float, var maxP:Int, var isBooked:Boolean){
-    }
+
 }
