@@ -16,8 +16,8 @@ class TableData(val sikdangId:Int, val bookTime:String) {
     //tableList 만 채워주면 된다
     private fun setData(){
 
-        tableList.add(Table(0.5F, 0.3F, 30, 30, 2, true, true))
-        tableList.add(Table(0.6F, 0.3F, 30, 30, 2, false, true))
+        tableList.add(Table(0.5F, 0.3F, 50, 50, 2, true, true))
+        tableList.add(Table(0.6F, 0.3F, 50, 50, 2, false, true))
         tableList.add(Table(0.7F, 0.3F, 30, 30, 4, false, true))
         tableList.add(Table(0.2F, 0.6F, 60, 30, 6, false, false))
         tableList.add(Table(0.35F, 0.6F, 60, 30, 3, true, false))

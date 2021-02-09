@@ -38,5 +38,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/cCopleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="선택 완료" />
+
 
 </LinearLayout>

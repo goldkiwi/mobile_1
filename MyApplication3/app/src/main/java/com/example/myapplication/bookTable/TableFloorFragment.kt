@@ -25,6 +25,8 @@ class TableFloorFragment():Fragment()  {
     var pos:Int = 0
     var tfFragment = this
     var tableButtonAR = ArrayList<Button>()
+    var numAR =ArrayList<Int>()
+    lateinit var tableData:TableData
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d("확인 TableFloorFragment()", "onCreateView")
@@ -51,7 +53,7 @@ class TableFloorFragment():Fragment()  {
         var floorText:TextView = view.findViewById(R.id.floorText)
         floorText.setText((pos+1).toString()+"층 "+bookData.getBookTime())
 
-        var tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
+        tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
 
         var tableLayout:ConstraintLayout = view.findViewById(R.id.floorLayout)
 
@@ -87,7 +89,7 @@ class TableFloorFragment():Fragment()  {
                     roundDrawable = resources.getDrawable(R.drawable.button_round_gray, null)
                     button.setOnClickListener {
                         //Log.d("확인 원형테이블 인원", tableData.circleTableList[i].maxP.toString())
-                        showDialog(tableData.tableList[count].maxP)
+                        showDialog(tableData.tableList[count].maxP, count)
                     }
                 }
                 button.background = roundDrawable
@@ -103,7 +105,7 @@ class TableFloorFragment():Fragment()  {
                     button.setBackgroundColor(parseColor("#CCCCCC"))
                     button.setOnClickListener {
 
-                        showDialog(tableData.tableList[count].maxP)
+                        showDialog(tableData.tableList[count].maxP, count)
 
                     }
                 }
@@ -125,7 +127,7 @@ class TableFloorFragment():Fragment()  {
 
             button.setLayoutParams(layoutParams)
             tableLayout.addView(button)
-
+            numAR.add(0)
             tableButtonAR.add(button)
             i++
         }
@@ -140,18 +142,42 @@ class TableFloorFragment():Fragment()  {
         return Math.round(dp.toFloat() * density.toFloat()).toInt()
     }
 
-    public fun showDialog(tablePerson:Int){
-        var customDialog = BookPersonDialog(this!!.getContext()!!, tablePerson, tfFragment)
+    public fun showDialog(tablePerson:Int, tableNum: Int){
+        var customDialog = BookPersonDialog(this!!.getContext()!!, tablePerson, tfFragment, tableNum)
         customDialog!!.show()
     }
     //dialog에서 인원수 선택 버튼 클릭될 경우
     public fun pNumButtonClicked(tableNum:Int, pnum:Int){
-        Log.d("확인 TableFloorFragment()", "dialog 예약 확인"+tableNum.toString()+" "+tableButtonAR.size.toString())
-        tableButtonAR[tableNum].setBackgroundColor(parseColor("#CC5555"))
+        //Log.d("확인 TableFloorFragment()", "dialog 예약 확인"+tableNum.toString()+" "+tableButtonAR.size.toString())
+        if (tableData.tableList[tableNum].isCircle==true){//원형의 경우
+            var roundDrawable= resources.getDrawable(R.drawable.button_round_green, null)
+            tableButtonAR[tableNum].background = roundDrawable
+        }
+        else tableButtonAR[tableNum].setBackgroundColor(parseColor("#55CC55"))
         tableButtonAR[tableNum].setText(pnum.toString())
+        numAR[tableNum] = pnum
+        logNumAR()
+
     }
     public fun cancelButtonClicked(tableNum:Int){
 
+        if (tableData.tableList[tableNum].isCircle==true){//원형의 경우
+            var roundDrawable= resources.getDrawable(R.drawable.button_round_gray, null)
+            tableButtonAR[tableNum].background = roundDrawable
+        }
+        else tableButtonAR[tableNum].setBackgroundColor(parseColor("#CCCCCC"))
+        tableButtonAR[tableNum].setText("")
+        numAR[tableNum] = 0
+        logNumAR()
+    }
+    public fun logNumAR(){
+        var i = 0
+        var aa=""
+        while (i<numAR.size){
+            aa+=numAR[i].toString()
+            i++
+        }
+        Log.d("확인 numAR", aa)
     }
 
 
