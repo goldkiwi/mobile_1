@@ -10,7 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
 import com.example.myapplication.bookTime.BookData
 
-
+//BookTime에서 사용
 class TableFragment: Fragment() {
     lateinit var bookData:BookData
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

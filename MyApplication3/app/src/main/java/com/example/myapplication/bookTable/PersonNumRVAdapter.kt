@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-
-class PersonNumRVAdapter(var context: Context, val maxP:Int, val bookPersonDialog: BookPersonDialog):RecyclerView.Adapter<PersonNumRVAdapter.Holder>() {
+//BookPersonDialog에서 사용
+//다이얼로그의 인원수 나타내는 버튼을 리사이클러뷰에 바인드
+class PersonNumRVAdapter(var context: Context, val maxP:Int, val bookPersonDialog: BookPersonDialog, val floor:Int, var curP:Int):RecyclerView.Adapter<PersonNumRVAdapter.Holder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -32,6 +33,10 @@ class PersonNumRVAdapter(var context: Context, val maxP:Int, val bookPersonDialo
             var button = itemView.findViewById<Button>(R.id.gItem_button)
             //button.width = 5
             button.setText((pos+1).toString())
+            if((curP != 0) and (curP == (pos+1))){
+                button.setBackgroundColor(Color.parseColor("#55CC55"))
+            }
+
             var pNum = pos+1
             button.setOnClickListener {
                 //버튼 클릭하면 이전 액티비티로 데이터 전달
