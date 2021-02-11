@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.myapplication.R
+import com.example.myapplication.bookMenu.MenuFragment
 import com.example.myapplication.bookTable.TableFragment
 
 //아예 시간표는 프래그먼트로 넣을까?
@@ -22,6 +23,13 @@ class BookTime: AppCompatActivity() {
 
     //var tableFragment = TableFragment()
     var timeFragment = TimeFragment()
+    //var menuFragment = MenuFragment()
+
+    //TableFloorFragment에서 받아와 MenuFragment로 전달하는 데이터
+    //몇페이지인가와 그 페이지의 테이블 정보를 가져와서 리스트에 추가한다
+    var isTableInfoInit : Boolean = false
+    var tablePage = ArrayList<Int>()
+    var tableNumAR=ArrayList<ArrayList<Int>>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,11 +103,26 @@ class BookTime: AppCompatActivity() {
         bundle.putSerializable("bookData", bookData)
         tableFragment.setArguments(bundle)
         val fragmentTransaction3 = fragmentManager.beginTransaction()
+
         fragmentTransaction3.replace(R.id.bookFragment, tableFragment).commit()
+    }
+
+    public fun replaceMenuFragment() {
+        var menuFragment = MenuFragment()
+        fragmentPage = 3
+        var bundle:Bundle = Bundle()
+        bundle.putSerializable("bookData", bookData)
+        menuFragment.setArguments(bundle)
+        val fragmentTransaction4 = fragmentManager.beginTransaction()
+
+        fragmentTransaction4.replace(R.id.bookFragment, menuFragment).commit()
+
     }
 
 
     //그 뭐냐 그 뒤로가기 버튼 눌으면 전 프래그먼트로 돌아가게 해야함
+    //전 프래그먼트로 돌아갈 시 데이터 없어짐 - 데이터 이어지도록 해야 함 - 좀 나중으로 미룸?
+
     override fun onBackPressed() {
         if (fragmentPage == 1){
             Log.d("확인 onBackPressed", fragmentPage.toString())
@@ -109,10 +132,27 @@ class BookTime: AppCompatActivity() {
             Log.d("확인 onBackPressed", fragmentPage.toString())
             replaceTimeFragment(timeFragment)
         }
+        else if(fragmentPage == 3){
+            Log.d("확인 onBackPressed", fragmentPage.toString())
+            replaceTableFragment()
+        }
         else {
             Log.d("확인 onBackPressed", fragmentPage.toString())
             super.onBackPressed()
         }
+    }
+
+    //TableFloorFragment에서 호출
+    //페이지와 그 페이지의 각 테이블에 몇명 앉는가의 정보를 받아온다
+    //매번 데이터를 받아와햐하는데 그러려변 미리 ArrayList가 초기화되어있어야 한다
+    public fun tableInfoInit(){//이건 아마 TableFragment에서 호출해야할듯
+
+        isTableInfoInit = true//초기화 끝나고 다시 안바뀌도록 한다
+    }
+
+    public fun setTableInfo(tablePage_:Int, tableNumAR_:ArrayList<Int>){
+        tablePage.add(tablePage_)
+        tableNumAR.add(tableNumAR_)
     }
 
 

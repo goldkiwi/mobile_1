@@ -11,18 +11,19 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.bookTime.BookData
+import com.example.myapplication.bookTime.BookTime
 
 //tableVPAdapter에서 사용
 //테이블 레이아웃 부분 바인드
 class TableFloorFragment():Fragment()  {
     //NoticeDialogFragment.NoticeDialogListener
     //lateinit var bookData:BookData
-    var pos:Int = 0
+    var pos:Int = 0//몇 번째 페이지인가
     var tfFragment = this
-    var tableButtonAR = ArrayList<Button>()
-    var numAR =ArrayList<Int>()
+    var tableButtonAR = ArrayList<Button>()//현재 층의 테이블의 버튼 리스트
+    var numAR =ArrayList<Int>()//각 테이블에 몇명 예약 넣었는가
     lateinit var tableData:TableData
-    var floorNum : Int = 0
+    var floorNum : Int = 0//현재 층
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d("확인 TableFloorFragment()", "onCreateView")
@@ -204,6 +205,11 @@ class TableFloorFragment():Fragment()  {
             i++
         }
         Log.d("확인 numAR", aa)
+    }
+
+    private fun transferTableData(){
+        var bookTimeActivity= activity as BookTime
+        bookTimeActivity.setTableInfo(pos, numAR)
     }
 
 
