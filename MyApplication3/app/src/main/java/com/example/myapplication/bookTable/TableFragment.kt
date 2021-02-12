@@ -15,6 +15,7 @@ import com.example.myapplication.bookTime.BookTime
 //BookTime에서 사용
 class TableFragment: Fragment() {
     lateinit var bookData:BookData
+    lateinit var tableData:TableData
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d("확인 TableFragment", "onCreateView")
         var view = inflater.inflate(R.layout.booktable_fragment, container, false)
@@ -32,15 +33,17 @@ class TableFragment: Fragment() {
         else{
             Log.d("확인 TimeFragment.bind", "else")
         }
+        tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
         //뷰페이저
         var vp = view.findViewById<ViewPager2>(R.id.tableVP)
-        var vpAdapter = TableVPAdapter(this.getActivity()!!, bookData)
+        var vpAdapter = TableVPAdapter(this.getActivity()!!, bookData, tableData)
         vp.adapter=vpAdapter
+        var bookTimeActivity= activity as BookTime
+        bookTimeActivity.tableInfoInit(tableData.floorList.size, tableData.tableNumList)//BookTime 에서 초기 테이블 정보 초기화
 
         var completeButton = view.findViewById<Button>(R.id.tableCompleteButton)
         completeButton.setOnClickListener {
             Log.d("확인 TableFragment", "BookTime의 bookTimeActivity호출")
-            var bookTimeActivity= activity as BookTime
             bookTimeActivity.replaceMenuFragment()
         }
 

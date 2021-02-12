@@ -1,13 +1,17 @@
 package com.example.myapplication.bookTable
 
 import android.util.Log
+import java.io.Serializable
 
 //이것도 DB접속해서 가져와야하나?
+//TableFloorFragment에서 초기화
 
-class TableData(val sikdangId:Int, val bookTime:String) {
+//TableFragment에서 초기화되어 TableVPAdapter에 매개변수로서 전달 -> TableFloorFragment로 serializable - bundle로 전달
+
+class TableData(val sikdangId:Int, val bookTime:String): Serializable {
     //가로좌표 세로좌표 가로길이 세로길이
 
-    var tableList = ArrayList<Table>()
+    var tableList = ArrayList<Table>()//각 테이블 정보 담긴 리스트
     var floorList = ArrayList<Int>()//식당 각 몇층인지
     var tableNumList = ArrayList<Int>()//각 층에 테이블 몇개인지
     var accumTableNumList = ArrayList<Int>()//테이블 개수 축적

@@ -25,6 +25,8 @@ class TableFloorFragment():Fragment()  {
     lateinit var tableData:TableData
     var floorNum : Int = 0//현재 층
 
+    //var bookTimeActivity= activity as BookTime
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d("확인 TableFloorFragment()", "onCreateView")
 
@@ -42,13 +44,14 @@ class TableFloorFragment():Fragment()  {
         var bundle = getArguments()
         if (bundle != null) {
             bookData = bundle.getSerializable("bookData") as BookData
+            tableData = bundle.getSerializable("tableData") as TableData
             pos = bundle.getInt("pos")
         }
         else{
             Log.d("확인 TimeFragment.bind", "else")
         }
         var floorText:TextView = view.findViewById(R.id.floorText)
-        tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
+        //tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
         floorNum = tableData.floorList[pos]
         floorText.setText(floorNum.toString()+"층 "+bookData.getBookTime())
 
@@ -177,7 +180,8 @@ class TableFloorFragment():Fragment()  {
             //Log.d("확인 floor", "종료지점 확인 4")
             numAR[floorTable] = pnum
             //Log.d("확인 floor", "종료지점 확인 5")
-            logNumAR()
+            //logNumAR()
+            transferTableData()
         }
         //Log.d("확인 floor", "종료지점 확인 6")
 
@@ -195,7 +199,8 @@ class TableFloorFragment():Fragment()  {
         else tableButtonAR[floorTable].setBackgroundColor(parseColor("#CCCCCC"))
         tableButtonAR[floorTable].setText("")
         numAR[floorTable] = 0
-        logNumAR()
+        transferTableData()
+        //logNumAR()
     }
     public fun logNumAR(){
         var i = 0
@@ -207,6 +212,13 @@ class TableFloorFragment():Fragment()  {
         Log.d("확인 numAR", aa)
     }
 
+    //초기 테이블 데이터를 액티비티의 변수로 전달/초기화
+    /*
+    private fun tableDataInitInActivity(){
+        //var bookTimeActivity= activity as BookTime
+        bookTimeActivity.tableInfoInit()
+    }*/
+    //데이터 변동시마다 액티비티에 값을 전달달
     private fun transferTableData(){
         var bookTimeActivity= activity as BookTime
         bookTimeActivity.setTableInfo(pos, numAR)
