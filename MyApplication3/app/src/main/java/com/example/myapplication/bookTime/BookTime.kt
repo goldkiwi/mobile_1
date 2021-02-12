@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.myapplication.R
+import com.example.myapplication.bookMenu.MenuData
 import com.example.myapplication.bookMenu.MenuFragment
+import com.example.myapplication.bookTable.TableData
 import com.example.myapplication.bookTable.TableFragment
 
 //아예 시간표는 프래그먼트로 넣을까?
@@ -19,6 +21,7 @@ class BookTime: AppCompatActivity() {
 
 
     lateinit var bookData :BookData
+    lateinit var menuData: MenuData
     var fragmentPage = 0
 
     //var tableFragment = TableFragment()
@@ -29,7 +32,7 @@ class BookTime: AppCompatActivity() {
     //몇페이지인가와 그 페이지의 테이블 정보를 가져와서 리스트에 추가한다
     var isTableInfoInit : Boolean = false
     var tablePage = ArrayList<Int>()
-    var tableNumAR=ArrayList<ArrayList<Int>>()
+    var tableNumAR=ArrayList<ArrayList<Int>>()//각 층의 각 테이블에 몇명 예약했는지를 저장하는 리스트
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +42,7 @@ class BookTime: AppCompatActivity() {
         //식당 id 불러와서 BookTimeData에 데이터 set
         var sikdangId = intent.getExtras()!!.getInt("sikdangId")
         bookData = BookData(sikdangId)
+        menuData = MenuData(sikdangId)
 
 
         //식당 이미지 set
@@ -112,6 +116,7 @@ class BookTime: AppCompatActivity() {
         fragmentPage = 3
         var bundle:Bundle = Bundle()
         bundle.putSerializable("bookData", bookData)
+        bundle.putSerializable("menuData", menuData)
         menuFragment.setArguments(bundle)
         val fragmentTransaction4 = fragmentManager.beginTransaction()
 
@@ -145,14 +150,43 @@ class BookTime: AppCompatActivity() {
     //TableFloorFragment에서 호출
     //페이지와 그 페이지의 각 테이블에 몇명 앉는가의 정보를 받아온다
     //매번 데이터를 받아와햐하는데 그러려변 미리 ArrayList가 초기화되어있어야 한다
-    public fun tableInfoInit(){//이건 아마 TableFragment에서 호출해야할듯
-
+    //TableFragment 에서 총 몇층인지, 각 층의 테이블이 몇개인지 매개변수로 전달받아 초기화
+    public fun tableInfoInit(floorNum:Int, tableNum:ArrayList<Int>){//이건 아마 TableFragment에서 호출해야할듯
+        var i = 0
+        while (i< floorNum){
+            var j = 0
+            var tempAR = ArrayList<Int>()
+            while (j<tableNum[i]){
+                tempAR.add(0)
+                j++
+            }
+            tableNumAR.add(tempAR)
+            i++
+        }
+        Log.d("확인 BookTime.TableNumAR", "초기화")
+        logTableNumAR()
         isTableInfoInit = true//초기화 끝나고 다시 안바뀌도록 한다
     }
 
     public fun setTableInfo(tablePage_:Int, tableNumAR_:ArrayList<Int>){
-        tablePage.add(tablePage_)
-        tableNumAR.add(tableNumAR_)
+        //tablePage.add(tablePage_)
+        tableNumAR[tablePage_] = tableNumAR_
+        logTableNumAR()
+    }
+
+    private fun logTableNumAR(){
+        var i = 0
+        var logString=""
+        while(i<tableNumAR.size){
+            var j = 0
+            while (j<tableNumAR[i].size){
+                logString+=tableNumAR[i][j].toString()
+                j++
+            }
+            i++
+        }
+        Log.d("확인 BookTime.TableNumAR", logString)
+
     }
 
 
