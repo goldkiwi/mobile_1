@@ -1,17 +1,17 @@
 package com.example.myapplication.bookTime
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.myapplication.R
 import com.example.myapplication.bookMenu.MenuData
 import com.example.myapplication.bookMenu.MenuFragment
-import com.example.myapplication.bookTable.TableData
 import com.example.myapplication.bookTable.TableFragment
+
 
 //아예 시간표는 프래그먼트로 넣을까?
 
@@ -117,6 +117,9 @@ class BookTime: AppCompatActivity() {
         var bundle:Bundle = Bundle()
         bundle.putSerializable("bookData", bookData)
         bundle.putSerializable("menuData", menuData)
+        //bundle.putParcelableArrayList("tableNumAR", tableNumAR as ArrayList<out Parcelable?>?)
+        //bundle.putSerializableExtras()
+        //bundle.putString("tableNumAR", tableNumAR.toString())
         menuFragment.setArguments(bundle)
         val fragmentTransaction4 = fragmentManager.beginTransaction()
 
@@ -153,18 +156,20 @@ class BookTime: AppCompatActivity() {
     //TableFragment 에서 총 몇층인지, 각 층의 테이블이 몇개인지 매개변수로 전달받아 초기화
     public fun tableInfoInit(floorNum:Int, tableNum:ArrayList<Int>){//이건 아마 TableFragment에서 호출해야할듯
         var i = 0
-        while (i< floorNum){
-            var j = 0
-            var tempAR = ArrayList<Int>()
-            while (j<tableNum[i]){
-                tempAR.add(0)
-                j++
+        if (isTableInfoInit == false) {
+            while (i < floorNum) {
+                var j = 0
+                var tempAR = ArrayList<Int>()
+                while (j < tableNum[i]) {
+                    tempAR.add(0)
+                    j++
+                }
+                tableNumAR.add(tempAR)
+                i++
             }
-            tableNumAR.add(tempAR)
-            i++
+            Log.d("확인 BookTime.TableNumAR", "초기화")
+            logTableNumAR()
         }
-        Log.d("확인 BookTime.TableNumAR", "초기화")
-        logTableNumAR()
         isTableInfoInit = true//초기화 끝나고 다시 안바뀌도록 한다
     }
 
