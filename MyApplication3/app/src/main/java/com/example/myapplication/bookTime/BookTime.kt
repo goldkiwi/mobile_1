@@ -33,6 +33,7 @@ class BookTime: AppCompatActivity() {
     var isTableInfoInit : Boolean = false
     var tablePage = ArrayList<Int>()
     var tableNumAR=ArrayList<ArrayList<Int>>()//각 층의 각 테이블에 몇명 예약했는지를 저장하는 리스트
+    var tableNumARString=""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,7 +118,9 @@ class BookTime: AppCompatActivity() {
         var bundle:Bundle = Bundle()
         bundle.putSerializable("bookData", bookData)
         bundle.putSerializable("menuData", menuData)
-        //bundle.putParcelableArrayList("tableNumAR", tableNumAR as ArrayList<out Parcelable?>?)
+        Log.d("확인 replaceMenuFragment ArrayList.Tostring ", tableNumAR.toString())
+
+        bundle.putParcelableArrayList("tableNumAR", tableNumAR as ArrayList<out Parcelable?>?)
         //bundle.putSerializableExtras()
         //bundle.putString("tableNumAR", tableNumAR.toString())
         menuFragment.setArguments(bundle)
@@ -162,20 +165,50 @@ class BookTime: AppCompatActivity() {
                 var tempAR = ArrayList<Int>()
                 while (j < tableNum[i]) {
                     tempAR.add(0)
+                    tableNumARString+=0.toString()
                     j++
                 }
+                tableNumARString+="n"
                 tableNumAR.add(tempAR)
                 i++
             }
             Log.d("확인 BookTime.TableNumAR", "초기화")
+            Log.d("확인 BookTime.TableNumARStraing", tableNumARString)
             logTableNumAR()
         }
         isTableInfoInit = true//초기화 끝나고 다시 안바뀌도록 한다
     }
 
+    public fun setTableInfoToString(){
+        Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", "시작")
+        var i = 0
+        var k = 0
+        var tempString = ""
+        while (i < tableNumAR.size) {
+            var j = 0
+            var tempAR = ArrayList<Int>()
+            while (j < tableNumAR[i].size) {
+                //tableNumARString[k] = tableNumAR[i][j]
+                tempString+= tableNumAR[i][j].toString()
+                j++
+                //k++
+            }
+            tempString+="n"
+            //k++
+            i++
+        }
+        tableNumARString = tempString
+        Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", tableNumARString)
+        logTableNumAR()
+
+
+    }
+
     public fun setTableInfo(tablePage_:Int, tableNumAR_:ArrayList<Int>){
         //tablePage.add(tablePage_)
         tableNumAR[tablePage_] = tableNumAR_
+        var i = 0
+        setTableInfoToString()
         logTableNumAR()
     }
 

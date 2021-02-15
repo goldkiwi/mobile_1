@@ -26,8 +26,20 @@ class MenuFragment: Fragment() {
         if (bundle != null) {
             bookData = bundle.getSerializable("bookData") as BookData
             menuData = bundle.getSerializable("menuData") as MenuData
+            Log.d("확인 MenuFragment", "2")
             //tableNumAR = (bundle.getParcelableArrayList("tabkeNumAR") as ArrayList<Int>?)!!
-            Log.d("확인 MenuFragment tableNumAR 넘어왔는지 확인", tableNumString)
+            //문제가 인트 리스트가 아니라 문자열로 넘어온다
+            val tableNumList = bundle.getParcelableArrayList<Parcelable?>("tableNumAR")as ArrayList<Int>
+            Log.d("확인 MenuFragment", "3")
+            var i = 0
+            var tempString=""
+            while (i< tableNumList!!.size){
+                Log.d("확인 MenuFragment", tableNumList.size.toString()+" i 반복"+i.toString())
+                tempString+=tableNumList[i].toString()
+                i++
+            }
+
+            Log.d("확인 MenuFragment tableNumAR 넘어왔는지 확인", tempString)
         }
         else{
             Log.d("확인 MenuFragment bundle 받아오기", "else")
