@@ -13,24 +13,53 @@ import com.example.myapplication.R
 import com.example.myapplication.bookTable.BookPersonDialog
 import com.example.myapplication.bookTable.PersonNumRVAdapter
 
-class MenuTableRVAdapter(var context: Context, menuData:MenuData) : RecyclerView.Adapter<MenuTableRVAdapter.Holder>()  {
-    var a = 1
+class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTableNum:Int,
+                         val tableArrayList:ArrayList<ArrayList<Int>>, val floorList:ArrayList<Int>) : RecyclerView.Adapter<MenuTableRVAdapter.Holder>()  {
 
+    var fAndTAR = ArrayList<Int>()
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         Log.d("확인 MenuTableRVAdapter", "생성")
         val view = LayoutInflater.from(context).inflate(R.layout.bookmenu_eachtable, parent, false)
+        arToAr()
         return Holder(view)
     }
 
-    override fun getItemCount(): Int {//리사이클러뷰에 몇개 들어갈것인가
-        return 2
+    override fun getItemCount(): Int {//리사이클러뷰에 몇개 들어갈것인가 : 테이블 수만큼
+        return bookTableNum
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(position)
+    }
+
+    public fun arToAr(){
+        //var floor = floorList[0]
+
+
+        var i = 0
+        var tempString = ""
+        while (i < tableArrayList.size) {
+            var floor = floorList[i]
+            var j = 0
+            var tempAR = ArrayList<Int>()
+            while (j < tableArrayList[i].size) {
+                if(tableArrayList[i][j] !=0) {
+                    fAndTAR.add(floor)
+                    tempString += floor.toString()
+                    //fAndTAR.add(tableArrayList[i][j])
+                    fAndTAR.add(j)
+                    tempString += j.toString()
+                }
+                j++
+            }
+            i++
+        }
+        Log.d("확인 층수배열확인", tempString)
+
+
     }
 
     inner class Holder(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -38,7 +67,7 @@ class MenuTableRVAdapter(var context: Context, menuData:MenuData) : RecyclerView
             Log.d("확인 MenuTableRVAdapter", "Holder.bind")
             //테이블 번호
             var tableNumTV:TextView = itemView.findViewById(R.id.tableNumTV)
-            tableNumTV.setText("테이블"+pos.toString())
+            tableNumTV.setText(fAndTAR[(pos*2)].toString()+"층 테이블"+fAndTAR[pos*2+1].toString())
             Log.d("확인 MenuTableRVAdapter", "Holder.bind2")
 
             var tableMenuRV : RecyclerView = itemView.findViewById(R.id.tableMenuRV)
@@ -56,6 +85,8 @@ class MenuTableRVAdapter(var context: Context, menuData:MenuData) : RecyclerView
 
 
         //리사이클러뷰 내부의 리사이클러뷰 어댑터
+        //여기서는 각 테이블마다 어떤메뉴 골랐는지 바인드함 -> 실시간ㅁ으로 리사이클러뷰에 올라가야 한다
+        //-> 함수 추가해야겠네
 
         inner class InnerRVAdapter(var innerContext: Context): RecyclerView.Adapter<InnerRVAdapter.InnerHolder>(){
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.bookMenu.MenuData
 import com.example.myapplication.bookMenu.MenuFragment
+import com.example.myapplication.bookTable.TableData
 import com.example.myapplication.bookTable.TableFragment
 
 
@@ -22,6 +23,7 @@ class BookTime: AppCompatActivity() {
 
     lateinit var bookData :BookData
     lateinit var menuData: MenuData
+    lateinit var tableData: TableData
     var fragmentPage = 0
 
     //var tableFragment = TableFragment()
@@ -33,6 +35,7 @@ class BookTime: AppCompatActivity() {
     var isTableInfoInit : Boolean = false
     var tablePage = ArrayList<Int>()
     var tableNumAR=ArrayList<ArrayList<Int>>()//각 층의 각 테이블에 몇명 예약했는지를 저장하는 리스트
+    //각 층의 테이블정보 담은 String 각 층의 정보 다 쓰면 뒤에 n 붙은다 12302n100104n4123n 식으로 붙음
     var tableNumARString=""
 
 
@@ -84,11 +87,9 @@ class BookTime: AppCompatActivity() {
 
 
 
-
-
-
-
     }
+
+
     public fun replaceTimeFragment(timeFragment: Fragment) {
         fragmentPage=1
         var bundle:Bundle = Bundle()
@@ -118,6 +119,8 @@ class BookTime: AppCompatActivity() {
         var bundle:Bundle = Bundle()
         bundle.putSerializable("bookData", bookData)
         bundle.putSerializable("menuData", menuData)
+        bundle.putSerializable("tableData", tableData)
+        bundle.putString("tableNumARString", tableNumARString)
         Log.d("확인 replaceMenuFragment ArrayList.Tostring ", tableNumAR.toString())
 
         bundle.putParcelableArrayList("tableNumAR", tableNumAR as ArrayList<out Parcelable?>?)
@@ -182,7 +185,6 @@ class BookTime: AppCompatActivity() {
     public fun setTableInfoToString(){
         Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", "시작")
         var i = 0
-        var k = 0
         var tempString = ""
         while (i < tableNumAR.size) {
             var j = 0
@@ -191,10 +193,8 @@ class BookTime: AppCompatActivity() {
                 //tableNumARString[k] = tableNumAR[i][j]
                 tempString+= tableNumAR[i][j].toString()
                 j++
-                //k++
             }
             tempString+="n"
-            //k++
             i++
         }
         tableNumARString = tempString
@@ -225,6 +225,10 @@ class BookTime: AppCompatActivity() {
         }
         Log.d("확인 BookTime.TableNumAR", logString)
 
+    }
+
+    public fun setTableData_(tableData_:TableData){
+        tableData = tableData_
     }
 
 

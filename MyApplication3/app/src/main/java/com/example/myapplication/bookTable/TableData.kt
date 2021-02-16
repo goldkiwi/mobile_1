@@ -8,7 +8,7 @@ import java.io.Serializable
 
 //TableFragment에서 초기화되어 TableVPAdapter에 매개변수로서 전달 -> TableFloorFragment로 serializable - bundle로 전달
 
-class TableData(val sikdangId:Int, val bookTime:String): Serializable {
+class TableData(val sikdangId:Int, val bookTime:String):Serializable {
     //가로좌표 세로좌표 가로길이 세로길이
 
     var tableList = ArrayList<Table>()//각 테이블 정보 담긴 리스트
@@ -25,7 +25,7 @@ class TableData(val sikdangId:Int, val bookTime:String): Serializable {
     private fun setData(){
 
         floorList.add(1)
-        floorList.add(2)
+        floorList.add(3)
 
         tableList.add(Table(0.5F, 0.3F, 50, 50, 2, 1, true, true))
         tableList.add(Table(0.6F, 0.3F, 50, 50, 2, 1, false, true))
@@ -33,12 +33,12 @@ class TableData(val sikdangId:Int, val bookTime:String): Serializable {
         tableList.add(Table(0.2F, 0.6F, 60, 30, 6, 1, false, false))
         tableList.add(Table(0.35F, 0.6F, 60, 30, 3, 1, true, false))
 
-        tableList.add(Table(0.3F, 0.3F, 50, 50, 2, 2, true, true))
-        tableList.add(Table(0.3F, 0.4F, 50, 50, 2, 2, false, true))
-        tableList.add(Table(0.5F, 0.4F, 30, 30, 4, 2, false, true))
-        tableList.add(Table(0.2F, 0.6F, 60, 30, 6, 2, false, false))
-        tableList.add(Table(0.35F, 0.6F, 60, 30, 3, 2, true, false))
-        tableList.add(Table(0.35F, 0.75F, 60, 30, 3, 2, false, false))
+        tableList.add(Table(0.3F, 0.3F, 50, 50, 2, 3, true, true))
+        tableList.add(Table(0.3F, 0.4F, 50, 50, 2, 3, false, true))
+        tableList.add(Table(0.5F, 0.4F, 30, 30, 4, 3, false, true))
+        tableList.add(Table(0.2F, 0.6F, 60, 30, 6, 3, false, false))
+        tableList.add(Table(0.35F, 0.6F, 60, 30, 3, 3, true, false))
+        tableList.add(Table(0.35F, 0.75F, 60, 30, 3, 3, false, false))
         setFloorTable()
 
     }

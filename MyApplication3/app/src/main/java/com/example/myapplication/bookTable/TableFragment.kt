@@ -40,7 +40,7 @@ class TableFragment: Fragment() {
         vp.adapter=vpAdapter
         var bookTimeActivity= activity as BookTime
         bookTimeActivity.tableInfoInit(tableData.floorList.size, tableData.tableNumList)//BookTime 에서 초기 테이블 정보 초기화
-
+        bookTimeActivity.setTableData_(tableData)
         var completeButton = view.findViewById<Button>(R.id.tableCompleteButton)
         completeButton.setOnClickListener {
             Log.d("확인 TableFragment", "BookTime의 bookTimeActivity호출")
