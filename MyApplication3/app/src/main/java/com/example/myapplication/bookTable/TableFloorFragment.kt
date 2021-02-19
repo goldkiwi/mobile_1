@@ -25,9 +25,6 @@ class TableFloorFragment():Fragment()  {
     lateinit var tableData:TableData
     var floorNum : Int = 0//현재 층
 
-    var isBack = false//백버튼일 때 true가 된다
-    var backAL= ArrayList<ArrayList<Int>>()
-
     //var bookTimeActivity= activity as BookTime
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -98,11 +95,6 @@ class TableFloorFragment():Fragment()  {
             if(tableData.tableList[count].floor == floorNum) {
                 //val roundDrawable = resources.getDrawable(R.drawable.button_round, null)
                 //button.background = roundDrawable
-                if (tableData.isBack == true) {
-                    numAL = tableData.tableBookArrayList[pos]
-                    Log.d("확인 TableFloorFragment() 테이블 정보 받은것 확인", pos.toString()+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-                    tableData.logTableBookArrayList()
-                }
                 var buttonNum = count
                 if(pos>0){
                     buttonNum = count - tableData.accumTableNumList[pos-1]
@@ -116,11 +108,7 @@ class TableFloorFragment():Fragment()  {
                         button.setOnClickListener {
                             val myToast = Toast.makeText(context, "테이블이 이미 예약되어있습니다.", Toast.LENGTH_SHORT).show()
                         }
-                    }else if ((tableData.isBack == true) && (numAL[count] != 0)){
-                        roundDrawable = resources.getDrawable(R.drawable.button_round_green, null)
-                        button.setText(numAL[count].toString())
-                    }
-                    else {//예약 안되어있으면
+                    }else {//예약 안되어있으면
                         roundDrawable = resources.getDrawable(R.drawable.button_round_gray, null)
                         button.setOnClickListener {
 
@@ -164,7 +152,7 @@ class TableFloorFragment():Fragment()  {
 
                 button.setLayoutParams(layoutParams)
                 tableLayout.addView(button)
-                if (tableData.isBack == false) numAL.add(0)
+                numAL.add(0)
                 tableButtonAR.add(button)
             }
 
@@ -258,15 +246,6 @@ class TableFloorFragment():Fragment()  {
 
 
 
-    public fun setTableNumAL(tableNumAL:ArrayList<ArrayList<Int>>){
-        Log.d("확인 TableFloorFragment", "setTableNumAL 수행")
-
-
-
-        //tableData.setTableBookAL(tableNumAL)
-        backAL = tableNumAL
-        isBack = true
-    }
 
 
 

@@ -25,7 +25,6 @@ class BookTime: AppCompatActivity() {
     lateinit var menuData: MenuData
     lateinit var tableData: TableData
 
-    var isTableDataInit = false
 
 
     var fragmentPage = 0
@@ -37,7 +36,6 @@ class BookTime: AppCompatActivity() {
     //TableFloorFragment에서 받아와 MenuFragment로 전달하는 데이터
     //몇페이지인가와 그 페이지의 테이블 정보를 가져와서 리스트에 추가한다
     var isTableInfoInit : Boolean = false
-    var tablePage = ArrayList<Int>()
     var tableNumAL=ArrayList<ArrayList<Int>>()//각 층의 각 테이블에 몇명 예약했는지를 저장하는 리스트
     //각 층의 테이블정보 담은 String 각 층의 정보 다 쓰면 뒤에 n 붙은다 12302n100104n4123n 식으로 붙음
     var tableNumARString=""
@@ -125,29 +123,6 @@ class BookTime: AppCompatActivity() {
         fragmentTransaction3.commit()
     }
 
-    public fun replaceTableFragment(check:Boolean) {//백 버튼으로 뒤로 갈 경우
-        Log.d("확인 replaceMenuFragment 백버튼으로 뒤로 갈 경우 ", "@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        var tableFragment = TableFragment()
-        fragmentPage = 2
-        //tableData.setTableBookAL(tableNumAR)
-        var bundle:Bundle = Bundle()
-        bundle.putSerializable("bookData", bookData)
-        //tableData.setTableBookAL(tableNumAL)
-        //bundle.putSerializable("tableData", tableData)
-        tableFragment.setArguments(bundle)
-        Log.d("확인 replaceMenuFragment 백버튼으로 뒤로 갈 경우 ", "2")
-
-        tableFragment.setTableNumAL(tableNumAL)
-
-
-        val fragmentTransaction3 = fragmentManager.beginTransaction()
-
-        fragmentTransaction3.replace(R.id.bookFragment, tableFragment).commit()
-        Log.d("확인 replaceMenuFragment 백버튼으로 뒤로 갈 경우 ", "3")
-        //fragmentTransaction3.add(R.id.bookFragment, tableFragment).commit()
-
-
-    }
 
 
 
@@ -271,9 +246,10 @@ class BookTime: AppCompatActivity() {
 
     }
 
-    public fun setTableData_(tableData_:TableData){
-        tableData = tableData_
+    public fun setTableDataOn(tableData_:TableData){
+        tableData=tableData_
     }
+
 
 
 
