@@ -21,7 +21,7 @@ class TableFloorFragment():Fragment()  {
     var pos:Int = 0//몇 번째 페이지인가
     var tfFragment = this
     var tableButtonAR = ArrayList<Button>()//현재 층의 테이블의 버튼 리스트
-    var numAR =ArrayList<Int>()//각 테이블에 몇명 예약 넣었는가
+    var numAL =ArrayList<Int>()//각 테이블에 몇명 예약 넣었는가
     lateinit var tableData:TableData
     var floorNum : Int = 0//현재 층
 
@@ -58,6 +58,7 @@ class TableFloorFragment():Fragment()  {
         floorNum = tableData.floorList[pos]
         floorText.setText(floorNum.toString()+"층 "+bookData.getBookTime())
 
+        /*
         var tempString = ""
         var ii = 0
         while (ii < tableData.tableBookArrayList.size){
@@ -69,7 +70,7 @@ class TableFloorFragment():Fragment()  {
             ii++
         }
         Log.d("확인 TableFloorFragment() 테이블 정보 받은것 확인", tableData.tableBookArrayList.size.toString()+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        Log.d("확인 TableFloorFragment() 테이블 정보 받은것 확인", tempString)
+        Log.d("확인 TableFloorFragment() 테이블 정보 받은것 확인", tempString)*/
 
 
 
@@ -97,6 +98,11 @@ class TableFloorFragment():Fragment()  {
             if(tableData.tableList[count].floor == floorNum) {
                 //val roundDrawable = resources.getDrawable(R.drawable.button_round, null)
                 //button.background = roundDrawable
+                if (tableData.isBack == true) {
+                    numAL = tableData.tableBookArrayList[pos]
+                    Log.d("확인 TableFloorFragment() 테이블 정보 받은것 확인", pos.toString()+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+                    tableData.logTableBookArrayList()
+                }
                 var buttonNum = count
                 if(pos>0){
                     buttonNum = count - tableData.accumTableNumList[pos-1]
@@ -110,14 +116,18 @@ class TableFloorFragment():Fragment()  {
                         button.setOnClickListener {
                             val myToast = Toast.makeText(context, "테이블이 이미 예약되어있습니다.", Toast.LENGTH_SHORT).show()
                         }
-                    } else {//예약 안되어있으면
+                    }else if ((tableData.isBack == true) && (numAL[count] != 0)){
+                        roundDrawable = resources.getDrawable(R.drawable.button_round_green, null)
+                        button.setText(numAL[count].toString())
+                    }
+                    else {//예약 안되어있으면
                         roundDrawable = resources.getDrawable(R.drawable.button_round_gray, null)
                         button.setOnClickListener {
 
                             //Log.d("확인 원형테이블 인원", tableData.circleTableList[i].maxP.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", count.toString()+" "+numAR.size.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", numAR[buttonNum].toString()+" "+buttonNum.toString())
-                            showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
+                            showDialog(tableData.tableList[count].maxP, count, numAL[buttonNum])
                             //showDialog(tableData.tableList[count].maxP, count, tableData.tableBookArrayList[pos][count])
                         }
                     }
@@ -133,7 +143,7 @@ class TableFloorFragment():Fragment()  {
                         button.setOnClickListener {
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", count.toString()+" "+numAR.size.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@", numAR[buttonNum].toString()+" "+buttonNum.toString())
-                            showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
+                            showDialog(tableData.tableList[count].maxP, count, numAL[buttonNum])
                             //showDialog(tableData.tableList[count].maxP, count, tableData.tableBookArrayList[pos][count])
                         }
                     }
@@ -154,7 +164,7 @@ class TableFloorFragment():Fragment()  {
 
                 button.setLayoutParams(layoutParams)
                 tableLayout.addView(button)
-                numAR.add(0)
+                if (tableData.isBack == false) numAL.add(0)
                 tableButtonAR.add(button)
             }
 
@@ -199,7 +209,7 @@ class TableFloorFragment():Fragment()  {
             //Log.d("확인 floor", "종료지점 확인 3")
             tableButtonAR[floorTable].setText(pnum.toString())
             //Log.d("확인 floor", "종료지점 확인 4")
-            numAR[floorTable] = pnum
+            numAL[floorTable] = pnum
             //Log.d("확인 floor", "종료지점 확인 5")
             //logNumAR()
             transferTableData()
@@ -219,15 +229,15 @@ class TableFloorFragment():Fragment()  {
         }
         else tableButtonAR[floorTable].setBackgroundColor(parseColor("#CCCCCC"))
         tableButtonAR[floorTable].setText("")
-        numAR[floorTable] = 0
+        numAL[floorTable] = 0
         transferTableData()
         //logNumAR()
     }
     public fun logNumAR(){
         var i = 0
         var aa=""
-        while (i<numAR.size){
-            aa+=numAR[i].toString()
+        while (i<numAL.size){
+            aa+=numAL[i].toString()
             i++
         }
         Log.d("확인 numAR", aa)
@@ -242,7 +252,7 @@ class TableFloorFragment():Fragment()  {
     //데이터 변동시마다 액티비티에 값을 전달
     private fun transferTableData(){
         var bookTimeActivity= activity as BookTime
-        bookTimeActivity.setTableInfo(pos, numAR)
+        bookTimeActivity.setTableInfo(pos, numAL)
     }
 
 
@@ -257,6 +267,9 @@ class TableFloorFragment():Fragment()  {
         backAL = tableNumAL
         isBack = true
     }
+
+
+
 
 
 

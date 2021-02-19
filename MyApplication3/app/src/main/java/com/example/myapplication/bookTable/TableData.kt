@@ -45,7 +45,7 @@ class TableData(val sikdangId:Int, val bookTime:String):Serializable {
         setFloorTable()
 
     }
-
+    //층별 테이블 수 계산
     private fun setFloorTable(){
         var i = 0
         var table = 0

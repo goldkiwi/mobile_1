@@ -102,8 +102,10 @@ class BookTime: AppCompatActivity() {
         //val fragmentManager = supportFragmentManager
         val fragmentTransaction2 = fragmentManager.beginTransaction()
 
-        fragmentTransaction2.replace(R.id.bookFragment, timeFragment).commit()
-        //ransaction.add(R.id.bookFragment, timeFragment).commit()
+        //fragmentTransaction2.replace(R.id.bookFragment, timeFragment).commit()
+        fragmentTransaction2.add(R.id.bookFragment, timeFragment)
+        fragmentTransaction2.addToBackStack(null)
+        fragmentTransaction2.commit()
     }
 
     //테이블 프래그먼트 호출하는 함수
@@ -117,8 +119,10 @@ class BookTime: AppCompatActivity() {
         tableFragment.setArguments(bundle)
         val fragmentTransaction3 = fragmentManager.beginTransaction()
 
-        fragmentTransaction3.replace(R.id.bookFragment, tableFragment).commit()
-        //fragmentTransaction3.add(R.id.bookFragment, tableFragment).commit()
+        //fragmentTransaction3.replace(R.id.bookFragment, tableFragment).commit()
+        fragmentTransaction3.add(R.id.bookFragment, tableFragment)
+        fragmentTransaction3.addToBackStack(null)
+        fragmentTransaction3.commit()
     }
 
     public fun replaceTableFragment(check:Boolean) {//백 버튼으로 뒤로 갈 경우
@@ -163,8 +167,10 @@ class BookTime: AppCompatActivity() {
         menuFragment.setArguments(bundle)
         val fragmentTransaction4 = fragmentManager.beginTransaction()
 
-        fragmentTransaction4.replace(R.id.bookFragment, menuFragment).commit()
-        //fragmentTransaction4.add(R.id.bookFragment, menuFragment).commit()
+        //fragmentTransaction4.replace(R.id.bookFragment, menuFragment).commit()
+        fragmentTransaction4.add(R.id.bookFragment, menuFragment)
+        fragmentTransaction4.addToBackStack(null)
+        fragmentTransaction4.commit()
 
     }
 
@@ -173,6 +179,7 @@ class BookTime: AppCompatActivity() {
     //그 뭐냐 그 뒤로가기 버튼 눌으면 전 프래그먼트로 돌아가게 해야함
     //전 프래그먼트로 돌아갈 시 데이터 없어짐 - 데이터 이어지도록 해야 함 - 좀 나중으로 미룸?
 
+    /*
     override fun onBackPressed() {
         if (fragmentPage == 1){
             Log.d("확인 onBackPressed", fragmentPage.toString())
@@ -191,7 +198,7 @@ class BookTime: AppCompatActivity() {
             Log.d("확인 onBackPressed", fragmentPage.toString())
             super.onBackPressed()
         }
-    }
+    }*/
 
     //TableFloorFragment에서 호출
     //페이지와 그 페이지의 각 테이블에 몇명 앉는가의 정보를 받아온다

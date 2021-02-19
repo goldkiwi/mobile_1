@@ -47,10 +47,13 @@ class TableFragment: Fragment() {
         tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
 
         if (isBack == true){//백 버튼으로 돌아오는 경우 수행
-            Log.d("확인 bookData에 어레이리스트 넣음", "될까")
+
             tableData.setTableBookAL(backAL)
             tableData.isBack = true
             isBack = false
+            //Log.d("확인 bookData에 어레이리스트 backAL 넣음", "이 값이 변동되는지 확인해야 함")
+            //tableData.logTableBookArrayList()
+            //여기서 넣는 값에는 문제 없었음
         }
         else{
             var tempALAL = ArrayList<ArrayList<Int>>()
@@ -138,6 +141,10 @@ class TableFragment: Fragment() {
         }
         Log.d("확인 TableFragment 테이블데이터에 따라온 데이터 확인", tempString)
     }
+
+
+
+
 
 
 
