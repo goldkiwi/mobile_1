@@ -25,6 +25,9 @@ class TableFloorFragment():Fragment()  {
     lateinit var tableData:TableData
     var floorNum : Int = 0//현재 층
 
+    var isBack = false//백버튼일 때 true가 된다
+    var backAL= ArrayList<ArrayList<Int>>()
+
     //var bookTimeActivity= activity as BookTime
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -108,20 +111,14 @@ class TableFloorFragment():Fragment()  {
                             val myToast = Toast.makeText(context, "테이블이 이미 예약되어있습니다.", Toast.LENGTH_SHORT).show()
                         }
                     } else {//예약 안되어있으면
-                        if (tableData.tableBookArrayList[pos][count] != 0){//테이블 내가 선택한 경우
-                            roundDrawable =  resources.getDrawable(R.drawable.button_round_green, null)
-                            button.setText(tableData.tableBookArrayList[pos][count].toString())
-                        }
-                        else{
-                            roundDrawable = resources.getDrawable(R.drawable.button_round_gray, null)
-                        }
+                        roundDrawable = resources.getDrawable(R.drawable.button_round_gray, null)
                         button.setOnClickListener {
 
                             //Log.d("확인 원형테이블 인원", tableData.circleTableList[i].maxP.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", count.toString()+" "+numAR.size.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", numAR[buttonNum].toString()+" "+buttonNum.toString())
-                            //showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
-                            showDialog(tableData.tableList[count].maxP, count, tableData.tableBookArrayList[pos][count])
+                            showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
+                            //showDialog(tableData.tableList[count].maxP, count, tableData.tableBookArrayList[pos][count])
                         }
                     }
                     button.background = roundDrawable
@@ -132,17 +129,12 @@ class TableFloorFragment():Fragment()  {
                             val myToast = Toast.makeText(context, "테이블이 이미 예약되어있습니다.", Toast.LENGTH_SHORT).show()
                         }
                     } else {//dialogFragment 검색 or kotlin popup
-                        if (tableData.tableBookArrayList[pos][count] != 0){
-                            button.setBackgroundColor(parseColor("#55CC55"))
-                        }
-                        else {
-                            button.setBackgroundColor(parseColor("#CCCCCC"))
-                        }
+                        button.setBackgroundColor(parseColor("#CCCCCC"))
                         button.setOnClickListener {
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", count.toString()+" "+numAR.size.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@", numAR[buttonNum].toString()+" "+buttonNum.toString())
-                            //showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
-                            showDialog(tableData.tableList[count].maxP, count, tableData.tableBookArrayList[pos][count])
+                            showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
+                            //showDialog(tableData.tableList[count].maxP, count, tableData.tableBookArrayList[pos][count])
                         }
                     }
 
@@ -247,10 +239,23 @@ class TableFloorFragment():Fragment()  {
         //var bookTimeActivity= activity as BookTime
         bookTimeActivity.tableInfoInit()
     }*/
-    //데이터 변동시마다 액티비티에 값을 전달달
+    //데이터 변동시마다 액티비티에 값을 전달
     private fun transferTableData(){
         var bookTimeActivity= activity as BookTime
         bookTimeActivity.setTableInfo(pos, numAR)
+    }
+
+
+
+
+    public fun setTableNumAL(tableNumAL:ArrayList<ArrayList<Int>>){
+        Log.d("확인 TableFloorFragment", "setTableNumAL 수행")
+
+
+
+        //tableData.setTableBookAL(tableNumAL)
+        backAL = tableNumAL
+        isBack = true
     }
 
 

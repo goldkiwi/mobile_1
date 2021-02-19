@@ -10,6 +10,7 @@ import com.example.myapplication.bookTime.BookData
 //TableFragment에서 사용 TableFloorFragmenr에 ㅐbundle로 BookData와 position 집어넣음
 class TableVPAdapter(fa:FragmentActivity, val bookData: BookData, val tableData: TableData): FragmentStateAdapter(fa) {
     //총 몇층인가
+
     override fun getItemCount(): Int {
         //Log.d("확인 TableVPAdapter", "getItemCount()")
         return bookData.getFloor()

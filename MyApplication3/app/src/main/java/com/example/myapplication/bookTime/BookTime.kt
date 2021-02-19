@@ -24,6 +24,10 @@ class BookTime: AppCompatActivity() {
     lateinit var bookData :BookData
     lateinit var menuData: MenuData
     lateinit var tableData: TableData
+
+    var isTableDataInit = false
+
+
     var fragmentPage = 0
 
     //var tableFragment = TableFragment()
@@ -124,8 +128,8 @@ class BookTime: AppCompatActivity() {
         //tableData.setTableBookAL(tableNumAR)
         var bundle:Bundle = Bundle()
         bundle.putSerializable("bookData", bookData)
-        tableData.setTableBookAL(tableNumAL)
-        bundle.putSerializable("tableData", tableData)
+        //tableData.setTableBookAL(tableNumAL)
+        //bundle.putSerializable("tableData", tableData)
         tableFragment.setArguments(bundle)
         Log.d("확인 replaceMenuFragment 백버튼으로 뒤로 갈 경우 ", "2")
 

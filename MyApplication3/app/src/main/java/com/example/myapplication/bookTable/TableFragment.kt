@@ -45,10 +45,43 @@ class TableFragment: Fragment() {
             Log.d("확인 TimeFragment.bind", "else")
         }
         tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
-        if (isBack == true){
+
+        if (isBack == true){//백 버튼으로 돌아오는 경우 수행
             Log.d("확인 bookData에 어레이리스트 넣음", "될까")
             tableData.setTableBookAL(backAL)
+            tableData.isBack = true
             isBack = false
+        }
+        else{
+            var tempALAL = ArrayList<ArrayList<Int>>()
+            var i = 0
+            var pageNum = 0
+            var floorNum = tableData.tableList[0].floor
+            /*
+            while (i < tableData.tableList.size){
+                if (floorNum < tableData.tableList[i].floor){
+                    pageNum ++
+                    floorNum < tableData.tableList[i].floor
+                }
+                tempALAL[pageNum].add(0)
+                i++
+            }*/
+            var tempAL = ArrayList<Int>()
+            while (i<tableData.tableList.size) {
+
+                if (floorNum < tableData.tableList[i].floor){
+                    pageNum ++
+                    tempALAL.add(tempAL)
+                    tempAL = ArrayList<Int>()
+                    floorNum = tableData.tableList[i].floor
+                }
+                tempAL.add(0)
+                i++
+
+            }
+
+
+            tableData.logTableBookArrayList()
         }
         //뷰페이저
         var vp = view.findViewById<ViewPager2>(R.id.tableVP)
