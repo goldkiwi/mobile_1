@@ -90,6 +90,7 @@ class TableFloorFragment():Fragment()  {
         while(i<tableData.tableList.size){
             var count = i//테이블리스트의 몇번째인가
             var button= Button(getContext())
+            //tableData.tableBookArrayList[pos][count] 는 그 테이블에 현재 내가선택한 인원수
             if(tableData.tableList[count].floor == floorNum) {
                 //val roundDrawable = resources.getDrawable(R.drawable.button_round, null)
                 //button.background = roundDrawable
@@ -107,13 +108,20 @@ class TableFloorFragment():Fragment()  {
                             val myToast = Toast.makeText(context, "테이블이 이미 예약되어있습니다.", Toast.LENGTH_SHORT).show()
                         }
                     } else {//예약 안되어있으면
-                        roundDrawable = resources.getDrawable(R.drawable.button_round_gray, null)
+                        if (tableData.tableBookArrayList[pos][count] != 0){//테이블 내가 선택한 경우
+                            roundDrawable =  resources.getDrawable(R.drawable.button_round_green, null)
+                            button.setText(tableData.tableBookArrayList[pos][count].toString())
+                        }
+                        else{
+                            roundDrawable = resources.getDrawable(R.drawable.button_round_gray, null)
+                        }
                         button.setOnClickListener {
 
                             //Log.d("확인 원형테이블 인원", tableData.circleTableList[i].maxP.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", count.toString()+" "+numAR.size.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", numAR[buttonNum].toString()+" "+buttonNum.toString())
-                            showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
+                            //showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
+                            showDialog(tableData.tableList[count].maxP, count, tableData.tableBookArrayList[pos][count])
                         }
                     }
                     button.background = roundDrawable
@@ -124,12 +132,17 @@ class TableFloorFragment():Fragment()  {
                             val myToast = Toast.makeText(context, "테이블이 이미 예약되어있습니다.", Toast.LENGTH_SHORT).show()
                         }
                     } else {//dialogFragment 검색 or kotlin popup
-                        button.setBackgroundColor(parseColor("#CCCCCC"))
+                        if (tableData.tableBookArrayList[pos][count] != 0){
+                            button.setBackgroundColor(parseColor("#55CC55"))
+                        }
+                        else {
+                            button.setBackgroundColor(parseColor("#CCCCCC"))
+                        }
                         button.setOnClickListener {
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@@", count.toString()+" "+numAR.size.toString())
                             //Log.d("확인 넣은 변수 확인@@@@@@@@@@@@@@@@@@@@@@@@@@", numAR[buttonNum].toString()+" "+buttonNum.toString())
-                            showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
-
+                            //showDialog(tableData.tableList[count].maxP, count, numAR[buttonNum])
+                            showDialog(tableData.tableList[count].maxP, count, tableData.tableBookArrayList[pos][count])
                         }
                     }
 
