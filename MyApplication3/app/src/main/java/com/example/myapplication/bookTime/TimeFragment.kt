@@ -15,6 +15,10 @@ class TimeFragment() : Fragment() {
     //북 타임 데이터는 BookTime에서 데이터 받아와야함 원래
     lateinit var bookData:BookData
 
+    init{
+
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.booktime_fragment, container, false)

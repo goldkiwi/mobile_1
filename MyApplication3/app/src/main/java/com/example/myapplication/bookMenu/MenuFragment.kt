@@ -21,6 +21,10 @@ class MenuFragment: Fragment() {
     var bookTableNum = 0
     //var tableNumString = ""//테이블
 
+    init{
+
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d("확인 MenuFragment", "생성")
         //return super.onCreateView(inflater, container, savedInstanceState)

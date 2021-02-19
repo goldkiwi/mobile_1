@@ -13,9 +13,15 @@ import com.example.myapplication.bookTime.BookData
 import com.example.myapplication.bookTime.BookTime
 
 //BookTime에서 사용
+//v페이지 돌아왔을 때 정보 저장하려면 액티비티로 정보를 보내야할듯
 class TableFragment: Fragment() {
     lateinit var bookData:BookData
     lateinit var tableData:TableData
+
+    var isBack =false
+    var backAL =ArrayList<ArrayList<Int>>()
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d("확인 TableFragment", "onCreateView")
         var view = inflater.inflate(R.layout.booktable_fragment, container, false)
@@ -25,6 +31,11 @@ class TableFragment: Fragment() {
         return view
     }
 
+
+
+    init{
+
+    }
     //뷰페이저에 어댑터 연결
     public fun bind(view:View){
         Log.d("확인 TableFragment", "bind")
@@ -34,6 +45,11 @@ class TableFragment: Fragment() {
             Log.d("확인 TimeFragment.bind", "else")
         }
         tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
+        if (isBack == true){
+            Log.d("확인 bookData에 어레이리스트 넣음", "될까")
+            tableData.setTableBookAL(backAL)
+            isBack = false
+        }
         //뷰페이저
         var vp = view.findViewById<ViewPager2>(R.id.tableVP)
         var vpAdapter = TableVPAdapter(this.getActivity()!!, bookData, tableData)
@@ -47,6 +63,47 @@ class TableFragment: Fragment() {
             bookTimeActivity.replaceMenuFragment()
         }
 
+    }
+
+
+    public fun setTableNumAL(tableNumAL:ArrayList<ArrayList<Int>>){
+        Log.d("확인 TableFragment", "setTableNumAL 수행")
+
+
+
+        var i = 0
+        var tempString = ""
+        while (i < tableNumAL.size) {
+            var j = 0
+            while (j < tableNumAL[i].size) {
+                //tableNumARString[k] = tableNumAR[i][j]
+                tempString+= tableNumAL[i][j].toString()
+                j++
+            }
+            tempString+="n"
+            i++
+        }
+        Log.d("확인 TableFragment.setTableNumAL 문자열 변환 확인", tempString)
+
+        //tableData.setTableBookAL(tableNumAL)
+        backAL = tableNumAL
+        isBack = true
+    }
+
+    public fun logtableDataAL(){
+        var tempString = ""
+        var i = 0
+        while (i < tableData.tableBookArrayList.size) {
+            var j = 0
+            while (j < tableData.tableBookArrayList[i].size) {
+                //tableNumARString[k] = tableNumAR[i][j]
+                tempString+= tableData.tableBookArrayList[i][j].toString()
+                j++
+            }
+            tempString+="n"
+            i++
+        }
+        Log.d("확인 TableFragment 테이블데이터에 따라온 데이터 확인", tempString)
     }
 
 

@@ -15,6 +15,7 @@ class TableData(val sikdangId:Int, val bookTime:String):Serializable {
     var floorList = ArrayList<Int>()//식당 각 몇층인지
     var tableNumList = ArrayList<Int>()//각 층에 테이블 몇개인지
     var accumTableNumList = ArrayList<Int>()//테이블 개수 축적
+    var tableBookArrayList = ArrayList<ArrayList<Int>>()//각 테이블 예약 변동 정보
 
 
     init{
@@ -80,5 +81,11 @@ class TableData(val sikdangId:Int, val bookTime:String):Serializable {
     //isCircle 테이블이 원형인가
     inner class Table(var locX:Float, var locy:Float, var lengX:Int, var lengY:Int, var maxP:Int, var floor:Int, var isBooked:Boolean, var isCircle:Boolean){
     }
+
+    public fun setTableBookAL(tableBookArrayList_: ArrayList<ArrayList<Int>>){
+        Log.d("확인 TableData에 테이블 정보 기록", "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        tableBookArrayList = tableBookArrayList_
+    }
+
 
 }

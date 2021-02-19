@@ -34,7 +34,7 @@ class BookTime: AppCompatActivity() {
     //몇페이지인가와 그 페이지의 테이블 정보를 가져와서 리스트에 추가한다
     var isTableInfoInit : Boolean = false
     var tablePage = ArrayList<Int>()
-    var tableNumAR=ArrayList<ArrayList<Int>>()//각 층의 각 테이블에 몇명 예약했는지를 저장하는 리스트
+    var tableNumAL=ArrayList<ArrayList<Int>>()//각 층의 각 테이블에 몇명 예약했는지를 저장하는 리스트
     //각 층의 테이블정보 담은 String 각 층의 정보 다 쓰면 뒤에 n 붙은다 12302n100104n4123n 식으로 붙음
     var tableNumARString=""
 
@@ -99,9 +99,12 @@ class BookTime: AppCompatActivity() {
         val fragmentTransaction2 = fragmentManager.beginTransaction()
 
         fragmentTransaction2.replace(R.id.bookFragment, timeFragment).commit()
+        //ransaction.add(R.id.bookFragment, timeFragment).commit()
     }
 
     //테이블 프래그먼트 호출하는 함수
+    //백으로 돌아오면서 이 함수 호출하면 프래그먼트 초기값이 이미 설정되어있어야 한다
+
     public fun replaceTableFragment() {
         var tableFragment = TableFragment()
         fragmentPage = 2
@@ -111,7 +114,34 @@ class BookTime: AppCompatActivity() {
         val fragmentTransaction3 = fragmentManager.beginTransaction()
 
         fragmentTransaction3.replace(R.id.bookFragment, tableFragment).commit()
+        //fragmentTransaction3.add(R.id.bookFragment, tableFragment).commit()
     }
+
+    public fun replaceTableFragment(check:Boolean) {//백 버튼으로 뒤로 갈 경우
+        Log.d("확인 replaceMenuFragment 백버튼으로 뒤로 갈 경우 ", "@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        var tableFragment = TableFragment()
+        fragmentPage = 2
+        //tableData.setTableBookAL(tableNumAR)
+        var bundle:Bundle = Bundle()
+        bundle.putSerializable("bookData", bookData)
+        tableData.setTableBookAL(tableNumAL)
+        bundle.putSerializable("tableData", tableData)
+        tableFragment.setArguments(bundle)
+        Log.d("확인 replaceMenuFragment 백버튼으로 뒤로 갈 경우 ", "2")
+
+        tableFragment.setTableNumAL(tableNumAL)
+
+
+        val fragmentTransaction3 = fragmentManager.beginTransaction()
+
+        fragmentTransaction3.replace(R.id.bookFragment, tableFragment).commit()
+        Log.d("확인 replaceMenuFragment 백버튼으로 뒤로 갈 경우 ", "3")
+        //fragmentTransaction3.add(R.id.bookFragment, tableFragment).commit()
+
+
+    }
+
+
 
     public fun replaceMenuFragment() {
         var menuFragment = MenuFragment()
@@ -121,17 +151,19 @@ class BookTime: AppCompatActivity() {
         bundle.putSerializable("menuData", menuData)
         bundle.putSerializable("tableData", tableData)
         bundle.putString("tableNumARString", tableNumARString)
-        Log.d("확인 replaceMenuFragment ArrayList.Tostring ", tableNumAR.toString())
+        Log.d("확인 replaceMenuFragment ArrayList.Tostring ", tableNumAL.toString())
 
-        bundle.putParcelableArrayList("tableNumAR", tableNumAR as ArrayList<out Parcelable?>?)
+        bundle.putParcelableArrayList("tableNumAR", tableNumAL as ArrayList<out Parcelable?>?)
         //bundle.putSerializableExtras()
         //bundle.putString("tableNumAR", tableNumAR.toString())
         menuFragment.setArguments(bundle)
         val fragmentTransaction4 = fragmentManager.beginTransaction()
 
         fragmentTransaction4.replace(R.id.bookFragment, menuFragment).commit()
+        //fragmentTransaction4.add(R.id.bookFragment, menuFragment).commit()
 
     }
+
 
 
     //그 뭐냐 그 뒤로가기 버튼 눌으면 전 프래그먼트로 돌아가게 해야함
@@ -148,7 +180,8 @@ class BookTime: AppCompatActivity() {
         }
         else if(fragmentPage == 3){
             Log.d("확인 onBackPressed", fragmentPage.toString())
-            replaceTableFragment()
+            logTableNumAl()
+            replaceTableFragment(true)
         }
         else {
             Log.d("확인 onBackPressed", fragmentPage.toString())
@@ -172,12 +205,12 @@ class BookTime: AppCompatActivity() {
                     j++
                 }
                 tableNumARString+="n"
-                tableNumAR.add(tempAR)
+                tableNumAL.add(tempAR)
                 i++
             }
             Log.d("확인 BookTime.TableNumAR", "초기화")
             Log.d("확인 BookTime.TableNumARStraing", tableNumARString)
-            logTableNumAR()
+            logTableNumAl()
         }
         isTableInfoInit = true//초기화 끝나고 다시 안바뀌도록 한다
     }
@@ -186,12 +219,12 @@ class BookTime: AppCompatActivity() {
         Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", "시작")
         var i = 0
         var tempString = ""
-        while (i < tableNumAR.size) {
+        while (i < tableNumAL.size) {
             var j = 0
             var tempAR = ArrayList<Int>()
-            while (j < tableNumAR[i].size) {
+            while (j < tableNumAL[i].size) {
                 //tableNumARString[k] = tableNumAR[i][j]
-                tempString+= tableNumAR[i][j].toString()
+                tempString+= tableNumAL[i][j].toString()
                 j++
             }
             tempString+="n"
@@ -199,31 +232,31 @@ class BookTime: AppCompatActivity() {
         }
         tableNumARString = tempString
         Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", tableNumARString)
-        logTableNumAR()
+        logTableNumAl()
 
 
     }
 
     public fun setTableInfo(tablePage_:Int, tableNumAR_:ArrayList<Int>){
         //tablePage.add(tablePage_)
-        tableNumAR[tablePage_] = tableNumAR_
+        tableNumAL[tablePage_] = tableNumAR_
         var i = 0
         setTableInfoToString()
-        logTableNumAR()
+        logTableNumAl()
     }
 
-    private fun logTableNumAR(){
+    private fun logTableNumAl(){
         var i = 0
         var logString=""
-        while(i<tableNumAR.size){
+        while(i<tableNumAL.size){
             var j = 0
-            while (j<tableNumAR[i].size){
-                logString+=tableNumAR[i][j].toString()
+            while (j<tableNumAL[i].size){
+                logString+=tableNumAL[i][j].toString()
                 j++
             }
             i++
         }
-        Log.d("확인 BookTime.TableNumAR", logString)
+        Log.d("확인 BookTime.TableNumAL", logString)
 
     }
 

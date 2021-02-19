@@ -55,6 +55,21 @@ class TableFloorFragment():Fragment()  {
         floorNum = tableData.floorList[pos]
         floorText.setText(floorNum.toString()+"층 "+bookData.getBookTime())
 
+        var tempString = ""
+        var ii = 0
+        while (ii < tableData.tableBookArrayList.size){
+            var jj = 0
+            while (jj < tableData.tableBookArrayList[ii].size){
+                tempString+=tableData.tableBookArrayList[ii][jj]
+                jj++
+            }
+            ii++
+        }
+        Log.d("확인 TableFloorFragment() 테이블 정보 받은것 확인", tableData.tableBookArrayList.size.toString()+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        Log.d("확인 TableFloorFragment() 테이블 정보 받은것 확인", tempString)
+
+
+
 
 
         var tableLayout:ConstraintLayout = view.findViewById(R.id.floorLayout)
@@ -71,6 +86,7 @@ class TableFloorFragment():Fragment()  {
 
 
         i=0//테이블 통합
+        //버튼별 세팅
         while(i<tableData.tableList.size){
             var count = i//테이블리스트의 몇번째인가
             var button= Button(getContext())
@@ -154,7 +170,7 @@ class TableFloorFragment():Fragment()  {
         var customDialog = BookPersonDialog(this!!.getContext()!!, tablePerson, tfFragment, tableNum, floorNum, curTableP)
         customDialog!!.show()
     }
-    //버튼 클릭의 호출 순서 : PersonNumRVAdapter -> BookPersonDialog->RableFloorFragment(여기)
+    //버튼 클릭의 호출 순서 : PersonNumRVAdapter -> BookPersonDialog->TableFloorFragment(여기)
     //dialog에서 인원수 선택 버튼 클릭될 경우
     public fun pNumButtonClicked(tableNum:Int, pnum:Int, floor:Int){
         Log.d("확인 floor", floor.toString()+floorNum.toString()+tableNum.toString())
