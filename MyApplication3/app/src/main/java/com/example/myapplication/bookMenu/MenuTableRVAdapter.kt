@@ -82,6 +82,7 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
             itemView.setOnClickListener(){//테이블 선택시 : 특정테이블 선택 - 여기에서 저장될 병수 : AllayList 등 지정
                 Log.d("확인 MenuTableRVAdapter", "리사이클러뷰 클릭시")
                 menuFragment.setTableText(fAndTAL[(pos*2)], fAndTAL[pos*2+1])
+                menuFragment.setNowTableTab(pos)
             }
 
         }

@@ -40,6 +40,10 @@ class MenuListRVAdapter(var context: Context, val menuData:MenuData):RecyclerVie
             var menuPriceTV:TextView = itemView.findViewById(R.id.menuPriceTV)
             menuPriceTV.setText(menuData.menus[pos].price.toString()+"원")
 
+            itemView.setOnClickListener {
+                //메뉴 하나 클릭 됐을 때 수행
+            }
+
 
 
         }

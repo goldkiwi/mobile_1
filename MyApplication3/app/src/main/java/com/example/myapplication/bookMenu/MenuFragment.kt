@@ -28,7 +28,8 @@ class MenuFragment: Fragment() {
     var nowFloor = 0
     var nowTable = 0
 
-    var nowTableTab = 0
+    private var nowTableTab = 0
+    private var tableMenuList = ArrayList<ArrayList<Int>>()
 
     lateinit var tableNumText : TextView
 
@@ -86,10 +87,12 @@ class MenuFragment: Fragment() {
         //Log.d("확인 MenuFragment", "2")
 
         alToAL()
+        initTableMenuList()
 
         bind(view)
         return view
     }
+
     fun bind(itemView:View){
         //Log.d("확인 MenuFragment.bind", "1")
 
@@ -146,8 +149,34 @@ class MenuFragment: Fragment() {
 
     }
 
+    public fun setNowTableTab(pos:Int){
+        nowTableTab = pos
+    }
+
 
     public fun setTableText(floor:Int, tNum:Int){
         tableNumText.setText(floor.toString()+"층 테이블"+tNum.toString())
     }
+
+
+    private fun initTableMenuList(){
+        var i = 0
+        while (i<bookTableNum){
+            var tempAL = ArrayList<Int>()
+            var j = 0
+            while(j<menuData.menus.size){
+                tempAL.add(0)
+                j++
+            }
+            tableMenuList.add(tempAL)
+            i++
+        }
+    }
+
+    public fun setMenu(menuNum:Int, count:Int){
+
+    }
+
+
+
 }
