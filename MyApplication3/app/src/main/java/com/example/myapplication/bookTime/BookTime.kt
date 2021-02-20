@@ -101,7 +101,7 @@ class BookTime: AppCompatActivity() {
         val fragmentTransaction2 = fragmentManager.beginTransaction()
 
         //fragmentTransaction2.replace(R.id.bookFragment, timeFragment).commit()
-        fragmentTransaction2.add(R.id.bookFragment, timeFragment)
+        fragmentTransaction2.replace(R.id.bookFragment, timeFragment)
         fragmentTransaction2.addToBackStack(null)
         fragmentTransaction2.commit()
     }
@@ -118,7 +118,7 @@ class BookTime: AppCompatActivity() {
         val fragmentTransaction3 = fragmentManager.beginTransaction()
 
         //fragmentTransaction3.replace(R.id.bookFragment, tableFragment).commit()
-        fragmentTransaction3.add(R.id.bookFragment, tableFragment)
+        fragmentTransaction3.replace(R.id.bookFragment, tableFragment)
         fragmentTransaction3.addToBackStack(null)
         fragmentTransaction3.commit()
     }
@@ -143,7 +143,7 @@ class BookTime: AppCompatActivity() {
         val fragmentTransaction4 = fragmentManager.beginTransaction()
 
         //fragmentTransaction4.replace(R.id.bookFragment, menuFragment).commit()
-        fragmentTransaction4.add(R.id.bookFragment, menuFragment)
+        fragmentTransaction4.replace(R.id.bookFragment, menuFragment)
         fragmentTransaction4.addToBackStack(null)
         fragmentTransaction4.commit()
 

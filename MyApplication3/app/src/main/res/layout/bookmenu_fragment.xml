@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tNumText"
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:gravity="center"
@@ -20,12 +20,13 @@
         android:layout_height="110dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menuListRV"
         android:layout_width="match_parent"
-        android:layout_height="235dp" />
+        android:layout_height="459dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="118dp"
+        android:layout_height="96dp"
         android:orientation="horizontal">
 
         <TextView

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,9 +18,19 @@ class MenuFragment: Fragment() {
     lateinit var bookData:BookData
     lateinit var menuData:MenuData
     lateinit var tableData: TableData
-    var tableNumAR=ArrayList<ArrayList<Int>>()
+
+    var tableNumAL=ArrayList<ArrayList<Int>>()
     var bookTableNum = 0
     //var tableNumString = ""//테이블
+
+    var fAndTAL = ArrayList<Int>()//층, 테이블 번호, 층, 테이블 번호 반복
+
+    var nowFloor = 0
+    var nowTable = 0
+
+    var nowTableTab = 0
+
+    lateinit var tableNumText : TextView
 
     init{
 
@@ -29,6 +40,7 @@ class MenuFragment: Fragment() {
         Log.d("확인 MenuFragment", "생성")
         //return super.onCreateView(inflater, container, savedInstanceState)
         var view = inflater.inflate(R.layout.bookmenu_fragment, container, false)
+        tableNumText = view.findViewById(R.id.tNumText)
         var bundle = getArguments()
         if (bundle != null) {
             bookData = bundle.getSerializable("bookData") as BookData
@@ -49,7 +61,7 @@ class MenuFragment: Fragment() {
 
             //var tempString=""
             bookTableNum = 0
-            while (i< tableNumList!!.size){
+            while (i< tableNumList!!.size){//테이블 정보 받아온다
                 //Log.d("확인 MenuFragment", tableNumList.size.toString()+" i 반복"+i.toString())
                 //tempString+=tableNumList[i].toString()
                 var tempNumAR:ArrayList<Int> =  ArrayList<Int>()
@@ -60,7 +72,7 @@ class MenuFragment: Fragment() {
                     j++
                     //Log.d("확인 MenuFragment while (tableNumString!!.substring(j) != \"n\")", i.toString()+j.toString()+k.toString()+tableNumString!!.substring(j..j))
                 }
-                tableNumAR.add(tempNumAR)
+                tableNumAL.add(tempNumAR)
                 i++
                 j++
                 //Log.d("확인 MenuFragment while (tableNumString!!.substring(j) != \"n\")", "큰 와일문 끝")
@@ -73,6 +85,7 @@ class MenuFragment: Fragment() {
         }
         //Log.d("확인 MenuFragment", "2")
 
+        alToAL()
 
         bind(view)
         return view
@@ -80,10 +93,12 @@ class MenuFragment: Fragment() {
     fun bind(itemView:View){
         //Log.d("확인 MenuFragment.bind", "1")
 
+        tableNumText.setText(fAndTAL[nowTableTab*2].toString()+"층 테이블"+fAndTAL[nowTableTab*2+1].toString())
+
 
         //각 테이블별로 어떤 메뉴가 예약 되었는지 표시해주는 리사이클러뷰
         var tableRV : RecyclerView = itemView.findViewById(R.id.tableRV)
-        var menuTableRVAdapter = MenuTableRVAdapter(this!!.getActivity()!!, menuData, bookTableNum, tableNumAR, tableData.floorList)
+        var menuTableRVAdapter = MenuTableRVAdapter(this!!.getActivity()!!, menuData, bookTableNum, tableNumAL, tableData.floorList, fAndTAL,this)
         tableRV.adapter = menuTableRVAdapter
         //Log.d("확인 MenuFragment.bind", "2")
 
@@ -92,5 +107,47 @@ class MenuFragment: Fragment() {
         tableRV.setHasFixedSize(true)
         //Log.d("확인 MenuFragment.bind", "3")
 
+
+        var menuListRV : RecyclerView = itemView.findViewById(R.id.menuListRV)
+        var menuListRVAdapter = MenuListRVAdapter(this!!.getActivity()!!, menuData)
+        menuListRV.adapter = menuListRVAdapter
+
+        var menuListRVLayoutManager = LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false)
+        menuListRV.layoutManager = menuListRVLayoutManager
+        menuListRV.setHasFixedSize(true)
+
+    }
+
+
+    public fun alToAL(){
+        //var floor = floorList[0]
+
+
+        var i = 0
+        var tempString = ""
+        while (i < tableNumAL.size) {
+            var floor = tableData.floorList[i]
+            var j = 0
+            var tempAR = ArrayList<Int>()
+            while (j < tableNumAL[i].size) {
+                if(tableNumAL[i][j] !=0) {
+                    fAndTAL.add(floor)
+                    tempString += floor.toString()
+                    //fAndTAR.add(tableArrayList[i][j])
+                    fAndTAL.add(j)
+                    tempString += j.toString()
+                }
+                j++
+            }
+            i++
+        }
+        Log.d("확인 층수배열확인", tempString)
+
+
+    }
+
+
+    public fun setTableText(floor:Int, tNum:Int){
+        tableNumText.setText(floor.toString()+"층 테이블"+tNum.toString())
     }
 }

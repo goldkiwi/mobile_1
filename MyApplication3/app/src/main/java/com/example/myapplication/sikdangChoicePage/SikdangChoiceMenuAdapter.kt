@@ -9,11 +9,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.bookTime.BookTime
-import com.example.myapplication.mainPage.Sikdang_main
 
 //프래그먼트내의 리사이클러뷰에 메뉴라인 바인드하는 어댑터 클래스
 //SikdangChoiceMenuFragment 클래스의 bind 에서 사용
@@ -55,10 +53,10 @@ class SikdangChoiceMenuAdapter(var context : Context, var sikdangListReqData: Si
             sikdangNameTV.setText(sikdangMenuData.getSikdangName())
 
             //각 대표메뉴에 문자열 set
-            var repMenuTV1 : TextView = itemView.findViewById(R.id.repMenuTV1)
-            var repMenuTV2 : TextView = itemView.findViewById(R.id.repMenuTV2)
+            var repMenuTV1 : TextView = itemView.findViewById(R.id.menuNameTV)
+            var repMenuTV2 : TextView = itemView.findViewById(R.id.menuExpTV)
             var repMenuTV3 : TextView = itemView.findViewById(R.id.repMenuTV3)
-            var repMenuTV4 : TextView = itemView.findViewById(R.id.repMenuTV4)
+            var repMenuTV4 : TextView = itemView.findViewById(R.id.menuPriceTV)
 
             repMenuTV1.setText(sikdangMenuData.getrepMenuArrayList()[0])
             repMenuTV2.setText(sikdangMenuData.getrepMenuArrayList()[1])

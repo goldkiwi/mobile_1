@@ -55,13 +55,13 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/repMenuTV1"
+                        android:id="@+id/menuNameTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="대표메뉴1" />
 
                     <TextView
-                        android:id="@+id/repMenuTV2"
+                        android:id="@+id/menuExpTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="대표메뉴2" />
@@ -73,7 +73,7 @@
                         android:text="대표메뉴3" />
 
                     <TextView
-                        android:id="@+id/repMenuTV4"
+                        android:id="@+id/menuPriceTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="대표메뉴4" />
