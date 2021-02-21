@@ -9,7 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 
-class MenuListRVAdapter(var context: Context, val menuData:MenuData):RecyclerView.Adapter<MenuListRVAdapter.Holder>()  {
+class MenuListRVAdapter(var context: Context, val menuData:MenuData, var menuFragment: MenuFragment):RecyclerView.Adapter<MenuListRVAdapter.Holder>()  {
+
+    var countTexts = ArrayList<TextView>()
 
 
 
@@ -28,6 +30,15 @@ class MenuListRVAdapter(var context: Context, val menuData:MenuData):RecyclerVie
         holder.bind(position)
     }
 
+    public fun setMenuCountTVAL(){
+        var i = 0
+        while (i < countTexts.size){
+            countTexts[i].setText(menuFragment.tableMenuList[menuFragment.getNowTableTab()][i].toString())
+            i++
+        }
+
+    }
+
 
     inner class Holder(itemView: View):RecyclerView.ViewHolder(itemView){
         public fun bind(pos:Int){
@@ -40,13 +51,31 @@ class MenuListRVAdapter(var context: Context, val menuData:MenuData):RecyclerVie
             var menuPriceTV:TextView = itemView.findViewById(R.id.menuPriceTV)
             menuPriceTV.setText(menuData.menus[pos].price.toString()+"원")
 
+            var menuCountText:TextView = itemView.findViewById(R.id.menuCountText)
+            countTexts.add(menuCountText)
+
+            var plusTV : TextView = itemView.findViewById(R.id.plusTV)
+            plusTV.setOnClickListener{
+                menuFragment.setMenuPlus(pos)
+                menuCountText.setText(menuFragment.tableMenuList[menuFragment.getNowTableTab()][pos].toString())
+            }
+
+            var minusTV : TextView = itemView.findViewById(R.id.minusTV)
+            minusTV.setOnClickListener{
+                menuFragment.setMenuMinus(pos)
+                menuCountText.setText(menuFragment.tableMenuList[menuFragment.getNowTableTab()][pos].toString())
+            }
+
+
+
             itemView.setOnClickListener {
                 //메뉴 하나 클릭 됐을 때 수행
             }
 
 
-
         }
 
     }
+
+
 }

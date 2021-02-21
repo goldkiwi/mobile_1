@@ -83,6 +83,7 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
                 Log.d("확인 MenuTableRVAdapter", "리사이클러뷰 클릭시")
                 menuFragment.setTableText(fAndTAL[(pos*2)], fAndTAL[pos*2+1])
                 menuFragment.setNowTableTab(pos)
+                menuFragment.turnMenuCount()
             }
 
         }

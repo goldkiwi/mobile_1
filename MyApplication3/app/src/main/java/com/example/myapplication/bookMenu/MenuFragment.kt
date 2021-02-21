@@ -19,6 +19,8 @@ class MenuFragment: Fragment() {
     lateinit var menuData:MenuData
     lateinit var tableData: TableData
 
+    lateinit var menuListRVAdapter:MenuListRVAdapter
+
     var tableNumAL=ArrayList<ArrayList<Int>>()
     var bookTableNum = 0
     //var tableNumString = ""//테이블
@@ -29,7 +31,9 @@ class MenuFragment: Fragment() {
     var nowTable = 0
 
     private var nowTableTab = 0
-    private var tableMenuList = ArrayList<ArrayList<Int>>()
+    var tableMenuList = ArrayList<ArrayList<Int>>()//테이블갯수 크기의 ArrayList가 있고 그 안에 메뉴갯수와 같은 크기의 ArrayList가 있음
+
+
 
     lateinit var tableNumText : TextView
 
@@ -112,7 +116,7 @@ class MenuFragment: Fragment() {
 
 
         var menuListRV : RecyclerView = itemView.findViewById(R.id.menuListRV)
-        var menuListRVAdapter = MenuListRVAdapter(this!!.getActivity()!!, menuData)
+        menuListRVAdapter = MenuListRVAdapter(this!!.getActivity()!!, menuData, this)
         menuListRV.adapter = menuListRVAdapter
 
         var menuListRVLayoutManager = LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false)
@@ -173,8 +177,20 @@ class MenuFragment: Fragment() {
         }
     }
 
-    public fun setMenu(menuNum:Int, count:Int){
+    public fun setMenuPlus(menuNum:Int) {
+        tableMenuList[nowTableTab][menuNum]++
+    }
+    public fun setMenuMinus(menuNum:Int){
+        if (tableMenuList[nowTableTab][menuNum] > 0) {
+            tableMenuList[nowTableTab][menuNum]--
+        }
+    }
+    public fun getNowTableTab():Int{
+        return nowTableTab
+    }
 
+    public fun turnMenuCount(){
+        menuListRVAdapter.setMenuCountTVAL()
     }
 
 
