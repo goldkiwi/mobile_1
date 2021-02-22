@@ -69,7 +69,7 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
 
             var tableMenuRV : RecyclerView = itemView.findViewById(R.id.tableMenuRV)
             //Log.d("확인 MenuTableRVAdapter", "Holder.bind2.1")
-            var innerRVAdapter = InnerRVAdapter(context)
+            var innerRVAdapter = InnerRVAdapter(context, pos)
             //Log.d("확인 MenuTableRVAdapter", "Holder.bind2.2")
             tableMenuRV.adapter = innerRVAdapter
             //Log.d("확인 MenuTableRVAdapter", "Holder.bind3")
@@ -93,30 +93,34 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
         //여기서는 각 테이블마다 어떤메뉴 골랐는지 바인드함 -> 실시간ㅁ으로 리사이클러뷰에 올라가야 한다
         //-> 함수 추가해야겠네
 
-        inner class InnerRVAdapter(var innerContext: Context): RecyclerView.Adapter<InnerRVAdapter.InnerHolder>(){
+        inner class InnerRVAdapter(var innerContext: Context, var tableNum:Int): RecyclerView.Adapter<InnerRVAdapter.InnerHolder>(){
 
 
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerRVAdapter.InnerHolder {
                 Log.d("확인 MenuTableRVAdapter.innerRVAdapter", "생성")
                 //여기서 레이아웃은 메뉴 한줄이 들어가야 함
-                val innerView = LayoutInflater.from(innerContext).inflate(R.layout.generalitem_button, parent, false)
+                val innerView = LayoutInflater.from(innerContext).inflate(R.layout.bookmenu_selectedline, parent, false)
                 return InnerHolder(innerView)
             }
 
             //여기에는 각 테이블에 예약된 메뉴 몇종류인가가 들어가야 함
             //미리 상위에서 받아오는게 좋을듯 함
             override fun getItemCount(): Int {
-                return 3
+                return 5
             }
 
             override fun onBindViewHolder(holder: InnerHolder, position: Int) {
                 holder.innerBind(position)
             }
 
-            inner class InnerHolder(innerView:View):RecyclerView.ViewHolder(innerView){
-                public fun innerBind(pos:Int){
+            inner class InnerHolder(var innerView:View):RecyclerView.ViewHolder(innerView){
+                public fun innerBind(innenrPos:Int){
                     Log.d("확인 MenuTableRVAdapter.innerRVAdapter  innerBind", "생성")
+                    var menuName:TextView = innerView.findViewById(R.id.menuNameLineTV)
+                    var menuNum:TextView = innerView.findViewById(R.id.menuNumLineTV)
+
+                    menuName.setText(menuData.menus[innenrPos].name)
 
                 }
 
