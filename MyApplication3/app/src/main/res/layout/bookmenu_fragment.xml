@@ -22,7 +22,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuListRV"
         android:layout_width="match_parent"
-        android:layout_height="459dp" />
+        android:layout_height="305dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/priceTV"
             android:layout_width="wrap_content"
             android:layout_height="83dp"
             android:layout_weight="1"

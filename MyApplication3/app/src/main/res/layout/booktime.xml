@@ -10,51 +10,47 @@
     >
 
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/bookTime_sikdangImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="161dp"
+            app:srcCompat="@drawable/sikdangimage" />
 
-            <ImageView
-                android:id="@+id/bookTime_sikdangImage"
-                android:layout_width="match_parent"
-                android:layout_height="161dp"
-                app:srcCompat="@drawable/sikdangimage" />
+        <TextView
+            android:id="@+id/bookTime_sikdangName"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:gravity="center"
+            android:text="식당이름"
+            android:textSize="30sp" />
+        <!--
 
-            <TextView
-                android:id="@+id/bookTime_sikdangName"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:gravity="center"
-                android:text="식당이름"
-                android:textSize="30sp" />
-            <!--
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bookTimeRV"
+            >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/bookTimeRV"
-                >
-
-            </androidx.recyclerview.widget.RecyclerView>
-            -->
+        </androidx.recyclerview.widget.RecyclerView>
+        -->
 
 
 
 
-            <FrameLayout
-                android:id="@+id/bookFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/bookFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            </FrameLayout>
+        </FrameLayout>
 
 
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
 
 </LinearLayout>

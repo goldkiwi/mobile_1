@@ -19,6 +19,9 @@ class MenuFragment: Fragment() {
     lateinit var menuData:MenuData
     lateinit var tableData: TableData
 
+    var price = 0
+    lateinit var priceTV : TextView
+
     lateinit var menuListRVAdapter:MenuListRVAdapter
 
     var tableNumAL=ArrayList<ArrayList<Int>>()
@@ -123,6 +126,10 @@ class MenuFragment: Fragment() {
         menuListRV.layoutManager = menuListRVLayoutManager
         menuListRV.setHasFixedSize(true)
 
+
+        priceTV = itemView.findViewById(R.id.priceTV)
+        setPriceText()
+
     }
 
 
@@ -179,10 +186,14 @@ class MenuFragment: Fragment() {
 
     public fun setMenuPlus(menuNum:Int) {
         tableMenuList[nowTableTab][menuNum]++
+        price+=menuData.menus[menuNum].price
+        setPriceText()
     }
     public fun setMenuMinus(menuNum:Int){
         if (tableMenuList[nowTableTab][menuNum] > 0) {
             tableMenuList[nowTableTab][menuNum]--
+            price-=menuData.menus[menuNum].price
+            setPriceText()
         }
     }
     public fun getNowTableTab():Int{
@@ -191,6 +202,10 @@ class MenuFragment: Fragment() {
 
     public fun turnMenuCount(){
         menuListRVAdapter.setMenuCountTVAL()
+    }
+
+    public fun setPriceText(){
+        priceTV.setText(price.toString()+ "원")
     }
 
 
