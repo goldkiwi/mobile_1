@@ -23,6 +23,7 @@ class MenuFragment: Fragment() {
     lateinit var priceTV : TextView
 
     lateinit var menuListRVAdapter:MenuListRVAdapter
+    lateinit var menuTableRVAdapter:MenuTableRVAdapter
 
     var tableNumAL=ArrayList<ArrayList<Int>>()
     var bookTableNum = 0
@@ -108,7 +109,7 @@ class MenuFragment: Fragment() {
 
         //각 테이블별로 어떤 메뉴가 예약 되었는지 표시해주는 리사이클러뷰
         var tableRV : RecyclerView = itemView.findViewById(R.id.tableRV)
-        var menuTableRVAdapter = MenuTableRVAdapter(this!!.getActivity()!!, menuData, bookTableNum, tableNumAL, tableData.floorList, fAndTAL,this)
+        menuTableRVAdapter = MenuTableRVAdapter(this!!.getActivity()!!, menuData, bookTableNum, tableNumAL, tableData.floorList, fAndTAL,this)
         tableRV.adapter = menuTableRVAdapter
         //Log.d("확인 MenuFragment.bind", "2")
 
@@ -206,6 +207,10 @@ class MenuFragment: Fragment() {
 
     public fun setPriceText(){
         priceTV.setText(price.toString()+ "원")
+    }
+
+    public fun renewalSelectedMenu(){
+        menuTableRVAdapter.notifyDataSetChanged()
     }
 
 

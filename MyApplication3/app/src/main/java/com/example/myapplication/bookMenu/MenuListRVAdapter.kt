@@ -58,12 +58,15 @@ class MenuListRVAdapter(var context: Context, val menuData:MenuData, var menuFra
             plusTV.setOnClickListener{
                 menuFragment.setMenuPlus(pos)
                 menuCountText.setText(menuFragment.tableMenuList[menuFragment.getNowTableTab()][pos].toString())
+                menuFragment.renewalSelectedMenu()
+
             }
 
             var minusTV : TextView = itemView.findViewById(R.id.minusTV)
             minusTV.setOnClickListener{
                 menuFragment.setMenuMinus(pos)
                 menuCountText.setText(menuFragment.tableMenuList[menuFragment.getNowTableTab()][pos].toString())
+                menuFragment.renewalSelectedMenu()
             }
 
 

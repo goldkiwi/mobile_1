@@ -95,6 +95,9 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
 
         inner class InnerRVAdapter(var innerContext: Context, var tableNum:Int): RecyclerView.Adapter<InnerRVAdapter.InnerHolder>(){
 
+            var selectedMenuCount = 0
+            var selectedMenuNums = ArrayList<Int>()
+
 
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerRVAdapter.InnerHolder {
@@ -107,20 +110,39 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
             //여기에는 각 테이블에 예약된 메뉴 몇종류인가가 들어가야 함
             //미리 상위에서 받아오는게 좋을듯 함
             override fun getItemCount(): Int {
-                return 5
+                setSelectedMenuNum()
+                return selectedMenuCount
             }
 
             override fun onBindViewHolder(holder: InnerHolder, position: Int) {
                 holder.innerBind(position)
             }
 
+            public fun setSelectedMenuNum(){
+                var i = 0
+                var sMC = 0
+                var tempAL = ArrayList<Int>()
+                while (i<menuFragment.menuData.menus.size){//모든 메뉴에 대해 루프
+                    if(menuFragment.tableMenuList[tableNum][i] != 0){//메뉴가 0개 선택된게 아니면
+                        tempAL.add(i)
+                        sMC += 1
+                    }
+                    i++
+                }
+                selectedMenuNums = tempAL
+                selectedMenuCount = sMC
+            }
+
+
             inner class InnerHolder(var innerView:View):RecyclerView.ViewHolder(innerView){
-                public fun innerBind(innenrPos:Int){
+                public fun innerBind(innerPos:Int){
                     Log.d("확인 MenuTableRVAdapter.innerRVAdapter  innerBind", "생성")
                     var menuName:TextView = innerView.findViewById(R.id.menuNameLineTV)
                     var menuNum:TextView = innerView.findViewById(R.id.menuNumLineTV)
 
-                    menuName.setText(menuData.menus[innenrPos].name)
+                    menuName.setText(menuData.menus[selectedMenuNums[innerPos]].name)//이 메뉴의 이름
+                    menuNum.setText(menuFragment.tableMenuList[tableNum][selectedMenuNums[innerPos]].toString())//이 메뉴 얼마나 골랐는지
+                    Log.d("확인 MenuTableRVAdapter.innerRVAdapter  innerBind", innerPos.toString()+menuData.menus[selectedMenuNums[innerPos]].name+ menuFragment.tableMenuList[tableNum][innerPos].toString())
 
                 }
 
