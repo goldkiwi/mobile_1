@@ -83,7 +83,9 @@ class TableFragment: Fragment() {
         completeButton.setOnClickListener {
             Log.d("확인 TableFragment", "BookTime의 bookTimeActivity호출")
             bookTimeActivity.setTableDataOn(tableData)
-            bookTimeActivity.replaceMenuFragment()
+            //bookTimeActivity.replaceMenuFragment()
+            var bookTimeActivity = activity as BookTime
+            bookTimeActivity.callPayPage()
         }
 
     }
