@@ -176,8 +176,8 @@ class TableFloorFragment():Fragment()  {
     //버튼 클릭의 호출 순서 : PersonNumRVAdapter -> BookPersonDialog->TableFloorFragment(여기)
     //dialog에서 인원수 선택 버튼 클릭될 경우
     public fun pNumButtonClicked(tableNum:Int, pnum:Int, floor:Int){
-        Log.d("확인 floor", floor.toString()+floorNum.toString()+tableNum.toString())
-        Log.d("확인 floor Pos : ", pos.toString())
+        //Log.d("확인 floor", floor.toString()+floorNum.toString()+tableNum.toString())
+        //Log.d("확인 floor Pos : ", pos.toString())
         var floorTable = tableNum
         if(pos>0){
             floorTable = tableNum - tableData.accumTableNumList[pos-1]
@@ -228,7 +228,7 @@ class TableFloorFragment():Fragment()  {
             aa+=numAL[i].toString()
             i++
         }
-        Log.d("확인 numAR", aa)
+        //Log.d("확인 numAR", aa)
     }
 
     //초기 테이블 데이터를 액티비티의 변수로 전달/초기화

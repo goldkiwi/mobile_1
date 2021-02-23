@@ -11,7 +11,7 @@ import com.example.myapplication.R
 
 class MenuListRVAdapter(var context: Context, val menuData:MenuData, var menuFragment: MenuFragment):RecyclerView.Adapter<MenuListRVAdapter.Holder>()  {
 
-    var countTexts = ArrayList<TextView>()
+    var countTexts = ArrayList<TextView>()//메뉴별로 몇개 넣었는지 저장되는 어레이 리스트
 
 
 

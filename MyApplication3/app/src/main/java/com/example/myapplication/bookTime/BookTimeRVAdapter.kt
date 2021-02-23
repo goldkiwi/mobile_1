@@ -107,7 +107,7 @@ class BookTimeRVAdapter(var context: Context, val bookData: BookData, val bookTi
                     //(aaaa as BookTime).replaceTableFragment(tableFragment)
                     bookData.setBookTime(timeText)
                     bookTimeActivity.replaceTableFragment()
-                    Log.d("확인 buttonSetOnClickListner ", "3")
+                    //Log.d("확인 buttonSetOnClickListner ", "3")
                 }
             }
 
@@ -126,7 +126,7 @@ class BookTimeRVAdapter(var context: Context, val bookData: BookData, val bookTi
                     buttonRight.setOnClickListener {
                         bookData.setBookTime(timeText)
                         bookTimeActivity.replaceTableFragment()
-                        Log.d("확인 buttonSetOnClickListner ", "3")
+                        //Log.d("확인 buttonSetOnClickListner ", "3")
                     }
                 }
                 vartimePoint+=1

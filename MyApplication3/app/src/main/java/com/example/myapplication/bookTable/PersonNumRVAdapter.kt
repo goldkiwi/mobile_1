@@ -46,7 +46,7 @@ class PersonNumRVAdapter(var context: Context, val maxP:Int, val bookPersonDialo
                 var i = 0
                 while(i<numButtonAR.size){
                     if (i!=count){
-                        Log.d("확인 버튼 설정", i.toString()+ pos.toString()+count.toString())
+                        //Log.d("확인 버튼 설정", i.toString()+ pos.toString()+count.toString())
                         numButtonAR[i].setBackgroundColor(Color.parseColor("#FFFFFF"))
                     }
                     i++

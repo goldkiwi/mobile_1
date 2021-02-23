@@ -1,5 +1,6 @@
 package com.example.myapplication.bookTime
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.myapplication.bookMenu.MenuData
 import com.example.myapplication.bookMenu.MenuFragment
 import com.example.myapplication.bookTable.TableData
 import com.example.myapplication.bookTable.TableFragment
+import com.example.myapplication.payPage.PayPage
 
 
 //아예 시간표는 프래그먼트로 넣을까?
@@ -134,7 +136,7 @@ class BookTime: AppCompatActivity() {
         bundle.putSerializable("menuData", menuData)
         bundle.putSerializable("tableData", tableData)
         bundle.putString("tableNumARString", tableNumARString)
-        Log.d("확인 replaceMenuFragment ArrayList.Tostring ", tableNumAL.toString())
+        //Log.d("확인 replaceMenuFragment ArrayList.Tostring ", tableNumAL.toString())
 
         bundle.putParcelableArrayList("tableNumAR", tableNumAL as ArrayList<out Parcelable?>?)
         //bundle.putSerializableExtras()
@@ -194,15 +196,15 @@ class BookTime: AppCompatActivity() {
                 tableNumAL.add(tempAR)
                 i++
             }
-            Log.d("확인 BookTime.TableNumAR", "초기화")
-            Log.d("확인 BookTime.TableNumARStraing", tableNumARString)
+            //Log.d("확인 BookTime.TableNumAR", "초기화")
+            //Log.d("확인 BookTime.TableNumARStraing", tableNumARString)
             logTableNumAl()
         }
         isTableInfoInit = true//초기화 끝나고 다시 안바뀌도록 한다
     }
 
     public fun setTableInfoToString(){
-        Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", "시작")
+        //Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", "시작")
         var i = 0
         var tempString = ""
         while (i < tableNumAL.size) {
@@ -217,7 +219,7 @@ class BookTime: AppCompatActivity() {
             i++
         }
         tableNumARString = tempString
-        Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", tableNumARString)
+        //Log.d("확인 BookTime.setTableInfoToString() 문자열 변환 확인", tableNumARString)
         logTableNumAl()
 
 
@@ -242,7 +244,7 @@ class BookTime: AppCompatActivity() {
             }
             i++
         }
-        Log.d("확인 BookTime.TableNumAL", logString)
+        //Log.d("확인 BookTime.TableNumAL", logString)
 
     }
 
@@ -251,6 +253,15 @@ class BookTime: AppCompatActivity() {
     }
 
 
+    public fun callPayPage(){
+        Log.d("확인 BookTime.callPayPage()", "시작")
+        val intent= Intent(this, PayPage::class.java)
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent)
+        Log.d("확인 BookTime.callPayPage()", "끝")
+
+        //itemView.getContext().startActivity(intent);
+    }
 
 
 

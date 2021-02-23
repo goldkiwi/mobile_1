@@ -17,10 +17,19 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
 
 
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         Log.d("확인 MenuTableRVAdapter", "생성")
         val view = LayoutInflater.from(context).inflate(R.layout.bookmenu_eachtable, parent, false)
         //alToAL()
+        var i = 0
+        var tempAL = ArrayList<Boolean>()
+        while(i < bookTableNum){//isTableBooked false로 초기화
+            tempAL.add(false)
+            i++
+        }
+        menuFragment.isTableBooked=tempAL
         return Holder(view)
     }
 
@@ -80,7 +89,7 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
             //eachtableLayout
 
             itemView.setOnClickListener(){//테이블 선택시 : 특정테이블 선택 - 여기에서 저장될 병수 : AllayList 등 지정
-                Log.d("확인 MenuTableRVAdapter", "리사이클러뷰 클릭시")
+                //Log.d("확인 MenuTableRVAdapter", "리사이클러뷰 클릭시")
                 menuFragment.setTableText(fAndTAL[(pos*2)], fAndTAL[pos*2+1])
                 menuFragment.setNowTableTab(pos)
                 menuFragment.turnMenuCount()
@@ -95,8 +104,8 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
 
         inner class InnerRVAdapter(var innerContext: Context, var tableNum:Int): RecyclerView.Adapter<InnerRVAdapter.InnerHolder>(){
 
-            var selectedMenuCount = 0
-            var selectedMenuNums = ArrayList<Int>()
+            var selectedMenuCount = 0//선택된 메뉴 종류의 수
+            var selectedMenuNums = ArrayList<Int>()//이 테이블에 선택된 메뉴의 번호들 0개이면 그냥 안들어간다
 
 
 
@@ -111,6 +120,12 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
             //미리 상위에서 받아오는게 좋을듯 함
             override fun getItemCount(): Int {
                 setSelectedMenuNum()
+                if (selectedMenuCount==0){
+                    menuFragment.isTableBooked[tableNum] = false
+                }
+                else{
+                    menuFragment.isTableBooked[tableNum] = true
+                }
                 return selectedMenuCount
             }
 
@@ -136,13 +151,13 @@ class MenuTableRVAdapter(var context: Context, var menuData:MenuData, val bookTa
 
             inner class InnerHolder(var innerView:View):RecyclerView.ViewHolder(innerView){
                 public fun innerBind(innerPos:Int){
-                    Log.d("확인 MenuTableRVAdapter.innerRVAdapter  innerBind", "생성")
+                    //Log.d("확인 MenuTableRVAdapter.innerRVAdapter  innerBind", "생성")
                     var menuName:TextView = innerView.findViewById(R.id.menuNameLineTV)
                     var menuNum:TextView = innerView.findViewById(R.id.menuNumLineTV)
 
                     menuName.setText(menuData.menus[selectedMenuNums[innerPos]].name)//이 메뉴의 이름
                     menuNum.setText(menuFragment.tableMenuList[tableNum][selectedMenuNums[innerPos]].toString())//이 메뉴 얼마나 골랐는지
-                    Log.d("확인 MenuTableRVAdapter.innerRVAdapter  innerBind", innerPos.toString()+menuData.menus[selectedMenuNums[innerPos]].name+ menuFragment.tableMenuList[tableNum][innerPos].toString())
+                    //Log.d("확인 MenuTableRVAdapter.innerRVAdapter  innerBind", innerPos.toString()+menuData.menus[selectedMenuNums[innerPos]].name+ menuFragment.tableMenuList[tableNum][innerPos].toString())
 
                 }
 

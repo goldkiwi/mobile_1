@@ -17,9 +17,9 @@ class TableVPAdapter(fa:FragmentActivity, val bookData: BookData, val tableData:
     }
 
     override fun createFragment(position: Int): Fragment {
-        Log.d("확인 TableVPAdapter", "createFragment(position: Int)")
+        //Log.d("확인 TableVPAdapter", "createFragment(position: Int)")
         var tableFloorFragment=TableFloorFragment()
-        Log.d("확인 TableVPAdapter", "createFragment(position: Int)2")
+        //Log.d("확인 TableVPAdapter", "createFragment(position: Int)2")
         bind(position, tableFloorFragment)
         return tableFloorFragment
     }
@@ -29,11 +29,11 @@ class TableVPAdapter(fa:FragmentActivity, val bookData: BookData, val tableData:
         //프래그먼트에 번들로 데이터 집어넣음
         var bundle: Bundle = Bundle()
         bundle.putSerializable("bookData", bookData)
-        Log.d("확인 TableVPAdapter", "bind2")
+        //Log.d("확인 TableVPAdapter", "bind2")
         bundle.putSerializable("tableData", tableData)
         bundle.putInt("pos", pos)
         fragment.setArguments(bundle)
-        Log.d("확인 TableVPAdapter", "bind3")
+        //Log.d("확인 TableVPAdapter", "bind3")
     }
 
 
