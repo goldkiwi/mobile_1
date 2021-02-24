@@ -34,6 +34,7 @@ class TableVPAdapter(fa:FragmentActivity, val bookData: BookData, val tableData:
         bundle.putInt("pos", pos)
         fragment.setArguments(bundle)
         //Log.d("확인 TableVPAdapter", "bind3")
+
     }
 
 

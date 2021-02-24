@@ -79,7 +79,7 @@ class TableData(val sikdangId:Int, val bookTime:String):Serializable {
     //floor 테이블이 위치한 층
     //isbooked 테이블이 예약되어있는가
     //isCircle 테이블이 원형인가
-    inner class Table(var locX:Float, var locy:Float, var lengX:Int, var lengY:Int, var maxP:Int, var floor:Int, var isBooked:Boolean, var isCircle:Boolean){
+    inner class Table(var locX:Float, var locy:Float, var lengX:Int, var lengY:Int, var maxP:Int, var floor:Int, var isBooked:Boolean, var isCircle:Boolean):Serializable{
     }
 
 

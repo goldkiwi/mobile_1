@@ -111,6 +111,9 @@ class BookTimeRVAdapter(var context: Context, val bookData: BookData, val bookTi
                     //(aaaa as BookTime).replaceTableFragment(tableFragment)
                     bookData.setBookTime(timeText)
                     bookTimeActivity.replaceTableFragment()
+
+                    //bookTimeActivity.callPayPage()
+
                     //val intent= Intent(context, PayPage::class.java)
                     //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     //context.startActivity(intent)

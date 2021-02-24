@@ -116,6 +116,8 @@ class BookTime: AppCompatActivity() {
         fragmentPage = 2
         var bundle:Bundle = Bundle()
         bundle.putSerializable("bookData", bookData)
+        tableData= TableData(bookData.getSikdangId(), bookData.getBookTime())
+        bundle.putSerializable("tableData", tableData)
         tableFragment.setArguments(bundle)
         val fragmentTransaction3 = fragmentManager.beginTransaction()
 
@@ -247,6 +249,7 @@ class BookTime: AppCompatActivity() {
         //Log.d("확인 BookTime.TableNumAL", logString)
 
     }
+
 
     public fun setTableDataOn(tableData_:TableData){
         tableData=tableData_
