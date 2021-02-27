@@ -86,11 +86,11 @@ class TableFragment: Fragment() {
         var completeButton = view.findViewById<Button>(R.id.tableCompleteButton)
         completeButton.setOnClickListener {
             Log.d("확인 TableFragment", "BookTime의 bookTimeActivity호출")
-            //bookTimeActivity.setTableDataOn(tableData)
-            //bookTimeActivity.replaceMenuFragment()
+            bookTimeActivity.setTableDataOn(tableData)
+            bookTimeActivity.replaceMenuFragment()
 
-            var bookTimeActivity = activity as BookTime
-            bookTimeActivity.callPayPage()
+            //var bookTimeActivity = activity as BookTime
+            //bookTimeActivity.callPayPage()
         }
 
     }

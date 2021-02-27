@@ -59,6 +59,6 @@ class MenuData(val sikdangId:Int): Serializable {
 
    }
     //name 메뉴 이름, price 가격, menuExp 메뉴 상세 설명, menuImage: 메뉴 이미지, ingredients: 식재료와 원산지 넣은 ArrayList
-    inner class Menu(var name:String, var price:Int, var menuExp:String, var menuImage:Int, var ingredients:ArrayList<Ingredient>)
-    inner class Ingredient(var ing:String, var country:String)//식재료와 원산지
+    inner class Menu(var name:String, var price:Int, var menuExp:String, var menuImage:Int, var ingredients:ArrayList<Ingredient>): Serializable
+    inner class Ingredient(var ing:String, var country:String): Serializable//식재료와 원산지
 }

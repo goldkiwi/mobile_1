@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.bookMenu.DataMenuToPay
 import com.example.myapplication.bookMenu.MenuData
 import com.example.myapplication.bookMenu.MenuFragment
 import com.example.myapplication.bookTable.TableData
@@ -39,6 +40,7 @@ class BookTime: AppCompatActivity() {
     //몇페이지인가와 그 페이지의 테이블 정보를 가져와서 리스트에 추가한다
     var isTableInfoInit : Boolean = false
     var tableNumAL=ArrayList<ArrayList<Int>>()//각 층의 각 테이블에 몇명 예약했는지를 저장하는 리스트
+
     //각 층의 테이블정보 담은 String 각 층의 정보 다 쓰면 뒤에 n 붙은다 12302n100104n4123n 식으로 붙음
     var tableNumARString=""
 
@@ -104,7 +106,7 @@ class BookTime: AppCompatActivity() {
 
         //fragmentTransaction2.replace(R.id.bookFragment, timeFragment).commit()
         fragmentTransaction2.replace(R.id.bookFragment, timeFragment)
-        fragmentTransaction2.addToBackStack(null)
+        //fragmentTransaction2.addToBackStack(null)
         fragmentTransaction2.commit()
     }
 
@@ -256,10 +258,13 @@ class BookTime: AppCompatActivity() {
     }
 
 
-    public fun callPayPage(){
+    public fun callPayPage(price:Int, dataMenuToPay: DataMenuToPay){
         Log.d("확인 BookTime.callPayPage()", "시작")
+        dataMenuToPay.setOnSikdangInfo(bookData.getSikdangId(), bookData.getSikdangName())
         val intent= Intent(this, PayPage::class.java)
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("price", price)
+        intent.putExtra("dataMenuToPay", dataMenuToPay)
         startActivity(intent)
         Log.d("확인 BookTime.callPayPage()", "끝")
 

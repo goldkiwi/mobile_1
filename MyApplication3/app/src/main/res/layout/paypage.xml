@@ -5,14 +5,33 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/payPageSikdangName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="66dp"
+        android:gravity="center"
+        android:text="식당이름default"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="요청사항"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/reqEditText"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="요청사항"
+        android:background="@null"/>
+
+    <TextView
+        android:id="@+id/payPageOriginalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="가격"
+        android:textSize="18sp" />
 </LinearLayout>

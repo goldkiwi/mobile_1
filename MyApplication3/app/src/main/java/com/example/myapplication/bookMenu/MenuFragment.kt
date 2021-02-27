@@ -31,7 +31,7 @@ class MenuFragment: Fragment() {
     lateinit var menuListRVAdapter:MenuListRVAdapter
     lateinit var menuTableRVAdapter:MenuTableRVAdapter
 
-    var tableNumAL=ArrayList<ArrayList<Int>>()
+    var tableNumAL=ArrayList<ArrayList<Int>>()//테이블별 예약 인원
     var bookTableNum = 0
     //var tableNumString = ""//테이블
 
@@ -165,8 +165,10 @@ class MenuFragment: Fragment() {
                 //startActivity(intent)
 
 
+                var dataMenuToPay = DataMenuToPay()
+                dataMenuToPay.setAL(tableNumAL, tableMenuList)
                 var bookTimeActivity = activity as BookTime
-                bookTimeActivity.callPayPage()
+                bookTimeActivity.callPayPage(price, dataMenuToPay)
                 Log.d("확인 MenuFragment -> BookTime.callPayPage()", "복귀")
 
 
