@@ -1,5 +1,6 @@
 package com.example.myapplication.sikdangChoicePage
 
+//식당 위치 관련 클래스
 //SikdangMenuData 에 데이터 전하는 용도의 클래스
 //통째로 SikdangMenuData 객체로 넘긴다
 //SikdsngChoice 에서 생성되어 maxDist 넣어줌

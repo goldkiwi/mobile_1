@@ -3,6 +3,18 @@ package com.example.myapplication.sikdangChoicePage
 import android.util.Log
 import com.example.myapplication.R
 
+//카테고리와 거리 정보 보내면 채워서 돌려받는다
+//SikdangListReqData 받아서 데이터 채움
+//여기서 pos보고 채운다?
+//식당 선택시 이 클래스 생성되면서 다음 액티비티로 넘어간다
+//SikdangChoiceMenuViewPagerAdapter 에서 생성
+
+//그러니까 정보를 받아 그 자리에 와야 할 식당의 정보를 넘겨주는 것
+//여기서 각 식당 정보 할당해서 이 정보를 보고 어댑터에서 식당 정보 띄워준다
+//서버에 카테고리와 거리 정보, 몇번째로 채워야 할지 보내고 서버에서 띄워줄 식당 정해서 그 식당의 정보를 순서대로 이 클래스에 채워준다
+//pos는 몇번째로 띄워주는지
+//이거는 식당마다 서버에서 데이터를 한 덩어리씩 보냄
+//아예 데이터 덩어리로 하는게 나을수도 있을듯듯
 class SikdangMenuData() {
     private var sikdangId : Int = 0
     private var sikdangImage : Int = R.drawable.foodimage //식당의 이미지

@@ -9,6 +9,7 @@ import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 
+//상단 토글버튼
 class SikdangChoiceCatAdapter(var context : Context, val catArrayList: ArrayList<String>?,
                               var sikdangChoice_toggleButton_arrayList: ArrayList<ToggleButton>,
                               var selectedCat :String,

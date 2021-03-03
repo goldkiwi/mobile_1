@@ -25,7 +25,8 @@
         android:layout_height="135dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="요청사항"
+        android:text=""
+        android:hint="요청사항"
         android:background="@null"/>
 
     <TextView
@@ -34,4 +35,49 @@
         android:layout_height="wrap_content"
         android:text="가격"
         android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="쿠폰"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/couponNumTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="몇개있을까요"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/couponRV"
+        android:layout_width="match_parent"
+        android:layout_height="108dp" />
+
+    <TextView
+        android:id="@+id/totalPriceTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="총 가격"
+        android:textSize="24sp" />
+
+    <ListView
+        android:id="@+id/payList"
+        android:layout_width="match_parent"
+        android:layout_height="268dp" />
+
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="결제" />
+
 </LinearLayout>
