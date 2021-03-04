@@ -28,7 +28,7 @@
         android:background="@null"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="요청사항" />
+        android:hint="요청사항" />
 
     <TextView
         android:id="@+id/payPageOriginalPrice"
@@ -117,21 +117,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="결제" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine" />
 
 </LinearLayout>
