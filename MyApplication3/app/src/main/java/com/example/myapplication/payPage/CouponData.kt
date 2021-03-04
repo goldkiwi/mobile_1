@@ -29,7 +29,7 @@ class CouponData(val userId:Int) {
 
     //minPrice 쿠폰 사용 위한 최소금액
     //overlap 쿠폰중복사용 여부 1중복 가능 : 1끼리만 중복 가능 2 중복 불가 : 1사용 불가 2 하나만 사용 가능 3 : 중복 가능 2랑도 중복 가능 완전 자유
-    //couponExp는 쿠폰 설명
+    //couponExp는 쿠폰 설명 여기선 짧게 했지만 긴 설면도 가능
 
    inner class Coupon(val sikdangId:Int, val minPrice:Int, val overlap:Int, val couponId:Long, val couponExp:Int, val explanation:String)
 }
