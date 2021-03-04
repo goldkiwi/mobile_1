@@ -22,7 +22,7 @@ class PayPage: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.d("확인 PayPage", "1")
+        //Log.d("확인 PayPage", "1")
         setContentView(R.layout.paypage)
         //Log.d("확인 PayPage", "2")
 
@@ -30,7 +30,7 @@ class PayPage: AppCompatActivity() {
         if (intent != null) {
             dataMenuToPay = intent.getSerializableExtra("dataMenuToPay") as DataMenuToPay
             price = intent.getIntExtra("price", 0)
-            //Log.d("확인 PayPage", "price 확인"+price.toString())
+            Log.d("확인 PayPage", "price 확인"+price.toString())
 
         }
         else{
@@ -41,6 +41,7 @@ class PayPage: AppCompatActivity() {
 
         var reqEditText:EditText = findViewById(R.id.reqEditText)
         reqEditText.setSingleLine(false)
+
 
 
         var payPageOriginalPrice:TextView = findViewById(R.id.payPageOriginalPrice)
@@ -71,6 +72,7 @@ class PayPage: AppCompatActivity() {
 
         //while 문으로 돌리면 마지감 i값이 들어가서 문제 생김 : 일일이 코드로 넣어줘야함
         //어차피 페이 종류 많이 안넣을테니 일일이 넣어도 상관 없음
+
         checkBoxAL[0].setOnClickListener {
             var j = 0
             while(j<checkBoxAL.size){
@@ -122,8 +124,9 @@ class PayPage: AppCompatActivity() {
         return 987654321
     }
 
+
     public fun showDialog(){
-        var customDialog = PayPageCouponDialog(this)
+        var customDialog = PayPageCouponDialog(this, couponData, dataMenuToPay.sikdangId)
         customDialog!!.show()
     }
 

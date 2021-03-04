@@ -4,7 +4,7 @@ class CouponData(val userId:Int) {
     var couponList = ArrayList<Coupon>()
 
     init{
-
+        setData()
     }
 
     private fun setData(){
@@ -16,6 +16,14 @@ class CouponData(val userId:Int) {
         val coupon6 = Coupon(12345678, 0, 2, 78456412350, 210912, "쿠폰6")
         val coupon7 = Coupon(12345678, 100000, 2, 78965402550, 210912, "쿠폰7")
         val coupon8 = Coupon(12345678, 10000, 3, 78965412582, 210912, "쿠폰8")
+        couponList.add(coupon1)
+        couponList.add(coupon2)
+        couponList.add(coupon3)
+        couponList.add(coupon4)
+        couponList.add(coupon5)
+        couponList.add(coupon6)
+        couponList.add(coupon7)
+        couponList.add(coupon8)
 
     }
 

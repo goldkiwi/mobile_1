@@ -4,15 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.mainPage.SikdangMainCatAdapter
 
-class CouponListRVAdapter(var context:Context): RecyclerView.Adapter<CouponListRVAdapter.Holder>() {
-
-
-
-
+class CouponListRVAdapter(var context:Context, val couponData: CouponData, val payPageCouponDialog: PayPageCouponDialog): RecyclerView.Adapter<CouponListRVAdapter.Holder>() {
 
 
 
@@ -22,15 +19,18 @@ class CouponListRVAdapter(var context:Context): RecyclerView.Adapter<CouponListR
     }
 
     override fun getItemCount(): Int {
-        return 3
+        return payPageCouponDialog.couponMatchNumList.size
+        //return 6
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        //super.onBindViewHolder(holder, position)
+        holder.bind(position)
     }
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
-        public fun bind(){
+        public fun bind(pos:Int){
+            //var couponEXPTV:TextView = itemView.findViewById(R.id.couponEXPTV)
+            //couponEXPTV.setText(couponData.couponList[payPageCouponDialog.couponMatchNumList[pos]].explanation)
 
         }
     }

@@ -25,11 +25,10 @@
         android:id="@+id/reqEditText"
         android:layout_width="match_parent"
         android:layout_height="135dp"
+        android:background="@null"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
-        android:hint="요청사항"
-        android:background="@null"/>
+        android:text="요청사항" />
 
     <TextView
         android:id="@+id/payPageOriginalPrice"
@@ -59,6 +58,7 @@
             android:text="몇개있을까요"
             android:textSize="18sp" />
     </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/couponRV"
@@ -117,5 +117,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="결제" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
 
 </LinearLayout>

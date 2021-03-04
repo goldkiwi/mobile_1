@@ -12,7 +12,7 @@
         android:text="CheckBox" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/couponEXPTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
