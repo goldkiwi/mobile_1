@@ -262,7 +262,7 @@ class BookTime: AppCompatActivity() {
         Log.d("확인 BookTime.callPayPage()", "시작")
         dataMenuToPay.setOnSikdangInfo(bookData.getSikdangId(), bookData.getSikdangName())
         val intent= Intent(this, PayPage::class.java)
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("price", price)
         intent.putExtra("dataMenuToPay", dataMenuToPay)
         startActivity(intent)
